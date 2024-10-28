@@ -1,0 +1,24 @@
+:root{
+    /* fontet */
+--primary-font: "Lora", serif;
+--heading-font: "Playfair Display", serif;
+
+    /* ngjyrat */
+--dark-pink: #ad0045;
+--light-green: #f1fff4;
+--yellow: #f7e713;
+--btncolor:#fde3f7;
+/* #c4ffd1 */
+--green: #3A6D52;
+--dark-green:#0e2d1d;
+--light-greenn: #90dfa1;
+--hf:rgb(154, 221, 154);
+--h-color: #fff3d1;
+--border-color: #ffac95;
+--bg-color-katror: #fff2df
+
+   /* backgrounds */
+--light-pink: #fef1f7;
+--rose: #ffeaed;
+--pinkish: #ffdcec;
+}
