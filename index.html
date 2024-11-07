@@ -40,6 +40,7 @@
         </nav>
     </div>
     </header>
+    
     <main class="bg-light">
         <div class="container">
             <div class="intro"> 
@@ -56,47 +57,94 @@
             </div>
         </div>
     </main>
-    <section id="menu" class="bg-light">
-        <div class="container">
-            <hgroup>
-                <h1>MENU</h1> 
-                <h6>Here’s what we offer: a delightful selection of <span>freshly baked</span> treats. Enjoy something special today!</h6>
-            </hgroup>
 
+    <section id="menu">
+        <div class="container">
+            <button id="scroll-left" class="scroll-button">←</button>
             <div class="items">
                 <div class="item">
-                    <img src="./assets/img/item1.jpeg"/>
+                    <img src="./assets/img/item1.jpeg" alt="Cakes" />
                     <h2>Cakes</h2>
                     <p>From Classic to Creative🍰</p>
                 </div>
-
                 <div class="item">
-                    <img src="./assets/img/item2.jpeg"/>
+                    <img src="./assets/img/item2.jpeg" alt="Cupcakes" />
                     <h2>Cupcakes</h2>
                     <p>Irresistible Cupcake Creations🧁</p>
                 </div>
-
                 <div class="item">
-                    <img src="./assets/img/item3.jpeg"/>
+                    <img src="./assets/img/item3.jpeg" alt="Donuts" />
                     <h2>Donuts</h2>
                     <p>Delicious Donuts to Savor🍩</p>
                 </div>
-                <div class="items">
-                    <div class="item">
-                        <img src="./assets/img/desserts.webp"/>
-                        <h2>Desserts</h2>
-                        <p>From Classic to Creative🍰</p>
-                    </div>
-                    <div class="items">
-                        <div class="item">
-                            <img src="./assets/img/pastries.webp"/>
-                            <h2>Pastries</h2>
-                            <p>From Classic to Creative🍰</p>
-                        </div>
-
+                <div class="item">
+                    <img src="./assets/img/desserts.webp" alt="Desserts" />
+                    <h2>Desserts</h2>
+                    <p>Sweet Treats Await You🍰</p>
+                </div>
+                <div class="item">
+                    <img src="./assets/img/pastries.webp" alt="Pastries" />
+                    <h2>Pastries</h2>
+                    <p>Flaky and Delicious Pastries🥐</p>
+                </div>
             </div>
+            <button id="scroll-right" class="scroll-button">→</button>
         </div>
     </section>
+
+    <script>
+        const scrollLeftButton = document.getElementById('scroll-left');
+        const scrollRightButton = document.getElementById('scroll-right');
+        const itemsContainer = document.querySelector('.items');
+    
+        scrollLeftButton.addEventListener('click', () => {
+            itemsContainer.scrollBy({
+                top: 0,
+                left: -250, // Adjusted scroll offset for item width
+                behavior: 'smooth'
+            });
+        });
+    
+        scrollRightButton.addEventListener('click', () => {
+            itemsContainer.scrollBy({
+                top: 0,
+                left: 250, // Adjusted scroll offset for item width
+                behavior: 'smooth'
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+    const numbers = document.querySelectorAll('.number strong');
+    
+    const animateValue = (element, start, end, duration) => {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            element.innerText = Math.floor(progress * (end - start) + start);
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        };
+        window.requestAnimationFrame(step);
+    };
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                numbers.forEach(number => {
+                    const endValue = parseInt(number.textContent.replace(/,/g, ''));
+                    animateValue(number, 0, endValue, 2000);
+                });
+                observer.unobserve(entry.target); // Stop observing once animated
+            }
+        });
+    }, { threshold: 0.5 }); // Trigger when 50% of the section is visible
+
+    observer.observe(document.getElementById('stats'));
+});
+    </script>
+    
     <section id="products">
         <div class="container">
             <hgroup>
@@ -105,96 +153,124 @@
             </hgroup>
             <div class="todays">
                 <div class="t_product">
-                    <img src="./assets/img/cake1.jpg"/>
+                    <div class="circle">
+                        <img src="./assets/img/cake1.jpg" alt="Strawberry Dream Delight">
+                    </div>
                     <h3>Strawberry Dream Delight</h3>
-                    <p>Make the most of strawberry season with our strawberry cake, with light sponge, jam and soft cheese icing. It makes a fabulous centrepiece dessert.</p>
+                    <p>Make the most of strawberry season with our strawberry cake, with light sponge, jam, and soft cheese icing. It makes a fabulous centrepiece dessert.</p>
                     <a href="#" class="btn">Order & Details</a>
-                </div> <!--t_product -->
-    
+                </div> <!-- t_product -->
+            
                 <div class="t_product">
-                    <img src="./assets/img/cake2.jpg"/>
+                    <div class="circle">
+                        <img src="./assets/img/cake2.jpg" alt="Choco Bliss">
+                    </div>
                     <h3>Choco Bliss</h3>
                     <p>Master the chocolate cake with an airy, light sponge and rich buttercream filling. It's simple enough for an afternoon tea but special enough for a party too.</p>
                     <a href="#" class="btn">Order & Details</a>
-                </div> <!--t_product -->
-    
+                </div> <!-- t_product -->
+            
                 <div class="t_product">
-                    <img src="./assets/img/cake3.jpeg"/>
+                    <div class="circle">
+                        <img src="./assets/img/cake3.jpeg" alt="Oreo Cookie Cupcakes">
+                    </div>
                     <h3>Oreo Cookie Cupcakes</h3>
                     <p>These cupcakes combine decadently rich chocolate cake with creamy vanilla frosting speckled with crushed Oreo cookie pieces.</p>
                     <a href="#" class="btn">Order & Details</a>
-                </div> <!--t_product -->
-            </div> <!-- todays-->
+                </div> <!-- t_product -->
+            </div> <!-- todays -->
+            
 
-        <hgroup>
-            <h1>This Week's Specials✨</h1> 
-            <h6>Try our most popular ones and taste the difference!</h6>
-        </hgroup>
-        <div class="weekly">
-            <div class="w_product">
-                <img src="./assets/img/cake1.jpg"/>
-                <h3>Strawberry Dream Delight</h3>
-                <p>Make the most of strawberry season with our strawberry cake, with light sponge, jam and soft cheese icing. It makes a fabulous centrepiece dessert.</p>
-                <a href="#" class="btn">Order & Details</a>
-            </div> <!--product -->
+  <!-- This Week's Specials -->
+<hgroup>
+    <h1>This Week's Specials✨</h1> 
+    <h6>Try our most popular ones and taste the difference!</h6>
+</hgroup>
+<div class="weekly">
+    <div class="w_product">
+        <div class="circle">
+            <img src="./assets/img/cake1.jpg" alt="Strawberry Dream Delight">
+        </div>
+        <h3>Strawberry Dream Delight</h3>
+        <p>Make the most of strawberry season with our strawberry cake, with light sponge, jam, and soft cheese icing.</p>
+        <a href="#" class="btn">Order & Details</a>
+    </div>
 
-            <div class="w_product">
-                <img src="./assets/img/cake2.jpg"/>
-                <h3>Choco Bliss</h3>
-                <p>Master the chocolate cake with an airy, light sponge and rich buttercream filling. It's simple enough for an afternoon tea but special enough for a party too.</p>
-                <a href="#" class="btn">Order & Details</a>
-            </div> <!--product -->
+    <div class="w_product">
+        <div class="circle">
+            <img src="./assets/img/cake2.jpg" alt="Choco Bliss">
+        </div>
+        <h3>Choco Bliss</h3>
+        <p>Master the chocolate cake with an airy, light sponge and rich buttercream filling. Perfect for your tea.</p>
+        <a href="#" class="btn">Order & Details</a>
+    </div>
 
-            <div class="w_product">
-                <img src="./assets/img/cake3.jpeg"/>
-                <h3>Oreo Cookie Cupcakes</h3>
-                <p>These cupcakes combine decadently rich chocolate cake with creamy vanilla frosting speckled with crushed Oreo cookie pieces.</p>
-                <a href="#" class="btn">Order & Details</a>
-            </div> <!--w_product -->
-        </div> <!-- weekly-->
+    <div class="w_product">
+        <div class="circle">
+            <img src="./assets/img/cake3.jpeg" alt="Oreo Cookie Cupcakes">
+        </div>
+        <h3>Oreo Cookie Cupcakes</h3>
+        <p>Rich chocolate cupcakes with creamy vanilla frosting and Oreo cookie pieces.</p>
+        <a href="#" class="btn">Order & Details</a>
+    </div>
+</div>
 
-            <hgroup>
-                <h1>Holiday's Specials✨</h1> 
-                <h6>Try our most popular ones and taste the difference!</h6>
-            </hgroup>
-            <div class="holidays">
-                <div class="h_product">
-                    <img src="./assets/img/cake1.jpg"/>
-                    <h3>Strawberry Dream Delight</h3>
-                    <p>Make the most of strawberry season with our strawberry cake, with light sponge, jam and soft cheese icing. It makes a fabulous centrepiece dessert.</p>
-                    <a href="#" class="btn">Order & Details</a>
-                </div> <!--h_product -->
-    
-                <div class="h_product">
-                    <img src="./assets/images/cake2.jpg"/>
-                    <h3>Choco Bliss</h3>
-                    <p>Master the chocolate cake with an airy, light sponge and rich buttercream filling. It's simple enough for an afternoon tea but special enough for a party too.</p>
-                    <a href="#" class="btn">Order & Details</a>
-                </div> <!--h_product -->
-    
-                <div class="h_product">
-                    <img src="./assets/img/cake3.jpeg"/>
-                    <h3>Oreo Cookie Cupcakes</h3>
-                    <p>These cupcakes combine decadently rich chocolate cake with creamy vanilla frosting speckled with crushed Oreo cookie pieces.</p>
-                    <a href="#" class="btn">Order & Details</a>
-                </div> <!--h_product -->
-            </div> <!-- holidays-->
+<!-- Holiday's Specials -->
+<hgroup>
+    <h1>Holiday's Specials✨</h1> 
+    <h6>Celebrate the season with our festive treats!</h6>
+</hgroup>
+<div class="holidays">
+    <div class="garland"></div>
+    <div class="h_product">
+        <div class="circle">
+            <img src="./assets/img/cake1.jpg" alt="Strawberry Dream Delight">
+        </div>
+        <h3>Strawberry Dream Delight</h3>
+        <p>Make the most of strawberry season with our strawberry cake, with light sponge, jam, and soft cheese icing.</p>
+        <a href="#" class="btn">Order & Details</a>
+    </div>
+
+    <div class="h_product">
+        <div class="circle">
+            <img src="./assets/img/cake2.jpg" alt="Choco Bliss">
+        </div>
+        <h3>Choco Bliss</h3>
+        <p>Master the chocolate cake with an airy, light sponge and rich buttercream filling. Perfect for your holiday.</p>
+        <a href="#" class="btn">Order & Details</a>
+    </div>
+
+    <div class="h_product">
+        <div class="circle">
+            <img src="./assets/img/cake3.jpeg" alt="Oreo Cookie Cupcakes">
+        </div>
+        <h3>Oreo Cookie Cupcakes</h3>
+        <p>Rich chocolate cupcakes with creamy vanilla frosting and Oreo cookie pieces, perfect for the holidays.</p>
+        <a href="#" class="btn">Order & Details</a>
+    </div>
+    <div class="snowflake">❄</div>
+</div>
 
         </div>
     </section>
 
-    <section id="specials" class="bg-light">
+    <!-- qetu e kom fshi Sundays special, duhet me qit diqka tjeter -->
+    <section id="team" class="bg-light">
         <div class="container">
             <hgroup>
-                <h1>Sunday Special✨</h1>
+                <h1>Our Perfect Team</h1>
+                <h6>We’re a passionate group of bakers and food lovers, dedicated to crafting the finest pastries just for you. Each treat is made with care, creativity, and a love for the art of baking. Get to know the people who make every bite unforgettable!</h6>
             </hgroup>
-            <div class="special">
-                <img src="./assets/img/special.jpg"/>
-                <br>
-                <h6>Indulge in our classic <span>apple pie</span>, featuring a golden, flaky crust filled with sweet, juicy apples and a hint of cinnamon. Perfectly baked to bring you a slice of comfort and delight!</h6>
-                <a href="#" class="btn">Order & Details</a>
+            <div class="members">
+                <div class="member">
+                </div>
+
+                <div class="member">
+                </div>
+
+                <div class="member">
+                </div>
             </div>
-        </div>
     </section>
 
     <section id="reasons" >
