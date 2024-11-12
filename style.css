@@ -1095,16 +1095,6 @@ footer2{
 
 
 
-
-
-
-
-
-
-
-
-
-
     /* Gradient background with animation */
     .fabulous-section {
         background: linear-gradient(135deg, #ff7eb3, #ffce54);
@@ -1241,22 +1231,817 @@ footer2{
 
 
  /* About us */
+/* About Us Section Header Gradient and Hover Effects */
 #about {
-    background: linear-gradient(to right, #d98a51, #5f3d26); 
+    background: linear-gradient(to right, #d98a51, #5f3d26); /* Fall colors */
     color: #fff; /* White text */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for floating effect */
     padding: 2rem;
 }
 
 #about a {
-    transition: color 0.3s ease-in-out; 
+    transition: color 0.3s ease-in-out; /* Smooth color transition */
 }
 
 #about a:hover {
-    color: #FFD700; 
+    color: #FFD700; /* Gold color on hover */
 }
 
+.farms-container{
+    border: 0px;
+    border-radius: 20px;
+
+}
+/* Custom Background Gradient for Our Trusted Farms Section */
 #farms-section {
-    background: linear-gradient(to right, #cd7739, #956746);
-    color: #fff; 
+    background-color: #EADDBA;/* Fall colors from SaddleBrown to Chocolate */
+    color: #000; /* White text for contrast */
+    border: 0px;
+    border-radius: 20px;
+    margin-top: 60px;
+}
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Header Section */
+  .header-section {
+    text-align: center;
+    padding: 8rem 2rem;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+  }
+  
+  .header-section h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  
+  .header-section p {
+    font-size: 1.125rem;
+    max-width: 45rem;
+    margin: 0 auto;
+  }
+  
+  /* Our Story Section */
+  .our-story-section {
+    padding: 6rem 2rem;
+    background-color: white;
+    text-align: center;
+  }
+  
+  .our-story-section h2 {
+    font-size: 2rem;
+    color: #4a4a4a;
+    margin-bottom: 1.5rem;
+  }
+  
+  .our-story-section p {
+    max-width: 45rem;
+    font-size: 1rem;
+    color: #6a6a6a;
+    margin: 0 auto 3rem;
+  }
+  
+  .image-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .image-circle {
+    width: 20rem;
+    height: 20rem;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  }
+  
+  .image-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Farms Section */
+  .farms-section {
+    padding: 6rem 2rem;
+    color: white;
+    text-align: center;
+    background-color: #926767;
+  }
+  
+  .farms-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .farms-section p {
+    font-size: 1.125rem;
+    max-width: 45rem;
+    margin: 0 auto 3rem;
+  }
+  
+  .farms-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5rem;
+  }
+  
+  .farm-card {
+    width: 18rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+  }
+  
+  .farm-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .farm-card img {
+    width: 100%;
+    height: 12rem;
+    object-fit: cover;
+  }
+  
+  .card-content {
+    padding: 1.5rem;
+    text-align: left;
+  }
+  
+  .card-content h3 {
+    font-size: 1.25rem;
+    color: #4a4a4a;
+    margin-bottom: 0.5rem;
+  }
+  
+  .card-content p {
+    font-size: 0.875rem;
+    color: #6a6a6a;
+  }
+  
+  /* Footer Section */
+  .footer-section {
+    background-color: #f7f7f7;
+    color: #6a6a6a;
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .footer-section p {
+    margin: 0;
+  }
+  
+
+  .fabulous-section {
+    background: linear-gradient(to right, #90725f, #EADDBA); /* Gradient from pink to yellow */
+    padding: 4rem 1.5rem; /* Vertical padding */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Drop shadow effect */
+}
+
+.section-description {
+    font-size: 1.125rem;
+    color: white;
+    max-width: 768px;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4); /* Drop shadow effect */
+}
+
+.cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.card {
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align: left;
+    width: 280px; /* Adjust width for responsiveness */
+}
+
+.card:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2d3748; /* Dark gray */
+}
+
+.card-description {
+    color: #718096; /* Medium gray */
+    margin-top: 1rem;
+}
+
+#team {
+    background-color: #f8f9fa;
+    padding: 3rem 0;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+p.text-muted {
+    color: #6c757d;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+}
+
+.team-row {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.member-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    transition: transform 0.3s;
+}
+
+.member-card:hover {
+    transform: scale(1.05);
+}
+
+
+.member-card h5 {
+    font-size: 1.25rem;
+    margin: 0.5rem 0;
+}
+
+.member-card .role {
+    font-weight: bold;
+    color: #333;
+}
+
+.member-card .description {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+
+
+/* per holiday specials
+/*CAKE SLIDER
+
+
+/* Slider Styles */
+.cake-slider {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 40px auto;
+    overflow: hidden;
+}
+
+.slider img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.slider-info {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.slider-info h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.slider-info p {
+    font-size: 1rem;
+}
+#slider {
+    position: relative;
+    height: 650px;
+    overflow: hidden;
+}
+
+#slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.holidays-specials h1 {
+    color: brown;
+    font-family: "Poppins", sans-serif;
+    font-size: 45px;
+    letter-spacing: 2px;
+    padding: 0 5px;
+    background: linear-gradient(
+        to bottom, 
+        transparent 60%,
+        rgb(127, 72, 72)
+
+    )
+
+}
+
+
+
+
+
+
+/*awwards and recognition*/
+
+/* Awards & Recognitions Section */
+.awards-section {
+    background-color: #eaddba;
+    padding: 60px 20px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.awards-section .section-title {
+    font-size: 2.5rem;
+    color: #f76c6c;
+    margin-bottom: 20px;
+}
+
+.awards-section .intro-text {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 30px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.awards-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.award-card {
+    background-color: #fff;
+    width: 300px;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.award-card:hover {
+    transform: scale(1.05);
+}
+
+.award-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.award-card h3 {
+    font-size: 1.4rem;
+    color: #f76c6c;
+    margin-bottom: 10px;
+}
+
+.award-card p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+
+/* Behind-the-Scenes Section */
+.behind-the-scenes-section {
+    background-color: #eaddba;
+    padding: 60px 20px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.behind-the-scenes-section .section-title {
+    font-size: 2.5rem;
+    color: #f76c6c;
+    margin-bottom: 20px;
+}
+
+.behind-the-scenes-section .intro-text {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 30px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.video-card {
+    width: 560px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.video-card:hover {
+    transform: scale(1.05);
+}
+
+.video-card iframe {
+    width: 100%;
+    height: 315px;
+    border-radius: 8px;
+}
+
+.video-card h3 {
+    font-size: 1.4rem;
+    color: #f76c6c;
+    margin-bottom: 10px;
+}
+
+
+/*audio feedbacks*/
+
+/* Customer Feedback Section */
+.customer-feedback-section {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #eaddba;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.customer-feedback-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #f76c6c;
+}
+
+.feedback-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.feedback-item {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-title {
+    font-size: 1.3rem;
+    color: #f76c6c;
+    margin-bottom: 10px;
+}
+
+.customer-name {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+audio {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+
+
+/*list nominations*/
+
+.nominations-section {
+    padding: 20px;
+    background-color: #f8f8f8;
+    margin-bottom: 30px;
+  }
+  
+  .nominations-section .section-title {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+  
+  .nominations-section .intro-text {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+  
+  .nominations-list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .nominations-list li {
+    font-size: 1.2rem;
+    margin: 10px 0;
+  }
+  
+  .nominations-list li strong {
+    color: #c08544;
+  }
+  .nominations-list {
+    list-style: none;
+    padding-left: 0;
+    font-size: 1.2rem;
+  }
+  
+  .nominations-list li {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+  }
+  
+  .nominations-list svg {
+    margin-right: 8px;
+    color: gold; /* You can change the color to match your theme */
+  }
+  
+
+  /*ourstory*/
+.our-story-section h2{
+    color: #000;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+
+.our-story-section p{
+    color: #333;
+}  
+
+
+
+/* Dessert Section */
+.dessert-section {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: rgba(244, 244, 249, 0.8); /* Light background with transparency */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+/* Dessert Section Header */
+.dessert-section h1 {
+    font-size: 2.5rem;
+    color: #ff6f61; /* Warm color for the header */
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Dessert Section Paragraph */
+.dessert-section p {
+    font-size: 1.2rem;
+    color: #777;
+    margin-bottom: 30px;
+    font-family: 'Verdana', sans-serif;
+}
+
+/* Filter Buttons Styling */
+.filter-buttons {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.filter-buttons button {
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    margin: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.filter-buttons button:hover {
+    background-color: #ff4a39;
+}
+
+.filter-buttons button:active {
+    background-color: #e13b2a;
+}
+
+/* Dessert Cards */
+.dessert-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.dessert-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center; /* Center the text inside the card */
+}
+
+.dessert-card img {
+    width: 100%;
+    height: 200px; /* Fixed height */
+    object-fit: cover; /* Ensure the images fill the space without stretching */
+    border-radius: 8px;
+    margin-bottom: 15px;
+ 
+}
+.dessert-card2 {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center; /* Center the text inside the card */
+}
+
+
+.dessert-card h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 10px;
+    font-family: 'Arial', sans-serif;
+}
+
+.dessert-card p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.dessert-card p strong {
+    color: #333;
+}
+
+.dessert-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Flexbox layout for the order container */
+.order-container {
+    display: flex;
+    flex-wrap: wrap;  /* Ensures it wraps on smaller screens */
+    justify-content: space-between;  /* Distribute space between the elements */
+    gap: 30px;  /* Add space between the two sections */
+    padding: 20px;
+}
+
+#dessert-details2 {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 30px;
+    width: 48%;  /* Take up 48% of the container width, leaving space for the form */
+    max-width: 800px;
+    white-space: normal; /* Wraps text normally */
+}
+
+#dessert-details2 img {
+    width: 100%; /* Image will take up the full width of the container */
+    max-height: 300px; /* Limits the height of the image */
+    object-fit: contain; /* Ensures the entire image fits within the container without cropping */
+    border: 0px;
+    border-radius: 20px;
+}
+
+.order-button {
+    padding: 5px;
+    background-color: #EADDBA;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.order-button:hover {
+    background-color: #D4C3A2; /* Darker shade for hover */
+}
+
+
+#order-form {
+    background-color: #f8f8f8;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 48%;  /* Take up 48% of the container width */
+    max-width: 600px;
+}
+
+#order-form h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 16px;
+}
+
+#order-form form {
+    display: grid;
+    gap: 7px;
+}
+
+#order-form label {
+    font-size: 1rem;
+    color: #555;
+}
+
+#order-form input,
+#order-form button {
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#order-form input:focus,
+#order-form button:focus {
+    outline: none;
+    border-color: #ff6f61;
+}
+
+#order-form button {
+    background-color: #ff6f61;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#order-form button:hover {
+    background-color: #ff4a39;
+}
+
+/* For smaller screens (mobile devices) */
+@media (max-width: 768px) {
+    .order-container {
+        flex-direction: column;  /* Stack elements vertically on smaller screens */
+        gap: 20px;  /* Smaller gap on mobile */
+        background-image: none;
+    }
+
+    #dessert-details2,
+    #order-form {
+        width: 100%;  /* Make each section take full width */
+        max-width: 100%;  /* Ensure no max-width restriction */
+    }
 }
