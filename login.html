@@ -36,7 +36,7 @@
             if (user) {
                 localStorage.setItem('isLoggedIn', 'true');
                 localStorage.setItem('user', JSON.stringify(user));
-                window.location.href = 'index.html'; // Redirect to home page on login success
+                window.location.href = 'index.html'; 
             } else {
                 alert('Invalid email or password');
             }
