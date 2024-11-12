@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desserts - Doughlicious Creations</title>
-    <link rel="stylesheet" href="./assets/css/style.css"> <!-- Link to external style.css for header and footer -->
+    <link rel="stylesheet" href="./assets/css/style.css"> 
 </head>
 <body>
     <header class="h-light">
@@ -127,13 +127,12 @@
         const dessertContainer = document.getElementById('dessert-container');
         let allDesserts = [];
 
-        // Fetch desserts from API
         async function fetchDesserts() {
             try {
                 const response = await fetch('https://671fc5b3e7a5792f052f7efc.mockapi.io/Pastry');
                 const data = await response.json();
                 allDesserts = data;
-                displayDesserts(allDesserts); // Display all desserts on load
+                displayDesserts(allDesserts); 
             } catch (error) {
                 console.error('Error fetching desserts:', error);
                 dessertContainer.innerHTML = '<p>Failed to load desserts. Please try again later.</p>';
@@ -141,7 +140,7 @@
         }
 
        
-    // Display desserts based on selected type
+
 function displayDesserts(desserts) {
     dessertContainer.innerHTML = desserts.map(dessert => `
         <div class="dessert-card">
@@ -158,18 +157,16 @@ function displayDesserts(desserts) {
     `).join('');
 }
 
-// Function to view dessert details
+
 function viewDetails(dessertId) {
-    window.location.href = `order-details.html?id=${dessertId}`; // Redirect to the order-details page with the dessert ID
+    window.location.href = `order-details.html?id=${dessertId}`;
 }
 
-        // Filter desserts by type
         function filterDesserts(type) {
             const filteredDesserts = type === 'All' ? allDesserts : allDesserts.filter(dessert => dessert.type === type);
             displayDesserts(filteredDesserts);
         }
 
-        // Load desserts on page load
         fetchDesserts();
     </script>
 </body>
