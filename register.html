@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Doughlicious Creations</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">Doughlicious Creations</a>
+        </div>
+    </header>
+
+    <section class="auth-section">
+        <div class="container">
+            <h2>Register</h2>
+            <form id="register-form">
+                <input type="text" name="name" placeholder="Full Name" required />
+                <input type="email" name="email" placeholder="Email" required />
+                <input type="password" name="password" placeholder="Password" required minlength="6" />
+                <input type="password" name="confirmPassword" placeholder="Confirm Password" required minlength="6" />
+                <button type="submit" class="btn">Register</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        document.querySelector('#register-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = e.target.name.value;
+            const email = e.target.email.value;
+            const password = e.target.password.value;
+            const confirmPassword = e.target.confirmPassword.value;
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match');
+                return;
+            }
+
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            if (users.some(u => u.email === email)) {
+                alert('Email is already registered');
+                return;
+            }
+
+            users.push({ name, email, password });
+            localStorage.setItem('users', JSON.stringify(users));
+            alert('Registration successful');
+            window.location.href = 'login.html'; // Redirect to login page after registration
+        });
+    </script>
+</body>
+</html>
