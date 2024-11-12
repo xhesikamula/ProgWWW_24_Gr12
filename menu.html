@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desserts - Doughlicious Creations</title>
+    <link rel="stylesheet" href="./assets/css/style.css"> <!-- Link to external style.css for header and footer -->
+</head>
+<body>
+    <header class="h-light">
+        <div class="container">
+            <input type="checkbox"/>
+            <img src="./assets/img/pastrylogo.png" alt="Doughlicious Creations" class="header-image"/>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="index.html#reasons">Why us?</a></li>
+                    <li><a href="#contact">Contact</a>
+                        <i class="fa-solid fa-angle-down"></i>
+                        <ul class="w-25">
+                            <li><a href="https://www.whatsapp.com/" target="_blank">Whatsapp</a></li>
+                            <li><a href="https://www.facebook.com/" target="_blank">Facebook</a></li>
+                            <li><a href="https://www.instagram.com/" target="_blank">Instagram</a></li>
+                        </ul>
+                    </li>
+                    <li id="auth-links">
+                        <a href="register.html" id="register-link">Register</a>
+                        <a href="login.html" id="login-link">Login</a>
+                    </li>
+                    <li id="dashboard-links" style="display: none;">
+                        <a href="dashboard.html">Dashboard</a>
+                        <a href="#" id="logout-link"><i class="fa-solid fa-right-from-bracket"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+        <section class="dessert-section">
+            <h1>Our Desserts</h1>
+            <p style="text-align: center;">Select a dessert type to view items:</p>
+            <div class="filter-buttons">
+                <button onclick="filterDesserts('All')">All</button>
+                <button onclick="filterDesserts('Cakes')">Cakes</button>
+                <button onclick="filterDesserts('Cupcakes')">Cupcakes</button>
+                <button onclick="filterDesserts('Pastries')">Pastries</button>
+                <button onclick="filterDesserts('Donuts')">Donuts</button>
+            </div>
+            <div id="dessert-container" class="dessert-container">
+                <!-- Dessert items will be injected here -->
+            </div>
+        </section>
+    
+
+    <footer class="f-light" id="contact">
+        <div class="container">
+            <div class="columns">
+                <div class="col-products">
+                    <h2><span>Products</span></h2>
+                    <ul>
+                        <li><a href="#">Cakes</a></li>
+                        <li><a href="#">Cupcakes</a></li>
+                        <li><a href="#">Donuts</a></li>
+                        <li><a href="#">Desserts</a></li>
+                        <li><a href="#">Pastries</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-site">
+                    <h2><span>Site</span></h2>
+                    <ul>
+                        <li><a href="">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Menu</a></li>
+                        <li><a href="#">Why us?</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-contact">
+                    <h2><span>Contact Details</span></h2>
+                    <address>
+                        <p>Pastry Lane, Sweetville, ST 12345</p>
+                        <p>(123) 456-7890</p>
+                        <p><a href="mailto:contact@doughliciouscreations.com">contact@doughliciouscreations.com</a></p>
+                    </address>
+                </div>
+
+                <div class="col-socials">
+                    <h2><span>Socials</span></h2>
+                    <ul>
+                        <li><a href="https://www.whatsapp.com/" target="_blank"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a></li>
+                        <li><a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+                        <li><a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <footer2 class="footer2">
+        <div class="container">
+            <div class="copyright">
+                <b>© DoughliciousCreations 2024</b>
+            </div>
+
+            <div class="terms-links">
+                <ul class="terms-list">
+                    <li><a href="#">Terms and Conditions</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Accessibility</a></li>
+                </ul>
+            </div>
+
+            <div class="social-icons">
+                <i class="fa-brands fa-square-facebook icon fb-icon"></i>
+                <i class="fa-brands fa-square-x-twitter icon"></i>
+                <i class="fa-brands fa-square-instagram icon ig-icon"></i>
+            </div>
+        </div>
+    </footer2>
+
+    <script>
+        const dessertContainer = document.getElementById('dessert-container');
+        let allDesserts = [];
+
+        // Fetch desserts from API
+        async function fetchDesserts() {
+            try {
+                const response = await fetch('https://671fc5b3e7a5792f052f7efc.mockapi.io/Pastry');
+                const data = await response.json();
+                allDesserts = data;
+                displayDesserts(allDesserts); // Display all desserts on load
+            } catch (error) {
+                console.error('Error fetching desserts:', error);
+                dessertContainer.innerHTML = '<p>Failed to load desserts. Please try again later.</p>';
+            }
+        }
+
+       
+    // Display desserts based on selected type
+function displayDesserts(desserts) {
+    dessertContainer.innerHTML = desserts.map(dessert => `
+        <div class="dessert-card">
+            <img src="${dessert.item_image}" alt="${dessert.item_name}">
+            <h2>${dessert.item_name}</h2>
+            <p><strong>Price:</strong> ${dessert.price}</p>
+            <p><strong>Availability:</strong> ${dessert.available}</p>
+            <p><strong>In Stock:</strong> ${dessert.stock}</p>
+            <button onclick="viewDetails('${dessert.id}')" class="order-button">
+    Order & Details
+</button>
+
+        </div>
+    `).join('');
+}
+
+// Function to view dessert details
+function viewDetails(dessertId) {
+    window.location.href = `order-details.html?id=${dessertId}`; // Redirect to the order-details page with the dessert ID
+}
+
+        // Filter desserts by type
+        function filterDesserts(type) {
+            const filteredDesserts = type === 'All' ? allDesserts : allDesserts.filter(dessert => dessert.type === type);
+            displayDesserts(filteredDesserts);
+        }
+
+        // Load desserts on page load
+        fetchDesserts();
+    </script>
+</body>
+</html>
