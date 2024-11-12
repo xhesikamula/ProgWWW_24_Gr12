@@ -11,14 +11,13 @@ Additionally, there is a dashboard for users to manage their orders and an "Abou
 - **Daily Offers Section**
   
 - **Weekly Recipes Section**
+- 
+- **Holidays Specials**
   
 - **Staff Section**
   
-- **Orders for Special Occasions**
+- **Why choose us?**
   
-- **Shopping Cart**
-  
-- **Dashboard**
-  
-- **About Us**
+- **Statistics**
+
 
