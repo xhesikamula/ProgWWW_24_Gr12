@@ -4,68 +4,243 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css"> 
+  <link rel="stylesheet" href="assets/css/style.css"> <!-- Link to your custom CSS file -->
 </head>
 <body class="font-sans">
-
-
-  <header class="text-center py-16 text-white bg-opacity-75 bg-black" id="about">
-    <h1 class="text-5xl font-bold mb-4">About Us</h1>
-    <p class="text-lg max-w-3xl mx-auto">We bring the finest products from local farms, working closely with farmers to ensure quality, sustainability, and love for the land.</p>
-  </header>
-
-
-  <section class="py-24 bg-white text-center">
-    <h2 class="text-3xl font-semibold text-gray-700 mb-6">Our Story</h2>
-    <p class="max-w-3xl mx-auto text-lg text-gray-600 mb-12">At Doughlicious Creations🧁, we believe in building connections with the land and the people who cultivate it. From organic grains to fresh produce, we source everything directly from local farms that align with our values of sustainability, ethical practices, and respect for nature.</p>
-    <div class="flex justify-center gap-8">
-      <div class="w-80 h-80 bg-gray-200 rounded-full overflow-hidden shadow-lg">
-        <img src="./assets/img/farm1.jpeg" alt="Farm 1" class="w-full h-full object-cover">
-      </div>
-      <div class="w-80 h-80 bg-gray-200 rounded-full overflow-hidden shadow-lg">
-        <img src="assets/img/farm2.jpg" alt="Farm 2" class="w-full h-full object-cover">
-      </div>
+  <!-- Header Section -->
+  <header class="h-light">
+    <div class="container">
+        <input type="checkbox"/>
+        <img src="./assets/img/pastrylogo.png" alt="Doughlicious Creations" class="header-image"/>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="menu.html">Menu</a></li>
+        
+            <li><a href="index.html#reasons">Why us?</a></li>
+            <li><a href="#contact">Contact</a><i class="fa-solid fa-angle-down"></i>
+                <ul class="w-25">
+                    <li><a href="https://www.whatsapp.com/" target="_blank">Whatsapp</a></li>
+                    <li><a href="https://www.facebook.com/" target="_blank">Facebook</a></li>
+                    <li><a href="https://www.instagram.com/" target="_blank">Instagram</a></li>
+                </ul>
+                </li>
+                <li id="auth-links">
+                    <a href="register.html" id="register-link">Register</a>
+                    <a href="login.html" id="login-link">Login</a>
+                </li>
+                <li id="dashboard-links" style="display: none;">
+                    <a href="dashboard.html">Dashboard</a>
+                    <a href="#" id="logout-link"><i class="fa-solid fa-right-from-bracket"></i></a>
+                </li>
+            </ul>
+        </nav>
     </div>
-  </section>
+</header>
 
+
+<div class="farms-container">
   <!-- Farms Section -->
-<section class="py-24 text-white" id="farms-section">
-    <h2 class="text-4xl font-semibold mb-8 text-center">Our Trusted Farms</h2>
-    <p class="text-lg max-w-3xl mx-auto mb-12 text-center">We collaborate with farms that prioritize sustainability and organic practices. Here are some of the farms where we source our products:</p>
-    
-    <div class="flex flex-wrap justify-center gap-10">
+  <section class="farms-section" id="farms-section">
+    <h2>Our Trusted Farms</h2>
+    <p>We collaborate with farms that prioritize sustainability and organic practices. Here are some of the farms where we source our products:</p>
+    <div class="farms-container">
       <!-- Farm 1 -->
-      <div class="w-72 bg-white rounded-lg overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105">
-        <img src="assets/img/sunriseorganics.jpeg" alt="Farm 1" class="mx-auto w-48 h-48 object-cover">
-        <div class="p-6">
-          <h3 class="text-xl font-semibold mb-2 text-gray-700">Sunrise Organic Farm</h3>
-          <p class="text-gray-600">Located in the heart of the valley, Sunrise Organic Farm grows a wide variety of organic fruits and vegetables, ensuring the freshest produce for our customers.</p>
+      <div class="farm-card">
+        <img src="assets/img/sunrise_organic_farm.jpg" alt="Farm 1">
+        <div class="card-content">
+          <h3>Sunrise Organic Farm</h3>
+          <p>Located in the heart of the valley, Sunrise Organic Farm grows a wide variety of organic fruits and vegetables, ensuring the freshest produce for our customers.</p>
         </div>
       </div>
       <!-- Farm 2 -->
-      <div class="w-72 bg-white rounded-lg overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105">
-        <img src="assets/img/greenfields.jpg" alt="Farm 2" class="w-full h-48 object-cover">
-        <div class="p-6">
-          <h3 class="text-xl font-semibold mb-2 text-gray-700">Green Fields Farm</h3>
-          <p class="text-gray-600">Green Fields Farm is committed to sustainable farming methods and produces some of the highest-quality grains in the region, helping us maintain our quality promise.</p>
+      <div class="farm-card">
+        <img src="assets/img/greenfieldfarm.avif" alt="Farm 2">
+        <div class="card-content">
+          <h3>Green Fields Farm</h3>
+          <p>Green Fields Farm is committed to sustainable farming methods and produces some of the highest-quality grains in the region, helping us maintain our quality promise.</p>
         </div>
       </div>
       <!-- Farm 3 -->
-      <div class="w-72 bg-white rounded-lg overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105">
-        <img src="assets/img/blueskyacres.jpeg" alt="Farm 3" class="w-full h-48 object-cover">
-        <div class="p-6">
-          <h3 class="text-xl font-semibold mb-2 text-gray-700">Blue Sky Acres</h3>
-          <p class="text-gray-600">At Blue Sky Acres, livestock are raised in a humane environment with organic feed, producing healthy and delicious products we proudly offer.</p>
+      <div class="farm-card">
+        <img src="assets/img/blueskyacres.jpg" alt="Farm 3">
+        <div class="card-content">
+          <h3>Blue Sky Acres</h3>
+          <p>At Blue Sky Acres, livestock are raised in a humane environment with organic feed, producing healthy and delicious products we proudly offer.</p>
         </div>
       </div>
     </div>
+  </section>
+</div>
+
+    <!-- Our Story Section -->
+    <section class="our-story-section">
+      <h2>Our Story</h2>
+      <p>At Doughlicious Creations, we believe in building connections with the land and the people who cultivate it. From organic grains to fresh produce, we source everything directly from local farms that align with our values of sustainability, ethical practices, and respect for nature.</p>
+      <div class="image-container">
+        <div class="image-circle">
+          <img src="./assets/img/farm.jpg" alt="Farm 1">
+        </div>
+        <div class="image-circle">
+          <img src="assets/img/farm2.jpg" alt="Farm 2">
+        </div>
+      </div>
+    </section>
+  
+
+
+        <!-- Awards & Recognitions Section -->
+<section class="container awards-section">
+  <h2 class="section-title">Awards & Recognitions</h2>
+  <p class="intro-text">
+      Over the years, Doughlicious Creations has been honored with several awards and recognition for our commitment to quality, creativity, and service. We are proud to be acknowledged by our peers and customers alike.
+  </p>
+  <div class="awards-container">
+      <div class="award-card">
+          <img src="assets/img/bestbakery.webp" alt="Award 1">
+          <h3>Best Bakery in Sweet City - 2023</h3>
+          <p>Recognized for exceptional quality and customer service in the Sweet City Bakery Awards.</p>
+      </div>
+      <div class="award-card">
+          <img src="assets/img/top10.webp" alt="Award 2">
+          <h3>Top 10 Best Pastries - National Food Awards</h3>
+          <p>Our signature chocolate croissants were selected among the top 10 pastries in the country!</p>
+      </div>
+      <div class="award-card">
+          <img src="assets/img/eco-friendly.webp" alt="Award 3">
+          <h3>Eco-Friendly Business of the Year</h3>
+          <p>Honored for our commitment to sustainability and eco-conscious practices in baking.</p>
+      </div>
+  </div>
+</section>
+
+  <!-- Nominations Section -->
+<section class="container nominations-section">
+  <h2 class="section-title">Nominations Through the Years</h2>
+  <p class="intro-text">Here are some of the nominations we have received over the years for excellence in our craft and dedication to quality.</p>
+  <ul class="nominations-list">
+    <li><svg width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16"><path d="M8 12.354l3.146 1.658-.6-3.532L12 6.432l-3.56-.27L8 2 6.56 6.162 3 6.432l2.454 4.048-.6 3.532L8 12.354z"/></svg> <strong>2024:</strong> Best Artisan Bakery - Sweet City Awards</li>
+    <li><svg width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16"><path d="M8 12.354l3.146 1.658-.6-3.532L12 6.432l-3.56-.27L8 2 6.56 6.162 3 6.432l2.454 4.048-.6 3.532L8 12.354z"/></svg> <strong>2023:</strong> Best Pastry Chef - National Food Awards</li>
+    <li><svg width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16"><path d="M8 12.354l3.146 1.658-.6-3.532L12 6.432l-3.56-.27L8 2 6.56 6.162 3 6.432l2.454 4.048-.6 3.532L8 12.354z"/></svg> <strong>2022:</strong> Excellence in Sustainability - Green Business Awards</li>
+    <li><svg width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16"><path d="M8 12.354l3.146 1.658-.6-3.532L12 6.432l-3.56-.27L8 2 6.56 6.162 3 6.432l2.454 4.048-.6 3.532L8 12.354z"/></svg> <strong>2021:</strong> Best Donuts - Local Bakery Awards</li>
+    <li><svg width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16"><path d="M8 12.354l3.146 1.658-.6-3.532L12 6.432l-3.56-.27L8 2 6.56 6.162 3 6.432l2.454 4.048-.6 3.532L8 12.354z"/></svg> <strong>2020:</strong> Most Creative Desserts - Creative Culinary Awards</li>
+  </ul>
 </section>
 
 
-  <footer class="bg-light text-gray-600 text-center py-8">
-    <p>&copy; 2024 [Your Company Name]. All rights reserved.</p>
-  </footer>
-  
+<!-- Behind-the-Scenes Look Section -->
+<section class="container behind-the-scenes-section">
+  <h2 class="section-title">Behind the Scenes</h2>
+  <p class="intro-text">
+      Ever wondered what goes into creating our delicious pastries? Take a sneak peek into our kitchen and see how we bake up magic every day!
+  </p>
+  <div class="video-container">
+      <div class="video-card">
+          <h3>How We Make Our Signature Croissants</h3>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/PFJAuAWxuvI" title="Behind the Scenes at Doughlicious Creations" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <h6 style="color: rgb(195, 194, 194);">This video is attributed to [The Cooking Foodie] on YouTube and is used for educational purposes under fair use.</h6>
+      </div>
+      <div class="video-card">
+          <h3>A Day in Our Bakery</h3>
+          <iframe width="560" height="315" src="https://youtube.com/embed/Z1OLG7F3HD4" title="A Day in Our Bakery" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <h6 style="color: rgb(195, 194, 194);">This video is attributed to [Spice Bangla] on YouTube and is used for educational purposes under fair use.</h6>
+
+      </div>
+  </div>
+</section>
+
+<!--Audio Feedbacks-->
+<section class="container customer-feedback-section">
+  <h2 class="section-title">Customer Audio Feedback</h2>
+  <div class="feedback-container">
+      <div class="feedback-item">
+          <h3 class="feedback-title">Customer 1: Positive Experience</h3>
+          <p class="customer-name">John Doe</p>
+          <audio controls>
+              <source src="./assets/audiofiles/Ash-2024_11_12-5.wav" type="audio/mp3">
+              Your browser does not support the audio element.
+          </audio>
+      </div>
+      <div class="feedback-item">
+          <h3 class="feedback-title">Customer 2: Great Service</h3>
+          <p class="customer-name">Jane Smith</p>
+          <audio controls>
+              <source src="./assets/audiofiles/Ember-2024_11_12-1.wav" type="audio/mp3">
+              Your browser does not support the audio element.
+          </audio>
+      </div>
+  </div>
+</section>
+
+
+  <!-- Footer Section -->
+  <footer class="f-light" id="contact">
+    <div class="container">
+        <div class="columns">
+        <div class="col-products">
+        <h2><span>Products</span></h2>
+        <ul>
+            <li><a href="#">Cakes</a></li>
+            <li><a href="#">Cupcakes</a></li>
+            <li><a href="#">Donuts</a></li>
+            <li><a href="#">Desserts</a></li>
+            <li><a href="#">Pastries</a></li>
+        </ul>
+        </div>
+
+        <div class="col-site">
+        <h2><span>Site</span></h2>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Menu</a></li>
+            <li><a href="#">Why us?</a></li>
+            <li><a href="#">Contact</a>
+        </ul>
+        </div>
+        
+        <div class="col-contact">
+            <h2><span>Contact Details</span></h2>  
+            <address>
+                <p>Pastry Lane, Sweetville, ST 12345</p>
+                <p>(123) 456-7890</p>
+                <p><a href="mailto:contact@doughliciouscreations.com">contact@doughliciouscreations.com</a></p>
+            </address>
+        </div>
+        
+        <div class="col-socials">
+        <h2><span>Socials</span></h2>
+        <ul>
+        <li><a href="https://www.whatsapp.com/" target="_blank"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a></li>
+        <li><a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+        <li><a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+        </ul>
+        </div>
+        </div>
+    </div>
+</footer>
+
+<footer2 class="footer2">
+    <div class="container">
+            <div class="copyright">
+                <b>© DoughliciousCreations 2024</b>
+            </div>
+
+            <div class="terms-links">
+                <ul class="terms-list">
+                    <li><a href="#">Terms and Conditions</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Accessibility</a></li>
+                </ul>
+            </div>
+
+            <div class="social-icons">
+                <i class="fa-brands fa-square-facebook icon fb-icon"></i>
+                <i class="fa-brands fa-square-x-twitter icon"></i>
+                <i class="fa-brands fa-square-instagram icon ig-icon"></i>
+            </div>
+    </div>
+</footer2>
 </body>
 </html>
