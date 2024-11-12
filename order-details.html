@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dessert Order Details</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <header class="h-light">
+        <div class="container">
+            <input type="checkbox"/>
+            <img src="./assets/img/pastrylogo.png" alt="Doughlicious Creations" class="header-image"/>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="menu.html">Menu</a></li>
+            
+                <li><a href="index.html#reasons">Why us?</a></li>
+                <li><a href="#contact">Contact</a><i class="fa-solid fa-angle-down"></i>
+                    <ul class="w-25">
+                        <li><a href="https://www.whatsapp.com/" target="_blank">Whatsapp</a></li>
+                        <li><a href="https://www.facebook.com/" target="_blank">Facebook</a></li>
+                        <li><a href="https://www.instagram.com/" target="_blank">Instagram</a></li>
+                    </ul>
+                    </li>
+                    <li id="auth-links">
+                        <a href="register.html" id="register-link">Register</a>
+                        <a href="login.html" id="login-link">Login</a>
+                    </li>
+                    <li id="dashboard-links" style="display: none;">
+                        <a href="dashboard.html">Dashboard</a>
+                        <a href="#" id="logout-link"><i class="fa-solid fa-right-from-bracket"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="order-container">
+        <div id="dessert-details2">
+            <!-- Dessert details will be dynamically inserted here -->
+        </div>
+        <div id="order-form">
+            <h2>Place your order</h2>
+            <form id="orderForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+    
+                <label for="surname">Surname:</label>
+                <input type="text" id="surname" name="surname" required>
+    
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+    
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+    
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required>
+    
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" min="1" required>
+    
+                <button type="submit">Place Order</button>
+            </form>
+        </div>
+    </div>
+    
+    
+
+    <footer class="f-light" id="contact">
+        <div class="container">
+            <div class="columns">
+            <div class="col-products">
+            <h2><span>Products</span></h2>
+            <ul>
+                <li><a href="#">Cakes</a></li>
+                <li><a href="#">Cupcakes</a></li>
+                <li><a href="#">Donuts</a></li>
+                <li><a href="#">Desserts</a></li>
+                <li><a href="#">Pastries</a></li>
+            </ul>
+            </div>
+
+            <div class="col-site">
+            <h2><span>Site</span></h2>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Menu</a></li>
+                <li><a href="#">Why us?</a></li>
+                <li><a href="#">Contact</a>
+            </ul>
+            </div>
+            
+            <div class="col-contact">
+                <h2><span>Contact Details</span></h2>  
+                <address>
+                    <p>Pastry Lane, Sweetville, ST 12345</p>
+                    <p>(123) 456-7890</p>
+                    <p><a href="mailto:contact@doughliciouscreations.com">contact@doughliciouscreations.com</a></p>
+                </address>
+            </div>
+            
+            <div class="col-socials">
+            <h2><span>Socials</span></h2>
+            <ul>
+            <li><a href="https://www.whatsapp.com/" target="_blank"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a></li>
+            <li><a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+            <li><a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+            </ul>
+            </div>
+            </div>
+        </div>
+    </footer>
+
+    <footer2 class="footer2">
+        <div class="container">
+                <div class="copyright">
+                    <b>© DoughliciousCreations 2024</b>
+                </div>
+    
+                <div class="terms-links">
+                    <ul class="terms-list">
+                        <li><a href="#">Terms and Conditions</a></li>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                    </ul>
+                </div>
+
+                <div class="social-icons">
+                    <i class="fa-brands fa-square-facebook icon fb-icon"></i>
+                    <i class="fa-brands fa-square-x-twitter icon"></i>
+                    <i class="fa-brands fa-square-instagram icon ig-icon"></i>
+                </div>
+        </div>
+    </footer2>
+
+    <button onclick="window.history.back()">Back to Desserts</button>
+
+    <script src="order-details.js"></script>
+</body>
+</html>
