@@ -17,28 +17,27 @@
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="#menu">Menu</a><i class="fa-solid fa-angle-down"></i>
-                <ul class="w-25">
-                    <li><a href="#">Desserts</a></li>
-                    <li><a href="#">Cakes</a></li>
-                    <li><a href="#">Cupcakes</a></li>
-                    <li><a href="#">Donuts</a></li>
-                    <li><a href="#">Pastries</a></li>
-                
-                </ul>
-                </li>
+                <li><a href="menu.html">Menu</a></li>
             
                 <li><a href="#reasons">Why us?</a></li>
                 <li><a href="#contact">Contact</a><i class="fa-solid fa-angle-down"></i>
-                <ul class="w-25">
-                    <li><a href="#">Whatsapp</a></li>
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">Instagram</a></li>
+                    <ul class="w-25">
+                        <li><a href="https://www.whatsapp.com/" target="_blank">Whatsapp</a></li>
+                        <li><a href="https://www.facebook.com/" target="_blank">Facebook</a></li>
+                        <li><a href="https://www.instagram.com/" target="_blank">Instagram</a></li>
+                    </ul>
+                    </li>
+                    <li id="auth-links">
+                        <a href="register.html" id="register-link">Register</a>
+                        <a href="login.html" id="login-link">Login</a>
+                    </li>
+                    <li id="dashboard-links" style="display: none;">
+                        <a href="dashboard.html">Dashboard</a>
+                        <a href="#" id="logout-link"><i class="fa-solid fa-right-from-bracket"></i></a>
+                    </li>
                 </ul>
-                </li>
-            </ul>
-        </nav>
-    </div>
+            </nav>
+        </div>
     </header>
     
     <main class="bg-light">
@@ -52,7 +51,7 @@
                 </p>
             
                 <div class="link-rating">
-                    <a href="#" class="btn">Read more</a>
+                    <a href="about.html" class="btn">Read more</a>
                 </div>
             </div>
         </div>
@@ -93,6 +92,26 @@
     </section>
 
     <script>
+document.addEventListener('DOMContentLoaded', () => {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const authLinks = document.getElementById('auth-links');
+            const dashboardLinks = document.getElementById('dashboard-links');
+
+            if (isLoggedIn) {
+                authLinks.style.display = 'none';
+                dashboardLinks.style.display = 'flex';
+            } else {
+                authLinks.style.display = 'flex';
+                dashboardLinks.style.display = 'none';
+            }
+
+            document.getElementById('logout-link').addEventListener('click', () => {
+                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('user');
+                window.location.href = 'index.html'; // Redirect to home page on logout
+            });
+        });
+
         const scrollLeftButton = document.getElementById('scroll-left');
         const scrollRightButton = document.getElementById('scroll-right');
         const itemsContainer = document.querySelector('.items');
@@ -148,7 +167,7 @@
     <section id="products">
         <div class="container">
             <hgroup>
-                <h1>Today's Specials✨</h1> 
+                <h1>Today's Specials</h1> 
                 <h6>Try our most popular ones and taste the difference!</h6>
             </hgroup>
             <div class="todays">
@@ -183,7 +202,7 @@
 
   <!-- This Week's Specials -->
 <hgroup>
-    <h1>This Week's Specials✨</h1> 
+    <h1>This Week's Specials</h1> 
     <h6>Try our most popular ones and taste the difference!</h6>
 </hgroup>
 <div class="weekly">
@@ -215,92 +234,69 @@
     </div>
 </div>
 
-<!-- Holiday's Specials -->
-<hgroup>
-    <h1>Holiday's Specials✨</h1> 
-    <h6>Celebrate the season with our festive treats!</h6>
-</hgroup>
-<div class="holidays">
-    <div class="garland"></div>
-    <div class="h_product">
-        <div class="circle">
-            <img src="./assets/img/cake1.jpg" alt="Strawberry Dream Delight">
-        </div>
-        <h3>Strawberry Dream Delight</h3>
-        <p>Make the most of strawberry season with our strawberry cake, with light sponge, jam, and soft cheese icing.</p>
-        <a href="#" class="btn">Order & Details</a>
-    </div>
-
-    <div class="h_product">
-        <div class="circle">
-            <img src="./assets/img/cake2.jpg" alt="Choco Bliss">
-        </div>
-        <h3>Choco Bliss</h3>
-        <p>Master the chocolate cake with an airy, light sponge and rich buttercream filling. Perfect for your holiday.</p>
-        <a href="#" class="btn">Order & Details</a>
-    </div>
-
-    <div class="h_product">
-        <div class="circle">
-            <img src="./assets/img/cake3.jpeg" alt="Oreo Cookie Cupcakes">
-        </div>
-        <h3>Oreo Cookie Cupcakes</h3>
-        <p>Rich chocolate cupcakes with creamy vanilla frosting and Oreo cookie pieces, perfect for the holidays.</p>
-        <a href="#" class="btn">Order & Details</a>
-    </div>
-    <div class="snowflake">❄</div>
-</div>
-
-        </div>
-    </section>
-
-
-
-    <!-- nuk e di a o mir -->
-        <section class="fabulous-section bg-gradient-to-r from-pink-400 to-yellow-300 py-16">
-            <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg">Why Our Bakery Stands Out</h2>
-            <p class="text-lg md:text-xl text-white max-w-3xl mx-auto mb-12 drop-shadow-md">
-                We bake with passion, using only the finest ingredients. Our journey of creating delightful treats is built on the love for authenticity, creativity, and a touch of magic in every recipe.
-            </p>
-            <div class="flex flex-wrap justify-center gap-8">
-                <div class="card p-6 bg-white rounded-lg shadow-xl transform transition hover:-translate-y-2 hover:shadow-2xl">
-                <h3 class="text-2xl font-semibold text-gray-800">Farm-Fresh Ingredients</h3>
-                <p class="text-gray-600 mt-2">Sourced locally, ensuring taste and quality you can trust in every bite.</p>
-                </div>
-                <div class="card p-6 bg-white rounded-lg shadow-xl transform transition hover:-translate-y-2 hover:shadow-2xl">
-                <h3 class="text-2xl font-semibold text-gray-800">Handcrafted Daily</h3>
-                <p class="text-gray-600 mt-2">Every item is made fresh, bringing joy straight from our oven to your table.</p>
-                </div>
-                <div class="card p-6 bg-white rounded-lg shadow-xl transform transition hover:-translate-y-2 hover:shadow-2xl">
-                <h3 class="text-2xl font-semibold text-gray-800">Unforgettable Flavors</h3>
-                <p class="text-gray-600 mt-2">From classic favorites to unique innovations, our flavors are crafted to delight.</p>
-                </div>
-            </div>
-            </div>
+<section class="holidays-specials">
+    <hgroup>
+        <h1>Holiday's Specials </h1>
+        <h6>Celebrate the season with our festive treats!</h6>
+        <section id="slider" class="h-[650px] overflow-hidden bg-slate-50">
+            <img id="slider-image" src="./assets/img/slider1.webp" alt="First Slider" />
         </section>
         
-        
+</section>
+</section>   
 
-    <!-- qetu e kom fshi Sundays special, duhet me qit diqka tjeter -->
-    <section id="team" class="bg-light">
+    <section class="fabulous-section">
         <div class="container">
-            <hgroup>
-                <h1>Our Perfect Team</h1>
-                <h6>We’re a passionate group of bakers and food lovers, dedicated to crafting the finest pastries just for you. Each treat is made with care, creativity, and a love for the art of baking. Get to know the people who make every bite unforgettable!</h6>
-            </hgroup>
-            <div class="members">
-                <div class="member">
+            <h2 class="section-title">Why Our Bakery Stands Out</h2>
+            <p class="section-description">
+                We bake with passion, using only the finest ingredients. Our journey of creating delightful treats is built on the love for authenticity, creativity, and a touch of magic in every recipe.
+            </p>
+            <div class="cards-container">
+                <div class="card">
+                    <h3 class="card-title">Farm-Fresh Ingredients</h3>
+                    <p class="card-description">Sourced locally, ensuring taste and quality you can trust in every bite.</p>
                 </div>
-
-                <div class="member">
+                <div class="card">
+                    <h3 class="card-title">Handcrafted Daily</h3>
+                    <p class="card-description">Every item is made fresh, bringing joy straight from our oven to your table.</p>
                 </div>
-
-                <div class="member">
+                <div class="card">
+                    <h3 class="card-title">Unforgettable Flavors</h3>
+                    <p class="card-description">From classic favorites to unique innovations, our flavors are crafted to delight.</p>
                 </div>
             </div>
+        </div>
     </section>
 
+    <!-- qetu e kom fshi Sundays special, duhet me qit diqka tjeter -->
+    <section id="team" class="bg-light py-5">
+        <div class="container text-center">
+            <h1 class="display-4 mb-3">Our Perfect Team</h1>
+            <p class="text-muted mb-5">We’re a passionate group of bakers and food lovers, dedicated to crafting the finest pastries just for you. Each treat is made with care, creativity, and a love for the art of baking. Get to know the people who make every bite unforgettable!</p>
+            
+            <div class="team-row">
+                <div class="member-card">
+                    <img src="assets/img/chef1.png" alt="Team Member 1" style="width: 220px;  margin-bottom: 1rem; max-width: 220;">
+                    <h5>John Doe</h5>
+                    <p class="role">Head Baker</p>
+                    <p class="description">John brings over 15 years of experience to our bakery and is known for his incredible sourdough and artistic designs.</p>
+                </div>
+                <div class="member-card">
+                    <img src="assets/img/chef2.png" alt="Team Member 2" style="width: 150px;  margin-bottom: 1rem; max-width: 1;">
+                    <h5>Jane Smith</h5>
+                    <p class="role">Pastry Chef</p>
+                    <p class="description">Jane is a master of flavors, creating the unique tastes and textures our customers love in every pastry.</p>
+                </div>
+                <div class="member-card">
+                    <img src="assets/img/chef3.png" alt="Team Member 3"style="width: 180px;  margin-bottom: 1rem; margin-top:-14px; max-width: 180px;">
+                    <h5>Michelle Brown</h5>
+                    <p class="role">Creative Decorator</p>
+                    <p class="description">Michael adds the final touch to each pastry, making them as visually stunning as they are delicious.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <section id="reasons" >
         <div class="container">
             <hgroup>
@@ -351,6 +347,48 @@
         </div>
     </section>
 
+    <section class="services">
+        <div class="title">
+            <p class="tagline">For the love of cake</p>
+            <h2>Our Services</h2>
+            <p class="description">Our pastry shop presents an exquisite culinary experience for any occasion you can imagine!</p>
+        </div>
+        <div class="service-content">
+            <div class="service-items left-column">
+                <div class="service-item">
+                    <h3>Fast Delivery</h3>
+                    <p>The Pastry Store Allotino is true to tradition using only the freshest and finest ingredients.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Online Ordering</h3>
+                    <p>Our pastry shop presents an exquisite culinary experience for any occasion you can imagine!</p>
+                </div>
+                <div class="service-item">
+                    <h3>Event Order</h3>
+                    <p>Our pastry shop presents an exquisite culinary experience for any occasion you can imagine!</p>
+                </div>
+            </div>
+            <div class="service-image">
+                <img src="./assets/img/services.png" alt="Pastry items">
+            </div>
+            <div class="service-items right-column">
+                <div class="service-item">
+                    <h3>Decoration Services</h3>
+                    <p>Our pastry shop presents an exquisite culinary experience for any occasion you can imagine!</p>
+                </div>
+                <div class="service-item">
+                    <h3>Cooking Classes</h3>
+                    <p>Our pastry shop presents an exquisite culinary experience for any occasion you can imagine!</p>
+                </div>
+                <div class="service-item">
+                    <h3>Birthday Parties</h3>
+                    <p>Our pastry shop presents an exquisite culinary experience for any occasion you can imagine!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
     <section id="stats">
         <div class="container">
             <hgroup>
@@ -409,21 +447,20 @@
             </div>
             
             <div class="col-contact">
-            <h2><span>Contact Details</span></h2>  
-            <address>
-                <span>Pastry Lane, Sweetville, ST 12345</span>
-                <br>
-                <span>(123) 456-7890</span>
-                <span>contact@doughliciouscreations.com</span>
-            </address>
+                <h2><span>Contact Details</span></h2>  
+                <address>
+                    <p>Pastry Lane, Sweetville, ST 12345</p>
+                    <p>(123) 456-7890</p>
+                    <p><a href="mailto:contact@doughliciouscreations.com">contact@doughliciouscreations.com</a></p>
+                </address>
             </div>
-
+            
             <div class="col-socials">
             <h2><span>Socials</span></h2>
             <ul>
-            <li><a href="#"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a></li>
-            <li><a href="#"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
-            <li><a href="#"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+            <li><a href="https://www.whatsapp.com/" target="_blank"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a></li>
+            <li><a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+            <li><a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
             </ul>
             </div>
             </div>
@@ -452,6 +489,24 @@
         </div>
     </footer2>
     
+    <script>
+          // Cake Slider functionality
+    const slider = document.querySelector('#slider');
+const sliderImage = document.querySelector('#slider-image');
+let activeSlide = 0;
+const slides = [
+    './assets/img/slider2.webp',
+    './assets/img/slider3.webp',
+    './assets/img/slider4.webp'
+];
+
+setInterval(function () {
+    sliderImage.src = slides[activeSlide];
+    activeSlide++;
+    if (activeSlide > slides.length - 1) {
+        activeSlide = 0;
+    }
+}, 2000);
+    </script>
 </body>
-</html>
 </html>
