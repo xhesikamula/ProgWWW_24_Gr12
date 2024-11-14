@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="https://www.flaticon.com/free-icons/chef">
 </head>
 <body>
-    <header class="h-light">
+    <header class="h-light" >
         <div class="container">
             <input type="checkbox"/>
-            <img src="./assets/img/pastrylogo.png" alt="Doughlicious Creations" class="header-image"/>
+            <img src="./assets/img/pastrylogo.png" alt="Doughlicious Creations" class="header-image" style="margin-top: 3px;"/>
         <nav>
             <ul>
                 <li><a href="#">Home</a></li>
@@ -28,7 +28,7 @@
                     </ul>
                     </li>
                     <li id="auth-links">
-                        <a href="register.html" id="register-link">Register</a>
+                        <a href="register.html" id="register-link" style="margin-right: 20px;">Register</a>
                         <a href="login.html" id="login-link">Login</a>
                     </li>
                     <li id="dashboard-links" style="display: none;">
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('logout-link').addEventListener('click', () => {
                 localStorage.removeItem('isLoggedIn');
                 localStorage.removeItem('user');
-                window.location.href = 'index.html'; 
+                window.location.href = 'index.html'; // Redirect to home page on logout
             });
         });
 
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollLeftButton.addEventListener('click', () => {
             itemsContainer.scrollBy({
                 top: 0,
-                left: -250, 
+                left: -250, // Adjusted scroll offset for item width
                 behavior: 'smooth'
             });
         });
@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollRightButton.addEventListener('click', () => {
             itemsContainer.scrollBy({
                 top: 0,
-                left: 250, 
+                left: 250, // Adjusted scroll offset for item width
                 behavior: 'smooth'
             });
         });
@@ -155,10 +155,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     const endValue = parseInt(number.textContent.replace(/,/g, ''));
                     animateValue(number, 0, endValue, 2000);
                 });
-                observer.unobserve(entry.target); 
+                observer.unobserve(entry.target); // Stop observing once animated
             }
         });
-    }, { threshold: 0.5 }); 
+    }, { threshold: 0.5 }); // Trigger when 50% of the section is visible
 
     observer.observe(document.getElementById('stats'));
 });
