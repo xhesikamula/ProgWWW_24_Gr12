@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doughlicious Creations - Dashboard</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script type="module" src="./modules/App.js"></script>
+    <style>
+        /* General Table Styles */
+        .orders-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            font-family: 'Arial', sans-serif;
+        }
+        .orders-table th,
+        .orders-table td {
+            padding: 12px 15px;
+            text-align: center;
+            border: 1px solid #f2f2f2;
+        }
+        .orders-table th {
+            background-color: #fce4b4;
+            color: #8a5a44;
+            font-size: 1.1rem;
+        }
+        .orders-table td {
+            background-color: #fff5e1;
+            color: #7c5a43;
+        }
+        .orders-table tr:nth-child(even) td {
+            background-color: #ffecd1;
+        }
+        .orders-table tr:hover td {
+            background-color: #f5d0a9;
+            cursor: pointer;
+        }
+
+        /* Status Labels */
+        .status {
+            padding: 5px 10px;
+            border-radius: 12px;
+            font-weight: bold;
+            display: inline-block;
+        }
+        .status.pending {
+            background-color: #ffcc00;
+            color: white;
+        }
+        .status.delivered {
+            background-color: #4caf50;
+            color: white;
+        }
+        .status.cancelled {
+            background-color: #f44336;
+            color: white;
+        }
+
+        /* Header */
+        .section-title {
+            font-size: 2rem;
+            color: #8a5a44;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+        .subheading {
+            text-align: center;
+            color: #b65c5c;
+            margin-bottom: 3rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="h-light">
+        <div class="container">
+            <input type="checkbox"/>
+            <img src="./assets/img/pastrylogo.png" alt="Doughlicious Creations" class="header-image" style="margin-top: 3px;"/>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="#reasons">Why us?</a></li>
+                    <li><a href="#contact">Contact</a><i class="fa-solid fa-angle-down"></i>
+                        <ul class="w-25">
+                            <li><a href="https://www.whatsapp.com/" target="_blank">Whatsapp</a></li>
+                            <li><a href="https://www.facebook.com/" target="_blank">Facebook</a></li>
+                            <li><a href="https://www.instagram.com/" target="_blank">Instagram</a></li>
+                        </ul>
+                    </li>
+                    <li id="auth-links">
+                        <a href="register.html" id="register-link" style="margin-right: 20px;">Register</a>
+                        <a href="login.html" id="login-link">Login</a>
+                    </li>
+                    <li id="dashboard-links" style="display: none;">
+                        <a href="dashboard.html">Dashboard</a>
+                        <a href="#" id="logout-link"><i class="fa-solid fa-right-from-bracket"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Dashboard Section -->
+    <section class="py-8 bg-amber-50">
+        <div class="container mx-auto">
+            <h2 class="section-title">Order Management</h2>
+
+            <!-- Table to Display Orders -->
+            <div id="orders" class="mt-12">
+                <table class="orders-table" id="orders-table">
+                    <thead>
+                        <tr>
+                            <th>Order #</th>
+                            <th>Name</th>
+                            <th>Surname</th>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Order Date</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Orders will be dynamically inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="f-light" id="contact">
+        <div class="container">
+            <div class="columns">
+                <div class="col-products">
+                    <h2><span>Products</span></h2>
+                    <ul>
+                        <li><a href="#">Cakes</a></li>
+                        <li><a href="#">Cupcakes</a></li>
+                        <li><a href="#">Donuts</a></li>
+                        <li><a href="#">Desserts</a></li>
+                        <li><a href="#">Pastries</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-site">
+                    <h2><span>Site</span></h2>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Menu</a></li>
+                        <li><a href="#">Why us?</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-contact">
+                    <h2><span>Contact Details</span></h2>  
+                    <address>
+                        <p>Pastry Lane, Sweetville, ST 12345</p>
+                        <p>(123) 456-7890</p>
+                        <p><a href="mailto:contact@doughliciouscreations.com">contact@doughliciouscreations.com</a></p>
+                    </address>
+                </div>
+
+                <div class="col-socials">
+                    <h2><span>Socials</span></h2>
+                    <ul>
+                        <li><a href="https://www.whatsapp.com/" target="_blank"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a></li>
+                        <li><a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+                        <li><a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Second Footer Section -->
+    <footer2 class="footer2">
+        <div class="container">
+            <div class="copyright">
+                <b>© DoughliciousCreations 2024</b>
+            </div>
+
+            <div class="terms-links">
+                <ul class="terms-list">
+                    <li><a href="#">Terms and Conditions</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Accessibility</a></li>
+                </ul>
+            </div>
+
+            <div class="social-icons">
+                <i class="fa-brands fa-square-facebook icon fb-icon"></i>
+                <i class="fa-brands fa-square-x-twitter icon"></i>
+                <i class="fa-brands fa-square-instagram icon ig-icon"></i>
+            </div>
+        </div>
+    </footer2>
+
+    <script type="module">
+    window.onload = () => {
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        if (!isLoggedIn) {
+            window.location.href = 'login.html';
+            return;
+        }
+    
+        const orders = JSON.parse(localStorage.getItem('orders')) || [];
+        const ordersContainer = document.querySelector('#orders-table tbody');
+    
+        if (orders.length === 0) {
+            ordersContainer.innerHTML = '<tr><td colspan="8">No orders found. Start ordering!</td></tr>';
+        } else {
+            orders.forEach((order, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+    <td>${index + 1}</td>
+    <td>${order.name}</td>
+    <td>${order.surname}</td>
+    <td>${order.dessertName}</td>
+    <td>${order.quantity}</td>
+    <td>${parseFloat(order.price).toFixed(2)}</td> <!-- Ensure price is a float -->
+    <td>${order.date}</td>
+    <td>${(parseFloat(order.price) * parseInt(order.quantity)).toFixed(2)}</td> <!-- Ensure calculation is correct -->
+`;
+
+                ordersContainer.appendChild(row);
+            });
+        }
+    };
+    </script>
+    
+</body>
+</html>
