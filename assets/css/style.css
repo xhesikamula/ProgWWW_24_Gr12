@@ -829,7 +829,8 @@ footer2{
         justify-self: start;
         padding-top: 10px;
         padding-bottom: 10px;
-        
+        margin-top: -30px;
+        margin-bottom: -30px;
 
         .terms-links{
             .terms-list{
@@ -1356,17 +1357,27 @@ body {
     margin: 0 auto;
   }
   
-  /* Our Story Section */
-  .our-story-section {
+ /* Our Story Section */
+.our-story-section {
     padding: 6rem 2rem;
     background-color: white;
     text-align: center;
+    perspective: 1000px; /* Enable 3D effect */
+  }
+  
+  .our-story-section h2,
+  .our-story-section p,
+  .image-container {
+    opacity: 0; /* Start hidden */
+    transform: rotateX(90deg); /* Start rotated */
+    animation: fadeInRotate 1.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards; /* Trigger animation */
   }
   
   .our-story-section h2 {
     font-size: 2rem;
     color: #4a4a4a;
     margin-bottom: 1.5rem;
+    animation-delay: 0s; /* First element to animate */
   }
   
   .our-story-section p {
@@ -1374,12 +1385,14 @@ body {
     font-size: 1rem;
     color: #6a6a6a;
     margin: 0 auto 3rem;
+    animation-delay: 0.5s; /* Second element to animate */
   }
   
   .image-container {
     display: flex;
     justify-content: center;
     gap: 2rem;
+    animation-delay: 1s; /* Third element to animate */
   }
   
   .image-circle {
@@ -1389,6 +1402,8 @@ body {
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    transform: rotateY(-45deg); /* Start with a horizontal tilt */
+    animation: rotateIn 1.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
   }
   
   .image-circle img {
@@ -1396,6 +1411,31 @@ body {
     height: 100%;
     object-fit: cover;
   }
+  
+  /* 3D Fade and Rotate Animation */
+  @keyframes fadeInRotate {
+    from {
+      opacity: 0;
+      transform: rotateX(90deg);
+    }
+    to {
+      opacity: 1;
+      transform: rotateX(0);
+    }
+  }
+  
+  /* Image Rotate In Animation */
+  @keyframes rotateIn {
+    from {
+      opacity: 0;
+      transform: rotateY(-45deg);
+    }
+    to {
+      opacity: 1;
+      transform: rotateY(0);
+    }
+  }
+  
   
   /* Farms Section */
   .farms-section {
@@ -1656,6 +1696,7 @@ p.text-muted {
 }
 
 
+/* Per behind the scenes videot */ 
 /* Behind-the-Scenes Section */
 .behind-the-scenes-section {
     background-color: #eaddba;
@@ -1664,6 +1705,7 @@ p.text-muted {
     margin-bottom: 40px;
     text-align: center;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    
 }
 
 .behind-the-scenes-section .section-title {
@@ -1677,19 +1719,22 @@ p.text-muted {
     color: #333;
     margin-bottom: 30px;
     max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
 }
 
 .video-container {
     display: flex;
     justify-content: center;
-    gap: 40px;
+    gap: 20px;
     flex-wrap: wrap;
+    margin-top: 30px;
 }
 
 .video-card {
-    width: 560px;
+    width: 100%;
+    max-width: 560px;
+    aspect-ratio: 16 / 9; /* Maintains video aspect ratio */
+    position: relative;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
@@ -1709,10 +1754,27 @@ p.text-muted {
 }
 
 .video-card h3 {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     color: #f76c6c;
     margin-bottom: 10px;
 }
+
+.video-player {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+
 
 
 /*audio feedbacks*/
@@ -1842,7 +1904,7 @@ audio {
 /* Dessert Section Header */
 .dessert-section h1 {
     font-size: 2.5rem;
-    color: #ff6f61; /* Warm color for the header */
+    color: var(--h-color); /* Warm color for the header */
     margin-bottom: 20px;
     font-family: 'Arial', sans-serif;
 }
@@ -1862,7 +1924,7 @@ audio {
 }
 
 .filter-buttons button {
-    background-color: #ff6f61;
+    background-color: var(--brown);
     color: white;
     border: none;
     padding: 12px 25px;
@@ -1874,7 +1936,7 @@ audio {
 }
 
 .filter-buttons button:hover {
-    background-color: #ff4a39;
+    background-color: var(--h-color);
 }
 
 .filter-buttons button:active {
@@ -1933,6 +1995,11 @@ audio {
     color: #333;
 }
 
+.dessert-card button {
+color: white;
+padding: 10px;
+}
+
 .dessert-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
@@ -1968,15 +2035,15 @@ audio {
 
 .order-button {
     padding: 5px;
-    background-color: #EADDBA;
+    background-color: var(--brown);
     border-radius: 8px;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease; 
+    transition: background-color 0.3s ease; /* Smooth transition */
 }
 
 .order-button:hover {
-    background-color: #D4C3A2; 
+    background-color: var(--h-color); /* Darker shade for hover */
 }
 
 
@@ -2016,31 +2083,32 @@ audio {
 #order-form input:focus,
 #order-form button:focus {
     outline: none;
-    border-color: #ff6f61;
+    border-color: var(--brown);
 }
 
 #order-form button {
-    background-color: #ff6f61;
+    background-color: var(--brown);
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 #order-form button:hover {
-    background-color: #ff4a39;
+    background-color: var(--brown);
 }
 
-
+/* For smaller screens (mobile devices) */
 @media (max-width: 768px) {
     .order-container {
-        flex-direction: column;  
-        gap: 20px;  
+        flex-direction: column;  /* Stack elements vertically on smaller screens */
+        gap: 20px;  /* Smaller gap on mobile */
         background-image: none;
     }
 
     #dessert-details2,
     #order-form {
-        width: 100%;  
-        max-width: 100%; 
+        width: 100%;  /* Make each section take full width */
+        max-width: 100%;  /* Ensure no max-width restriction */
     }
 }
+
