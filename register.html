@@ -1,55 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - Doughlicious Creations</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Doughlicious Creations</title>
+  <link rel="stylesheet" href="assets/css/style.css"> <!-- Link to your custom CSS file -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://www.flaticon.com/free-icons/chef">
+  <link rel="stylesheet" href="./assets/css/variablat.css">
+  <style>
+    /* Styling for the Auth Section */
+    .auth-section {
+      padding: 80px 0;
+      background-color: #fef8f3; /* Soft background */
+      text-align: center;
+    }
+
+    .auth-section h2 {
+      font-size: 2.5em;
+      color: var(--h-color);
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .auth-section form {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .auth-section form input {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1em;
+      box-sizing: border-box;
+      background-color: #f9f9f9;
+    }
+
+    .auth-section form input:focus {
+      border-color: var(--brown);
+      outline: none;
+      background-color: #fff;
+    }
+
+    .auth-section form button {
+      width: 100%;
+      padding: 14px;
+      background-color: var(--brown);
+      color: white;
+      border: none;
+      font-size: 1.1em;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .auth-section form button:hover {
+      background-color: var(--h-color);
+    }
+
+    .auth-section .redirect-link {
+      margin-top: 20px;
+      font-size: 1em;
+      color: #555;
+    }
+
+    .auth-section .redirect-link a {
+      color: var(--h-color);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .auth-section .redirect-link a:hover {
+      text-decoration: underline;
+    }
+
+  </style>
 </head>
-<body>
-    <header class="header">
-        <div class="container">
-            <a href="index.html" class="logo">Doughlicious Creations</a>
-        </div>
-    </header>
+<body class="font-sans">
 
-    <section class="auth-section">
-        <div class="container">
-            <h2>Register</h2>
-            <form id="register-form">
-                <input type="text" name="name" placeholder="Full Name" required />
-                <input type="email" name="email" placeholder="Email" required />
-                <input type="password" name="password" placeholder="Password" required minlength="6" />
-                <input type="password" name="confirmPassword" placeholder="Confirm Password" required minlength="6" />
-                <button type="submit" class="btn">Register</button>
-            </form>
-        </div>
-    </section>
+  <!-- Header Section -->
+  <header class="h-light">
+    <div class="container">
+        <input type="checkbox"/>
+        <img src="./assets/img/pastrylogo.png" alt="Doughlicious Creations" class="header-image" style="margin-top: 3px;"/>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="menu.html">Menu</a></li>
+        
+            <li><a href="index.html#reasons">Why us?</a></li>
+            <li><a href="#contact">Contact</a><i class="fa-solid fa-angle-down"></i>
+                <ul class="w-25">
+                    <li><a href="https://www.whatsapp.com/" target="_blank">Whatsapp</a></li>
+                    <li><a href="https://www.facebook.com/" target="_blank">Facebook</a></li>
+                    <li><a href="https://www.instagram.com/" target="_blank">Instagram</a></li>
+                </ul>
+                </li>
+                <li id="auth-links">
+                    <a href="register.html" id="register-link" style="margin-right: 20px;">Register</a>
+                    <a href="login.html" id="login-link">Login</a>
+                </li>
+                <li id="dashboard-links" style="display: none;">
+                    <a href="dashboard.html" style="margin-right: 20px;">Dashboard</a>
+                    <a href="#" id="logout-link"><i class="fa-solid fa-right-from-bracket"></i></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
 
-    <script>
-        document.querySelector('#register-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = e.target.name.value;
-            const email = e.target.email.value;
-            const password = e.target.password.value;
-            const confirmPassword = e.target.confirmPassword.value;
+  <!-- Registration Section -->
+  <section class="auth-section">
+    <div class="container">
+      <h2>Register for sweet delights!</h2>
+      <form id="register-form">
+        <input type="text" name="name" placeholder="Full Name" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="password" name="password" placeholder="Password" required minlength="6" />
+        <input type="password" name="confirmPassword" placeholder="Confirm Password" required minlength="6" />
+        <button type="submit" class="btn">Register</button>
+      </form>
+      <p class="redirect-link">Already have an account? <a href="login.html">Login here</a></p>
+    </div>
+  </section>
 
-            if (password !== confirmPassword) {
-                alert('Passwords do not match');
-                return;
-            }
+  <!-- Footer Section -->
+  <footer class="f-light" id="contact">
+    <div class="container">
+      <div class="columns">
+      <div class="col-products">
+      <h2><span>Products</span></h2>
+      <ul>
+          <li><a href="#">Cakes</a></li>
+          <li><a href="#">Cupcakes</a></li>
+          <li><a href="#">Donuts</a></li>
+          <li><a href="#">Desserts</a></li>
+          <li><a href="#">Pastries</a></li>
+      </ul>
+      </div>
+    
+      <div class="col-site">
+      <h2><span>Site</span></h2>
+      <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Menu</a></li>
+          <li><a href="#">Why us?</a></li>
+          <li><a href="#">Contact</a>
+      </ul>
+      </div>
+      
+      <div class="col-contact">
+          <h2><span>Contact Details</span></h2>  
+          <address>
+              <p>Pastry Lane, Sweetville, ST 12345</p>
+              <p>(123) 456-7890</p>
+              <p><a href="mailto:contact@doughliciouscreations.com">contact@doughliciouscreations.com</a></p>
+          </address>
+      </div>
+      
+      <div class="col-socials">
+      <h2><span>Socials</span></h2>
+      <ul>
+      <li><a href="https://www.whatsapp.com/" target="_blank"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a></li>
+      <li><a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+      <li><a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+      </ul>
+      </div>
+      </div>
+    </div>
+  </footer>
 
-            const users = JSON.parse(localStorage.getItem('users') || '[]');
-            if (users.some(u => u.email === email)) {
-                alert('Email is already registered');
-                return;
-            }
+  <footer2 class="footer2">
+      <div class="container">
+              <div class="copyright">
+                  <b>© DoughliciousCreations 2024</b>
+              </div>
+  
+              <div class="terms-links">
+                  <ul class="terms-list">
+                      <li><a href="#">Terms and Conditions</a></li>
+                      <li><a href="#">Privacy</a></li>
+                      <li><a href="#">Accessibility</a></li>
+                  </ul>
+              </div>
+  
+              <div class="social-icons">
+                  <i class="fa-brands fa-square-facebook icon fb-icon"></i>
+                  <i class="fa-brands fa-square-x-twitter icon"></i>
+                  <i class="fa-brands fa-square-instagram icon ig-icon"></i>
+              </div>
+      </div>
+  </footer2>
 
-            users.push({ name, email, password });
-            localStorage.setItem('users', JSON.stringify(users));
-            alert('Registration successful');
-            window.location.href = 'login.html'; 
-        });
-    </script>
+  <script>
+    document.querySelector('#register-form').addEventListener('submit', (e) => {e.preventDefault();
+      const name = e.target.name.value;
+      const email = e.target.email.value;
+      const password = e.target.password.value;
+      const confirmPassword = e.target.confirmPassword.value;
+
+      if (password !== confirmPassword) {
+        alert('Passwords do not match');
+        return;
+      }
+
+      const users = JSON.parse(localStorage.getItem('users') || '[]');
+      if (users.some(u => u.email === email)) {
+        alert('Email is already registered');
+        return;
+      }
+
+      users.push({ name, email, password });
+      localStorage.setItem('users', JSON.stringify(users));
+      alert('Registration successful');
+      window.location.href = 'login.html'; 
+    });
+  </script>
+
 </body>
 </html>
