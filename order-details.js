@@ -96,3 +96,39 @@ document.getElementById('orderForm').addEventListener('submit', function (e) {
     let orders = JSON.parse(localStorage.getItem('orders')) || [];
     orders.push(order);
     localStorage.setItem('orders', JSON.stringify(orders));
+
+     const orderFormContainer = document.getElementById('order-form');
+    orderFormContainer.innerHTML = `
+        <div class="thank-you-message">
+            <img src="./assets/img/thank-you.png" alt="Thank You" class="thank-you-image">
+            <h3>Thank You for Your Order!</h3>
+            <p>Dear <strong>${name} ${surname}</strong>, your order has been successfully placed.</p>
+            <p>We appreciate your trust in Doughlicious Creations!</p>
+        </div>
+    `;
+
+    setTimeout(() => {
+        const currentUser = localStorage.getItem('currentUser');
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        if (isLoggedIn) {
+            window.location.href = 'dashboard.html';
+        } else {
+            window.location.href = 'login.html'; 
+        }
+    }, 3000);
+});
+
+function getSelectedExtras() {
+    const extras = [];
+    const extraCheckboxes = document.querySelectorAll('input[name="extras"]:checked');
+    extraCheckboxes.forEach((checkbox) => {
+        extras.push(checkbox.value);
+    });
+    return extras;
+}
+
+function getSelectedDeliveryMethod() {
+    const selectedRadio = document.querySelector('input[name="delivery-method"]:checked');
+    return selectedRadio ? selectedRadio.value : null;
+}
+
