@@ -7,6 +7,20 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://www.flaticon.com/free-icons/chef">
+    <script type="module" src="./modules/App.js"></script>
+    <style>
+        #auth-links {
+    display: flex; 
+    gap: 20px; 
+}
+
+#dashboard-links {
+    display: none; 
+    gap: 20px;
+}
+
+    </style>
+
 </head>
 <body>
     <header class="h-light" >
@@ -28,7 +42,7 @@
                     </ul>
                     </li>
                     <li id="auth-links">
-                        <a href="register.html" id="register-link" style="margin-right: 20px;">Register</a>
+                        <a href="register.html" id="register-link" >Register</a>
                         <a href="login.html" id="login-link">Login</a>
                     </li>
                     <li id="dashboard-links" style="display: none;">
@@ -43,7 +57,7 @@
     <main class="bg-light">
         <div class="container">
             <div class="intro"> 
-                <h3>~EVERY BATCH FROM SCRATCH~</h3>
+                <h3>EVERY BATCH FROM SCRATCH</h3>
                 <p>
                     All of our products are made from scratch using <span>family recipes </span>with only the highest quality ingredients.</p>
                 <p>
@@ -91,78 +105,79 @@
         </div>
     </section>
 
+
     <script>
-document.addEventListener('DOMContentLoaded', () => {
-            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-            const authLinks = document.getElementById('auth-links');
-            const dashboardLinks = document.getElementById('dashboard-links');
-
-            if (isLoggedIn) {
-                authLinks.style.display = 'none';
-                dashboardLinks.style.display = 'flex';
-            } else {
-                authLinks.style.display = 'flex';
-                dashboardLinks.style.display = 'none';
-            }
-
-            document.getElementById('logout-link').addEventListener('click', () => {
-                localStorage.removeItem('isLoggedIn');
-                localStorage.removeItem('user');
-                window.location.href = 'index.html'; // Redirect to home page on logout
-            });
-        });
-
-        const scrollLeftButton = document.getElementById('scroll-left');
-        const scrollRightButton = document.getElementById('scroll-right');
-        const itemsContainer = document.querySelector('.items');
-    
-        scrollLeftButton.addEventListener('click', () => {
-            itemsContainer.scrollBy({
-                top: 0,
-                left: -250, // Adjusted scroll offset for item width
-                behavior: 'smooth'
-            });
-        });
-    
-        scrollRightButton.addEventListener('click', () => {
-            itemsContainer.scrollBy({
-                top: 0,
-                left: 250, // Adjusted scroll offset for item width
-                behavior: 'smooth'
-            });
-        });
-
-        document.addEventListener("DOMContentLoaded", function() {
-    const numbers = document.querySelectorAll('.number strong');
-    
-    const animateValue = (element, start, end, duration) => {
-        let startTimestamp = null;
-        const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            element.innerText = Math.floor(progress * (end - start) + start);
-            if (progress < 1) {
-                window.requestAnimationFrame(step);
-            }
-        };
-        window.requestAnimationFrame(step);
-    };
-
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                numbers.forEach(number => {
-                    const endValue = parseInt(number.textContent.replace(/,/g, ''));
-                    animateValue(number, 0, endValue, 2000);
+        document.addEventListener('DOMContentLoaded', () => {
+                    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+                    const authLinks = document.getElementById('auth-links');
+                    const dashboardLinks = document.getElementById('dashboard-links');
+        
+                    if (isLoggedIn) {
+                        authLinks.style.display = 'none';
+                        dashboardLinks.style.display = 'flex';
+                    } else {
+                        authLinks.style.display = 'flex';
+                        dashboardLinks.style.display = 'none';
+                    }
+        
+                    document.getElementById('logout-link').addEventListener('click', () => {
+                        localStorage.removeItem('isLoggedIn');
+                        localStorage.removeItem('user');
+                        window.location.href = 'index.html'; // Redirect to home page on logout
+                    });
                 });
-                observer.unobserve(entry.target); // Stop observing once animated
-            }
+        
+                const scrollLeftButton = document.getElementById('scroll-left');
+                const scrollRightButton = document.getElementById('scroll-right');
+                const itemsContainer = document.querySelector('.items');
+            
+                scrollLeftButton.addEventListener('click', () => {
+                    itemsContainer.scrollBy({
+                        top: 0,
+                        left: -250, // Adjusted scroll offset for item width
+                        behavior: 'smooth'
+                    });
+                });
+            
+                scrollRightButton.addEventListener('click', () => {
+                    itemsContainer.scrollBy({
+                        top: 0,
+                        left: 250, // Adjusted scroll offset for item width
+                        behavior: 'smooth'
+                    });
+                });
+        
+                document.addEventListener("DOMContentLoaded", function() {
+            const numbers = document.querySelectorAll('.number strong');
+            
+            const animateValue = (element, start, end, duration) => {
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    element.innerText = Math.floor(progress * (end - start) + start);
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                };
+                window.requestAnimationFrame(step);
+            };
+        
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        numbers.forEach(number => {
+                            const endValue = parseInt(number.textContent.replace(/,/g, ''));
+                            animateValue(number, 0, endValue, 2000);
+                        });
+                        observer.unobserve(entry.target); // Stop observing once animated
+                    }
+                });
+            }, { threshold: 0.5 }); // Trigger when 50% of the section is visible
+        
+            observer.observe(document.getElementById('stats'));
         });
-    }, { threshold: 0.5 }); // Trigger when 50% of the section is visible
-
-    observer.observe(document.getElementById('stats'));
-});
-    </script>
+            </script>    
     
     <section id="products">
         <div class="container">
@@ -245,6 +260,64 @@ document.addEventListener('DOMContentLoaded', () => {
 </section>
 </section>   
 
+<script>
+    window.onload = async () => {
+        try {
+            // Fetch data from the API
+            const response = await fetch('https://671fc5b3e7a5792f052f7efc.mockapi.io/Pastry');
+            const cakes = await response.json();
+
+            // Shuffle the cakes array to randomize the selection
+            const shuffleArray = (array) => array.sort(() => Math.random() - 0.5);
+
+            // Pick 3 random cakes for Today's Specials
+            const todaysSpecials = shuffleArray([...cakes]).slice(0, 3);
+
+            // Pick 3 random cakes for This Week's Specials
+            const weeksSpecials = shuffleArray([...cakes]).slice(0, 3);
+
+            // Update Today's Specials
+            const todaysContainer = document.querySelector('.todays');
+            todaysContainer.innerHTML = ''; // Clear the existing content
+
+            todaysSpecials.forEach((cake) => {
+                const product = document.createElement('div');
+                product.classList.add('t_product');
+                product.innerHTML = `
+                    <div class="circle">
+                        <img src="${cake.item_image}" alt="${cake.item_name}">
+                    </div>
+                    <h3>${cake.item_name}</h3>
+                    <p>${cake.description}</p>
+                    <a href="#" class="btn">Order & Details</a>
+                `;
+                todaysContainer.appendChild(product);
+            });
+
+            // Update This Week's Specials
+            const weeklyContainer = document.querySelector('.weekly');
+            weeklyContainer.innerHTML = ''; // Clear the existing content
+
+            weeksSpecials.forEach((cake) => {
+                const product = document.createElement('div');
+                product.classList.add('w_product');
+                product.innerHTML = `
+                    <div class="circle">
+                        <img src="${cake.item_image}" alt="${cake.item_name}">
+                    </div>
+                    <h3>${cake.item_name}</h3>
+                    <p>${cake.description}</p>
+                    <a href="#" class="btn">Order & Details</a>
+                `;
+                weeklyContainer.appendChild(product);
+            });
+        } catch (error) {
+            console.error('Error fetching cakes data:', error);
+        }
+    };
+</script>
+
+
     <section class="fabulous-section">
         <div class="container">
             <h2 class="section-title">Why Our Bakery Stands Out</h2>
@@ -267,246 +340,3 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         </div>
     </section>
-
-    <!-- qetu e kom fshi Sundays special, duhet me qit diqka tjeter -->
-    <section id="team" class="bg-light py-5">
-        <div class="container text-center">
-            <h1 class="display-4 mb-3">Our Perfect Team</h1>
-            <p class="text-muted mb-5">We’re a passionate group of bakers and food lovers, dedicated to crafting the finest pastries just for you. Each treat is made with care, creativity, and a love for the art of baking. Get to know the people who make every bite unforgettable!</p>
-            
-            <div class="team-row">
-                <div class="member-card">
-                    <img src="assets/img/chef1.png" alt="Team Member 1" style="width: 220px;  margin-bottom: 1rem; max-width: 220;">
-                    <h5>John Doe</h5>
-                    <p class="role">Head Baker</p>
-                    <p class="description">John brings over 15 years of experience to our bakery and is known for his incredible sourdough and artistic designs.</p>
-                </div>
-                <div class="member-card">
-                    <img src="assets/img/chef2.png" alt="Team Member 2" style="width: 150px;  margin-bottom: 1rem; max-width: 1;">
-                    <h5>Jane Smith</h5>
-                    <p class="role">Pastry Chef</p>
-                    <p class="description">Jane is a master of flavors, creating the unique tastes and textures our customers love in every pastry.</p>
-                </div>
-                <div class="member-card">
-                    <img src="assets/img/chef3.png" alt="Team Member 3"style="width: 180px;  margin-bottom: 1rem; margin-top:-14px; max-width: 180px;">
-                    <h5>Michelle Brown</h5>
-                    <p class="role">Creative Decorator</p>
-                    <p class="description">Michael adds the final touch to each pastry, making them as visually stunning as they are delicious.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section id="reasons" >
-        <div class="container">
-            <hgroup>
-                <h1>Why Choose Us?</h1>
-                <h6><span>Some more details about us!</span></h6>
-            </hgroup>
-            <div class="reasons">
-                <div class="reason">
-                    <img src="./assets/img/ingredients.jpeg" class="photo"/>
-                    <p>
-                    <span>Quality Ingredients</span>: We use only the finest, locally-sourced ingredients to ensure every pastry is fresh and flavorful. By supporting local farmers, we guarantee quality and contribute to our community.
-                    </p>
-                    <div class="icon">
-                        <img src="./assets/img/organic.png"/>
-                    </div>
-                </div>
-
-                <div class="reason">
-                    <img src="./assets/img/team.jpeg" />
-                    <p>
-                    <span>Passionate Experts</span>: Our team consists of highly skilled and passionate bakers who pour their heart and soul into every batch. With years of experience and a love for baking, we create pastries that are both delicious and beautifully crafted.
-                    </p>
-                    <div class="icon">
-                    <img src="./assets/img/chef.png" />
-                    </div>
-                </div>
-
-                <div class="reason">
-                    <img src="./assets/img/community.png"/>
-                    <p>
-                    <span>Community focus</span>: As a local business, we are deeply invested in our community. We support local events, charities, and initiatives, making us a beloved part of the neighborhood.
-                    </p>
-                    <div class="icon">
-                    <img src="./assets/img/partners.png"/>
-                    </div>
-                </div>
-
-                <div class="reason">
-                    <img src="./assets/img/customer-service.png" />
-                    <p>
-                    <span>Excellent Costumer Service</span>: We pride ourselves on providing outstanding customer service. Our friendly and knowledgeable staff are always ready to assist you, whether you're picking out a treat or planning a large event.
-                    </p>
-                    <div class="icon"> 
-                    <img src="./assets/img/service.png" />
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="services">
-        <div class="title">
-            <p class="tagline">For the love of cake</p>
-            <h2>Our Services</h2>
-            <p class="description">Our pastry shop presents an exquisite culinary experience for any occasion you can imagine!</p>
-        </div>
-        <div class="service-content">
-            <div class="service-items left-column">
-                <div class="service-item">
-                    <h3>Fast Delivery</h3>
-                    <p>The Pastry Store Allotino is true to tradition using only the freshest and finest ingredients.</p>
-                </div>
-                <div class="service-item">
-                    <h3>Online Ordering</h3>
-                    <p>Our pastry shop presents an exquisite culinary experience for any occasion you can imagine!</p>
-                </div>
-                <div class="service-item">
-                    <h3>Event Order</h3>
-                    <p>Our pastry shop presents an exquisite culinary experience for any occasion you can imagine!</p>
-                </div>
-            </div>
-            <div class="service-image">
-                <img src="./assets/img/services.png" alt="Pastry items">
-            </div>
-            <div class="service-items right-column">
-                <div class="service-item">
-                    <h3>Decoration Services</h3>
-                    <p>Our pastry shop presents an exquisite culinary experience for any occasion you can imagine!</p>
-                </div>
-                <div class="service-item">
-                    <h3>Cooking Classes</h3>
-                    <p>Our pastry shop presents an exquisite culinary experience for any occasion you can imagine!</p>
-                </div>
-                <div class="service-item">
-                    <h3>Birthday Parties</h3>
-                    <p>Our pastry shop presents an exquisite culinary experience for any occasion you can imagine!</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    
-    <section id="stats">
-        <div class="container">
-            <hgroup>
-                <h6>See how we’ve made an <span>impact</span>:</h6>
-                <h1>By the Numbers</h1>
-            </hgroup> 
-
-            <div class="numbers">
-                
-                <div class="number">
-                    <strong>15,000+</strong>
-                    <span>Satisfied Customers</span>
-                </div>
-
-                <div class="number">
-                    <strong>2,000+</strong>
-                    <span>Custom Orders Completed</span>
-                </div>
-                
-            <div class="number">
-                <strong>20</strong>
-                <span>Local Farmers Supported</span>
-            </div>
-
-            <div class="number">
-                <strong>25</strong>
-                <span>Dedicated Team Members</span>
-            </div>
-            
-        </div>
-    </section>
-
-    <footer class="f-light" id="contact">
-        <div class="container">
-            <div class="columns">
-            <div class="col-products">
-            <h2><span>Products</span></h2>
-            <ul>
-                <li><a href="#">Cakes</a></li>
-                <li><a href="#">Cupcakes</a></li>
-                <li><a href="#">Donuts</a></li>
-                <li><a href="#">Desserts</a></li>
-                <li><a href="#">Pastries</a></li>
-            </ul>
-            </div>
-
-            <div class="col-site">
-            <h2><span>Site</span></h2>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Menu</a></li>
-                <li><a href="#">Why us?</a></li>
-                <li><a href="#">Contact</a>
-            </ul>
-            </div>
-            
-            <div class="col-contact">
-                <h2><span>Contact Details</span></h2>  
-                <address>
-                    <p>Pastry Lane, Sweetville, ST 12345</p>
-                    <p>(123) 456-7890</p>
-                    <p><a href="mailto:contact@doughliciouscreations.com">contact@doughliciouscreations.com</a></p>
-                </address>
-            </div>
-            
-            <div class="col-socials">
-            <h2><span>Socials</span></h2>
-            <ul>
-            <li><a href="https://www.whatsapp.com/" target="_blank"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a></li>
-            <li><a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
-            <li><a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
-            </ul>
-            </div>
-            </div>
-        </div>
-    </footer>
-
-    <footer2 class="footer2">
-        <div class="container">
-                <div class="copyright">
-                    <b>© DoughliciousCreations 2024</b>
-                </div>
-    
-                <div class="terms-links">
-                    <ul class="terms-list">
-                        <li><a href="#">Terms and Conditions</a></li>
-                        <li><a href="#">Privacy</a></li>
-                        <li><a href="#">Accessibility</a></li>
-                    </ul>
-                </div>
-
-                <div class="social-icons">
-                    <i class="fa-brands fa-square-facebook icon fb-icon"></i>
-                    <i class="fa-brands fa-square-x-twitter icon"></i>
-                    <i class="fa-brands fa-square-instagram icon ig-icon"></i>
-                </div>
-        </div>
-    </footer2>
-    
-    <script>
-          // Cake Slider functionality
-    const slider = document.querySelector('#slider');
-const sliderImage = document.querySelector('#slider-image');
-let activeSlide = 0;
-const slides = [
-    './assets/img/slider2.webp',
-    './assets/img/slider3.webp',
-    './assets/img/slider4.webp'
-];
-
-setInterval(function () {
-    sliderImage.src = slides[activeSlide];
-    activeSlide++;
-    if (activeSlide > slides.length - 1) {
-        activeSlide = 0;
-    }
-}, 2000);
-    </script>
-</body>
-</html>
