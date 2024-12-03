@@ -5,6 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dessert Order Details</title>
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://www.flaticon.com/free-icons/chef">
+    <link rel="stylesheet" href="./assets/css/variablat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+    #auth-links {
+    display: flex; 
+    gap: 20px; 
+}
+
+#dashboard-links {
+    display: none; 
+    gap: 20px;
+}
+#order-form {
+    position: relative;
+    padding: 20px;
+    height: auto; 
+}
+
+.thank-you-message {
+    width: 80%; 
+    max-width: 500px;
+    text-align: center;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto; 
+    position: relative; 
+    top: 30px; 
+}
+
+
+.thank-you-image {
+    max-width: 150px; 
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.thank-you-message h3 {
+    font-size: 1.8rem;
+    color: #CD001A; 
+    margin-bottom: 10px;
+}
+
+.thank-you-message p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+
+.delivery-options {
+    display: flex;
+    gap: 20px;  
+}
+
+
+.extras-options {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 20px; 
+}
+
+
+.delivery-options div, .extras-options div {
+    margin-right: 10px;
+}
+
+    </style>
 </head>
 <body>
     <header class="h-light">
@@ -13,7 +83,7 @@
             <img src="./assets/img/pastrylogo.png" alt="Doughlicious Creations" class="header-image"/>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="menu.html">Menu</a></li>
             
@@ -40,31 +110,66 @@
 
     <div class="order-container">
         <div id="dessert-details2">
-            <!-- Dessert details will be dynamically inserted here -->
         </div>
         <div id="order-form">
             <h2>Place your order</h2>
             <form id="orderForm">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
-    
+                
                 <label for="surname">Surname:</label>
                 <input type="text" id="surname" name="surname" required>
-    
+                
                 <label for="phone">Phone Number:</label>
                 <input type="tel" id="phone" name="phone" required>
-    
+                
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
-    
+                
                 <label for="address">Address:</label>
                 <input type="text" id="address" name="address" required>
-    
+                
                 <label for="quantity">Quantity:</label>
                 <input type="number" id="quantity" name="quantity" min="1" required>
-    
-                <button type="submit">Place Order</button>
+            
+<label for="delivery-method">Delivery Method:</label>
+<div class="delivery-options">
+    <div>
+        <label for="home-delivery">
+            <input type="radio" id="home-delivery" name="delivery-method" value="home-delivery" required> Home Delivery
+        </label>
+    </div>
+    <div>
+        <label for="pickup">
+            <input type="radio" id="pickup" name="delivery-method" value="pickup" required> In-store Pickup
+        </label>
+    </div>
+</div>
+
+<label for="extras">Extras:</label>
+<div class="extras-options">
+    <div>
+        <label for="extra-cream">
+            <input type="checkbox" id="extra-cream" name="extras" value="extra-cream"> Extra Cream
+        </label>
+    </div>
+    <div>
+        <label for="chocolate-frosting">
+            <input type="checkbox" id="chocolate-frosting" name="extras" value="chocolate-frosting"> Chocolate Frosting
+        </label>
+    </div>
+    <div>
+        <label for="sprinkles">
+            <input type="checkbox" id="sprinkles" name="extras" value="sprinkles"> Sprinkles
+        </label>
+    </div>
+</div>
+            
+                <button type="submit" id="order-button">Place Order</button>
             </form>
+            
+        </div>
+        <div id="order-confirmation" class="order-confirmation">
         </div>
     </div>
     
@@ -138,8 +243,8 @@
         </div>
     </footer2>
 
-    <button onclick="window.history.back()">Back to Desserts</button>
-
-    <script src="order-details.js"></script>
+    <script src="order-details.js" ></script>
+    <script src="App.js"></script>
 </body>
 </html>
+
