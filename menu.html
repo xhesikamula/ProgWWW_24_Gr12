@@ -5,12 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desserts - Doughlicious Creations</title>
     <link rel="stylesheet" href="./assets/css/style.css"> 
+    <link rel="stylesheet" href="https://www.flaticon.com/free-icons/chef">
+    <link rel="stylesheet" href="./assets/css/variablat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+    #auth-links {
+    display: flex; 
+    gap: 20px; 
+}
+
+#dashboard-links {
+    display: none; 
+    gap: 20px;
+}
+    </style>
 </head>
 <body>
     <header class="h-light">
         <div class="container">
             <input type="checkbox"/>
-            <img src="./assets/img/pastrylogo.png" alt="Doughlicious Creations" class="header-image"/>
+            <img src="./assets/img/pastrylogo.png" alt="Doughlicious Creations" class="header-image" style="margin-top: 3px;"/>
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -50,7 +65,7 @@
                 <button onclick="filterDesserts('Donuts')">Donuts</button>
             </div>
             <div id="dessert-container" class="dessert-container">
-                <!-- Dessert items will be injected here -->
+                
             </div>
         </section>
     
@@ -123,10 +138,13 @@
         </div>
     </footer2>
 
+    <script src="App.js"></script>
+
     <script>
         const dessertContainer = document.getElementById('dessert-container');
         let allDesserts = [];
 
+       
         async function fetchDesserts() {
             try {
                 const response = await fetch('https://671fc5b3e7a5792f052f7efc.mockapi.io/Pastry');
@@ -139,14 +157,13 @@
             }
         }
 
-       
 
 function displayDesserts(desserts) {
     dessertContainer.innerHTML = desserts.map(dessert => `
         <div class="dessert-card">
             <img src="${dessert.item_image}" alt="${dessert.item_name}">
             <h2>${dessert.item_name}</h2>
-            <p><strong>Price:</strong> ${dessert.price}</p>
+            <p><strong>Price: $</strong>${dessert.price}</p>
             <p><strong>Availability:</strong> ${dessert.available}</p>
             <p><strong>In Stock:</strong> ${dessert.stock}</p>
             <button onclick="viewDetails('${dessert.id}')" class="order-button">
@@ -157,9 +174,8 @@ function displayDesserts(desserts) {
     `).join('');
 }
 
-
 function viewDetails(dessertId) {
-    window.location.href = `order-details.html?id=${dessertId}`;
+    window.location.href = `order-details.html?id=${dessertId}`; 
 }
 
         function filterDesserts(type) {
