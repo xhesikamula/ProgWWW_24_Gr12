@@ -4,15 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register - Doughlicious Creations</title>
-  <link rel="stylesheet" href="assets/css/style.css"> <!-- Link to your custom CSS file -->
+  <link rel="stylesheet" href="assets/css/style.css"> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://www.flaticon.com/free-icons/chef">
   <link rel="stylesheet" href="./assets/css/variablat.css">
   <style>
-    /* Styling for the Auth Section */
+
+#auth-links {
+    display: flex; 
+    gap: 20px; 
+}
+
+#dashboard-links {
+    display: none; 
+    gap: 20px;
+}
     .auth-section {
       padding: 80px 0;
-      background-color: #fef8f3; /* Soft background */
+      background-color: #fef8f3; 
       text-align: center;
     }
 
@@ -201,30 +210,35 @@
       </div>
   </footer2>
 
+  <script src="App.js"></script>
+
   <script>
-    document.querySelector('#register-form').addEventListener('submit', (e) => {e.preventDefault();
-      const name = e.target.name.value;
-      const email = e.target.email.value;
-      const password = e.target.password.value;
-      const confirmPassword = e.target.confirmPassword.value;
+document.querySelector('#register-form').addEventListener('submit', function(event) {
+  event.preventDefault();
 
-      if (password !== confirmPassword) {
-        alert('Passwords do not match');
-        return;
-      }
+  const name = event.target.name.value;
+  const email = event.target.email.value;
+  const password = event.target.password.value;
+  const confirmPassword = event.target.confirmPassword.value;
 
-      const users = JSON.parse(localStorage.getItem('users') || '[]');
-      if (users.some(u => u.email === email)) {
-        alert('Email is already registered');
-        return;
-      }
+  if (password !== confirmPassword) {
+    alert("Passwords do not match!");
+    return;
+  }
 
-      users.push({ name, email, password });
-      localStorage.setItem('users', JSON.stringify(users));
-      alert('Registration successful');
-      window.location.href = 'login.html'; 
-    });
+  const users = JSON.parse(localStorage.getItem('users')) || [];
+  if (users.some(user => user.email === email)) {
+    alert('Email already registered!');
+    return;
+  }
+
+  users.push({ name, email, password }); 
+  localStorage.setItem('users', JSON.stringify(users));
+
+  alert('Registration successful!');
+  window.location.href = 'login.html';
+});
+
   </script>
-
 </body>
 </html>
