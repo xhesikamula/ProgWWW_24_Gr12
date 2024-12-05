@@ -7,9 +7,17 @@
   <link rel="stylesheet" href="assets/css/style.css"> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://www.flaticon.com/free-icons/chef">
-
   <link rel="stylesheet" href="./assets/css/variablat.css">
   <style>
+    #auth-links {
+    display: flex; 
+    gap: 20px; 
+}
+
+#dashboard-links {
+    display: none; 
+    gap: 20px;
+}
     .auth-section {
       padding: 80px 0;
       background-color: #fef8f3; 
@@ -84,7 +92,6 @@
   </style>
 </head>
 <body class="font-sans">
-  <!-- Header Section -->
   <header class="h-light">
     <div class="container">
         <input type="checkbox"/>
@@ -103,19 +110,18 @@
                 </ul>
                 </li>
                 <li id="auth-links">
-                    <a href="register.html" id="register-link" style="margin-right: 20px;">Register</a>
+                    <a href="register.html" id="register-link">Register</a>
                     <a href="login.html" id="login-link" >Login</a>
                 </li>
                 <li id="dashboard-links" style="display: none;">
-                    <a href="dashboard.html" style="margin-right: 20px;">Dashboard</a>
+                    <a href="dashboard.html">Dashboard</a>
                     <a href="#" id="logout-link"><i class="fa-solid fa-right-from-bracket"></i></a>
                 </li>
             </ul>
         </nav>
     </div>
   </header>
-4
-  <!-- Login Section -->
+
   <section class="auth-section">
     <div class="container">
       <h2>Login to sweet delights!</h2>
@@ -128,7 +134,13 @@
     </div>
   </section>
 
-  <!-- Footer Section -->
+  <div id="login-success-popup" class="popup" style="display: none;">
+    <div class="popup-content">
+        <span class="close-btn">&times;</span>
+        <p>Login successful! Welcome back!</p>
+    </div>
+</div>
+
   <footer class="f-light" id="contact">
     <div class="container">
       <div class="columns">
@@ -196,26 +208,6 @@
               </div>
       </div>
   </footer2>
-
-  <script>
-    document.querySelector('#login-form').addEventListener('submit', (e) => {
-        e.preventDefault();
-        const email = e.target.email.value;
-        const password = e.target.password.value;
-
-        const users = JSON.parse(localStorage.getItem('users') || '[]');
-        const user = users.find(u => u.email === email && u.password === password);
-
-        if (user) {
-            localStorage.setItem('isLoggedIn', 'true');
-            localStorage.setItem('user', JSON.stringify(user));
-            window.location.href = 'index.html'; 
-        } else {
-            alert('Invalid email or password');
-        }
-    });
-  </script>
-
+  <script src="App.js"></script>
 </body>
 </html>
-
