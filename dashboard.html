@@ -167,6 +167,92 @@
     background-color: #6d3f2d;
 }
 
+/* qeto duhet mi shtu te secili html */
+.contact-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    max-width: 90%;
+    z-index: 1000;
+}
+
+.contact-form h3 {
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
+.contact-form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-form button {
+    padding: 10px 15px;
+    background-color: #CD001A;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background-color: #b80014;
+}
+.popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            width: 300px;
+        }
+
+        .popup.show {
+            display: flex;
+        }
+
+        .footer2 {
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;
+    align-items: center; 
+    position: relative;
+   
+}
+
+#footer-date {
+    position: absolute;
+    top: 5px; 
+    font-size: 12px; 
+    text-align: center; 
+}
+
     </style>
     
 </head>
@@ -186,10 +272,11 @@
                             <li><a href="https://www.whatsapp.com/" target="_blank">Whatsapp</a></li>
                             <li><a href="https://www.facebook.com/" target="_blank">Facebook</a></li>
                             <li><a href="https://www.instagram.com/" target="_blank">Instagram</a></li>
+                            <li><a href="mailto:doughliciouscreations1@gmail.com" target="_blank">Email</a></li>
                         </ul>
                     </li>
                     <li id="auth-links">
-                        <a href="register.html" id="register-link" style="margin-right: 20px;">Register</a>
+                        <a href="register.html" id="register-link">Register</a>
                         <a href="login.html" id="login-link">Login</a>
                     </li>
                     <li id="dashboard-links" style="display: none;">
@@ -205,7 +292,7 @@
         <div class="container mx-auto">
             <h2 class="section-title">Order Management</h2>
 
-            <!-- Table to Display Orders (unchanged) -->
+            
             <div id="orders" class="mt-12">
                 <table class="orders-table" id="orders-table">
                     <thead>
@@ -221,24 +308,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Orders will be dynamically inserted here -->
+                       
                     </tbody>
                 </table>
             </div>
 
-<!-- Modal for Feedback -->
+
 <div id="feedbackModal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
             <span class="close" id="closeModal">&times;</span>
-            <h2 id="modalTitle">Would you like to give feedback?</h2> <!-- Title that will change -->
+            <h2 id="modalTitle">Would you like to give feedback?</h2>
         </div>
         <div id="feedbackQuestion" class="modal-footer">
             <button id="btnYes">Yes</button>
             <button id="btnNo">No</button>
         </div>
 
-        <!-- Feedback Form (initially hidden) -->
         <div id="feedbackForm" style="display: none;">
             <form id="feedbackFormContent">
                 <label for="email">Email:</label>
@@ -251,166 +337,5 @@
         </div>
     </div>
 </div>
-
-
         </div>
     </section>
-
-    <footer class="f-light" id="contact">
-        <div class="container">
-            <div class="columns">
-                <div class="col-products">
-                    <h2><span>Products</span></h2>
-                    <ul>
-                        <li><a href="#">Cakes</a></li>
-                        <li><a href="#">Cupcakes</a></li>
-                        <li><a href="#">Donuts</a></li>
-                        <li><a href="#">Desserts</a></li>
-                        <li><a href="#">Pastries</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-site">
-                    <h2><span>Site</span></h2>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Menu</a></li>
-                        <li><a href="#">Why us?</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-contact">
-                    <h2><span>Contact Details</span></h2>  
-                    <address>
-                        <p>Pastry Lane, Sweetville, ST 12345</p>
-                        <p>(123) 456-7890</p>
-                        <p><a href="mailto:contact@doughliciouscreations.com">contact@doughliciouscreations.com</a></p>
-                    </address>
-                </div>
-
-                <div class="col-socials">
-                    <h2><span>Socials</span></h2>
-                    <ul>
-                        <li><a href="https://www.whatsapp.com/" target="_blank"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a></li>
-                        <li><a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
-                        <li><a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-<script src="App.js"></script>
-
-<script>
-    window.onload = () => {
-        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-        if (!isLoggedIn) {
-            window.location.href = 'login.html';
-            return;
-        }
-
-        // Retrieve the logged-in user's email from localStorage under 'currentUser'
-        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        const loggedInEmail = currentUser?.email; // Assuming the currentUser object contains an 'email' field
-
-        if (!loggedInEmail) {
-            alert('User not found or email missing.');
-            return;
-        }
-
-        const orders = JSON.parse(localStorage.getItem('orders')) || [];
-        const ordersContainer = document.querySelector('#orders-table tbody');
-
-        if (orders.length === 0) {
-            ordersContainer.innerHTML = '<tr><td colspan="8">No orders found. Start ordering!</td></tr>';
-        } else {
-            orders.forEach((order, index) => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${index + 1}</td>
-                    <td>${order.name}</td>
-                    <td>${order.surname}</td>
-                    <td>${order.dessertName}</td>
-                    <td>${order.quantity}</td>
-                    <td>${parseFloat(order.price).toFixed(2)}</td>
-                    <td>${order.date}</td>
-                    <td>${(parseFloat(order.price) * parseInt(order.quantity)).toFixed(2)}</td>
-                `;
-                ordersContainer.appendChild(row);
-            });
-        }
-
-        // Modal for feedback
-        const feedbackModal = document.getElementById('feedbackModal');
-        const closeModal = document.getElementById('closeModal');
-        const btnYes = document.getElementById('btnYes');
-        const btnNo = document.getElementById('btnNo');
-        const feedbackForm = document.getElementById('feedbackForm');
-        const feedbackQuestion = document.getElementById('feedbackQuestion');
-        const modalTitle = document.getElementById('modalTitle');
-
-        // Show the feedback modal after 1 second
-        setTimeout(() => {
-            feedbackModal.style.display = 'block';
-        }, 1000);
-
-        closeModal.onclick = () => {
-            feedbackModal.style.display = 'none';
-        };
-
-        btnYes.onclick = () => {
-            feedbackQuestion.style.display = 'none';  // Hide the Yes/No question
-            modalTitle.innerHTML = 'Please provide your feedback'; // Change modal title
-            feedbackForm.style.display = 'block'; // Show the feedback form
-        };
-
-        btnNo.onclick = () => {
-            feedbackModal.style.display = 'none'; // Hide the modal when No is clicked
-        };
-
-        // Handle feedback form submission
-        const feedbackFormContent = document.getElementById('feedbackFormContent');
-        feedbackFormContent.onsubmit = (event) => {
-            event.preventDefault();
-
-            const email = document.getElementById('email').value.trim().toLowerCase(); // Normalize input email
-            const feedbackText = document.getElementById('feedbackText').value;
-
-            // Normalize the stored email
-            const normalizedLoggedInEmail = loggedInEmail.trim().toLowerCase();
-
-            // Check if the email matches the logged-in user's email
-            if (email !== normalizedLoggedInEmail) {
-                alert("The email entered doesn't match the logged-in user's email.");
-                return;
-            }
-
-            const feedback = {
-                email,
-                feedbackText,
-                date: new Date().toLocaleString()
-            };
-
-            const feedbacks = JSON.parse(localStorage.getItem('feedbacks')) || [];
-            feedbacks.push(feedback);
-            localStorage.setItem('feedbacks', JSON.stringify(feedbacks));
-
-            localStorage.setItem('feedbackSubmitted', 'true');
-
-            modalTitle.innerHTML = 'Thank you for your feedback!';
-            feedbackForm.style.display = 'none';  
-
-            setTimeout(() => {
-                feedbackModal.style.display = 'none'; 
-            }, 1500);
-
-            document.getElementById('email').value = '';
-            document.getElementById('feedbackText').value = '';
-        };
-    };
-</script>
-</body>
-</html>
