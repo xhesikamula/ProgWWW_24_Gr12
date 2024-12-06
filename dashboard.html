@@ -339,3 +339,281 @@
 </div>
         </div>
     </section>
+
+    
+<!-- //qeto deri nfund duhet mi shtu te secili html -->
+<footer class="f-light" id="contact">
+    <div class="container">
+        <div class="columns">
+            <div class="col-products">
+                <h2><span>Products</span></h2>
+                <ul>
+                    <li><a href="#">Cakes</a></li>
+                    <li><a href="#">Cupcakes</a></li>
+                    <li><a href="#">Donuts</a></li>
+                    <li><a href="#">Desserts</a></li>
+                    <li><a href="#">Pastries</a></li>
+                </ul>
+            </div>
+  
+            <div class="col-site">
+                <h2><span>Site</span></h2>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Menu</a></li>
+                    <li><a href="#">Why us?</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="col-contact">
+                <h2><span>Contact Details</span></h2>
+                <address>
+                    <p>Pastry Lane, Sweetville, ST 12345</p>
+                    <p>(123) 456-7890</p>
+                    <p><a id="email-link" href="#" onclick="document.getElementById('contact-form').style.display = 'block'; return false;">doughliciouscreations1@gmail.com</a></p>
+  
+                </address>
+            </div>
+            
+            <div class="col-socials">
+                <h2><span>Socials</span></h2>
+                <ul>
+                    <li><a href="https://www.whatsapp.com/" target="_blank"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a></li>
+                    <li><a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+                    <li><a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+  </footer>
+  
+  <div id="contact-form" class="contact-form" style="display: none;">
+    <button class="close-form" type="button">X</button> <!-- Add this close button -->
+    <h3>Contact Us</h3>
+    <form id="contactForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required></textarea>
+      
+      <button type="submit">Submit</button> 
+  </form>
+  
+  </div>
+  
+  
+      <!-- Success Popup -->
+      <div id="success-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn">&times;</span>
+            <p>Your message has been sent successfully!</p>
+        </div>
+    </div>
+  
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const SERVICE_ID = "service_cma8dgh"; 
+        const TEMPLATE_ID = "template_kothtbc"; 
+        const MIN_WAIT_TIME = 3;  
+        const MAX_WAIT_TIME = 5;  
+  
+        emailjs.init("-C-clPiF39yrBIRpw");
+  
+        const emailLink = document.getElementById('email-link');
+        const contactForm = document.getElementById('contact-form');
+        const form = document.getElementById('contactForm');
+  
+        if (!form) {
+            console.error("Form element not found. Please ensure the form has the correct ID.");
+            return;
+        }
+  
+        emailLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            contactForm.style.display = 'block'; 
+        });
+  
+        contactForm.querySelector('.close-form').addEventListener('click', () => {
+            contactForm.style.display = 'none';
+        });
+  
+        document.addEventListener('click', (e) => {
+            if (!contactForm.contains(e.target) && !emailLink.contains(e.target)) {
+                contactForm.style.display = 'none';
+            }
+        });
+  
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+  
+            emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form)
+                .then(function(response) {
+                    console.log('Email sent successfully', response);
+                    showSuccessPopup();
+                    contactForm.style.display = 'none'; 
+                    form.reset(); 
+                }, function(error) {
+                    console.error('Error sending email', error);
+                    alert('Oops! Something went wrong. Please try again later.');
+                });
+        });
+  
+        function showSuccessPopup() {
+            const successPopup = document.getElementById('success-popup');
+            successPopup.classList.add('show');
+            
+            const waitTime = Math.floor(Math.random() * (MAX_WAIT_TIME - MIN_WAIT_TIME + 1)) + MIN_WAIT_TIME;
+            console.log(`Popup will hide after ${waitTime} seconds.`);
+  
+            setTimeout(() => {
+                successPopup.classList.remove('show');
+            }, waitTime * 1000); 
+        }
+    });
+    </script>
+  
+  <footer2 class="footer2">
+      <div class="container">
+              <div class="copyright">
+                  <b>© DoughliciousCreations 2024</b>
+              </div>
+  
+              <div class="terms-links">
+                  <ul class="terms-list">
+                      <li><a href="#">Terms and Conditions</a></li>
+                      <li><a href="#">Privacy</a></li>
+                      <li><a href="#">Accessibility</a></li>
+                  </ul>
+              </div>
+  
+              <div class="social-icons">
+                  <i class="fa-brands fa-square-facebook icon fb-icon"></i>
+                  <i class="fa-brands fa-square-x-twitter icon"></i>
+                  <i class="fa-brands fa-square-instagram icon ig-icon"></i>
+              </div>
+      </div>
+      <small id="footer-date"></small>
+  </footer2>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const footerDate = new Date();
+        const formattedDate = footerDate.toLocaleDateString(); 
+        document.getElementById('footer-date').innerText = `Last updated: ${formattedDate}`;
+    });
+    </script>
+
+<script src="App.js"></script>
+
+<script>
+    window.onload = () => {
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        if (!isLoggedIn) {
+            window.location.href = 'login.html';
+            return;
+        }
+
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        const loggedInEmail = currentUser?.email; 
+
+        if (!loggedInEmail) {
+            alert('User not found or email missing.');
+            return;
+        }
+
+        const orders = JSON.parse(localStorage.getItem('orders')) || [];
+        const ordersContainer = document.querySelector('#orders-table tbody');
+
+        if (orders.length === 0) {
+            ordersContainer.innerHTML = '<tr><td colspan="8">No orders found. Start ordering!</td></tr>';
+        } else {
+            orders.forEach((order, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${order.name}</td>
+                    <td>${order.surname}</td>
+                    <td>${order.dessertName}</td>
+                    <td>${order.quantity}</td>
+                    <td>${parseFloat(order.price).toFixed(2)}</td>
+                    <td>${order.date}</td>
+                    <td>${(parseFloat(order.price) * parseInt(order.quantity)).toFixed(2)}</td>
+                `;
+                ordersContainer.appendChild(row);
+            });
+        }
+
+        const feedbackModal = document.getElementById('feedbackModal');
+        const closeModal = document.getElementById('closeModal');
+        const btnYes = document.getElementById('btnYes');
+        const btnNo = document.getElementById('btnNo');
+        const feedbackForm = document.getElementById('feedbackForm');
+        const feedbackQuestion = document.getElementById('feedbackQuestion');
+        const modalTitle = document.getElementById('modalTitle');
+
+        setTimeout(() => {
+            feedbackModal.style.display = 'block';
+        }, 1000);
+
+        closeModal.onclick = () => {
+            feedbackModal.style.display = 'none';
+        };
+
+        btnYes.onclick = () => {
+            feedbackQuestion.style.display = 'none';  
+            modalTitle.innerHTML = 'Please provide your feedback'; 
+            feedbackForm.style.display = 'block'; 
+        };
+
+        btnNo.onclick = () => {
+            feedbackModal.style.display = 'none'; 
+        };
+
+        const feedbackFormContent = document.getElementById('feedbackFormContent');
+        feedbackFormContent.onsubmit = (event) => {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value.trim().toLowerCase(); 
+            const feedbackText = document.getElementById('feedbackText').value;
+
+            const normalizedLoggedInEmail = loggedInEmail.trim().toLowerCase();
+
+            if (email !== normalizedLoggedInEmail) {
+                alert("The email entered doesn't match the logged-in user's email.");
+                return;
+            }
+
+            const feedback = {
+                email,
+                feedbackText,
+                date: new Date().toLocaleString()
+            };
+
+            const feedbacks = JSON.parse(localStorage.getItem('feedbacks')) || [];
+            feedbacks.push(feedback);
+            localStorage.setItem('feedbacks', JSON.stringify(feedbacks));
+
+            localStorage.setItem('feedbackSubmitted', 'true');
+
+            modalTitle.innerHTML = 'Thank you for your feedback!';
+            feedbackForm.style.display = 'none';  
+
+            setTimeout(() => {
+                feedbackModal.style.display = 'none'; 
+            }, 1500);
+
+            document.getElementById('email').value = '';
+            document.getElementById('feedbackText').value = '';
+        };
+    };
+</script>
+</body>
+</html>
