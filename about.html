@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us</title>
-  <link rel="stylesheet" href="assets/css/style.css"> <!-- Link to your custom CSS file -->
+  <link rel="stylesheet" href="assets/css/style.css"> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://www.flaticon.com/free-icons/chef">
   <script>
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelectorAll(".nested-bullet").forEach(drawNestedBullet);
     });
   </script>
-
+  
   <style>
     #auth-links {
     display: flex; 
@@ -229,6 +229,93 @@ section.about-us ol::before {
   margin-bottom: 10px;
 }
 
+/* qeto duhet mi shtu te secili html */
+.contact-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    max-width: 90%;
+    z-index: 1000;
+}
+
+.contact-form h3 {
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
+.contact-form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-form button {
+    padding: 10px 15px;
+    background-color: #CD001A;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background-color: #b80014;
+}
+.popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            width: 300px;
+        }
+
+        .popup.show {
+            display: flex;
+        }
+
+        .footer2 {
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;
+    align-items: center; 
+    position: relative;
+   
+}
+
+#footer-date {
+    position: absolute;
+    top: 5px; 
+    font-size: 12px; 
+    text-align: center; 
+}
+
+
   </style>
 </head>
 <body class="font-sans">
@@ -411,7 +498,9 @@ section.about-us ol::before {
     </table>
   </div>
 </section>
-<!-- Awards & Recognitions Section -->
+
+
+        <!-- Awards & Recognitions Section -->
 <section class="container awards-section">
   <h2 class="section-title">Awards & Recognitions</h2>
   <p class="intro-text">
@@ -472,125 +561,3 @@ section.about-us ol::before {
     </tbody>
   </table>
 </section>
-
-
-<!-- Behind-the-Scenes Look Section -->
-<section class="container behind-the-scenes-section">
-  <h2 class="section-title">Behind the Scenes</h2>
-  <p class="intro-text">
-      Ever wondered what goes into creating our delicious pastries? Take a sneak peek into our kitchen and see how we bake up magic every day!
-  </p>
-  <div class="video-container">
-      <div class="video-card">
-          <h3>How We Make Our Signature Croissants</h3>
-          <video class="video-player" controls>
-              <source src="assets/videofiles/Baking video.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-          </video>
-      </div>
-      <div class="video-card">
-          <h3>A Day in Our Bakery</h3>
-          <video class="video-player" controls>
-              <source src="assets/videofiles/Croissants video.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-          </video>
-      </div>
-  </div>
-</section>
-
-<!--Audio Feedbacks-->
-<section class="container customer-feedback-section">
-  <h2 class="section-title">Customer Audio Feedback</h2>
-  <div class="feedback-container">
-      <div class="feedback-item">
-          <h3 class="feedback-title">Customer 1: Positive Experience</h3>
-          <p class="customer-name">John Doe</p>
-          <audio controls>
-              <source src="./assets/audiofiles/Ash-2024_11_12-5.wav" type="audio/mp3">
-              Your browser does not support the audio element.
-          </audio>
-      </div>
-      <div class="feedback-item">
-          <h3 class="feedback-title">Customer 2: Great Service</h3>
-          <p class="customer-name">Jane Smith</p>
-          <audio controls>
-              <source src="./assets/audiofiles/Ember-2024_11_12-1.wav" type="audio/mp3">
-              Your browser does not support the audio element.
-          </audio>
-      </div>
-  </div>
-</section>
-
-
-<footer class="f-light" id="contact">
-  <div class="container">
-      <div class="columns">
-      <div class="col-products">
-      <h2><span>Products</span></h2>
-      <ul>
-          <li><a href="#">Cakes</a></li>
-          <li><a href="#">Cupcakes</a></li>
-          <li><a href="#">Donuts</a></li>
-          <li><a href="#">Desserts</a></li>
-          <li><a href="#">Pastries</a></li>
-      </ul>
-      </div>
-
-      <div class="col-site">
-      <h2><span>Site</span></h2>
-      <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Menu</a></li>
-          <li><a href="#">Why us?</a></li>
-          <li><a href="#">Contact</a>
-      </ul>
-      </div>
-      
-      <div class="col-contact">
-          <h2><span>Contact Details</span></h2>  
-          <address>
-              <p>Pastry Lane, Sweetville, ST 12345</p>
-              <p>(123) 456-7890</p>
-              <p><a href="mailto:contact@doughliciouscreations.com">contact@doughliciouscreations.com</a></p>
-          </address>
-      </div>
-      
-      <div class="col-socials">
-      <h2><span>Socials</span></h2>
-      <ul>
-      <li><a href="https://www.whatsapp.com/" target="_blank"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a></li>
-      <li><a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
-      <li><a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
-      </ul>
-      </div>
-      </div>
-  </div>
-</footer>
-
-
-<footer2 class="footer2">
-    <div class="container">
-            <div class="copyright">
-                <b>© DoughliciousCreations 2024</b>
-            </div>
-
-            <div class="terms-links">
-                <ul class="terms-list">
-                    <li><a href="#">Terms and Conditions</a></li>
-                    <li><a href="#">Privacy</a></li>
-                    <li><a href="#">Accessibility</a></li>
-                </ul>
-            </div>
-
-            <div class="social-icons">
-                <i class="fa-brands fa-square-facebook icon fb-icon"></i>
-                <i class="fa-brands fa-square-x-twitter icon"></i>
-                <i class="fa-brands fa-square-instagram icon ig-icon"></i>
-            </div>
-    </div>
-</footer2>
-
-<script src="App.js"></script>
-</body>
-</html>
