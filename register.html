@@ -94,7 +94,6 @@
 </head>
 <body class="font-sans">
 
-  <!-- Header Section -->
   <header class="h-light">
     <div class="container">
         <input type="checkbox"/>
@@ -114,11 +113,11 @@
                 </ul>
                 </li>
                 <li id="auth-links">
-                    <a href="register.html" id="register-link" style="margin-right: 20px;">Register</a>
+                    <a href="register.html" id="register-link">Register</a>
                     <a href="login.html" id="login-link">Login</a>
                 </li>
                 <li id="dashboard-links" style="display: none;">
-                    <a href="dashboard.html" style="margin-right: 20px;">Dashboard</a>
+                    <a href="dashboard.html">Dashboard</a>
                     <a href="#" id="logout-link"><i class="fa-solid fa-right-from-bracket"></i></a>
                 </li>
             </ul>
@@ -126,7 +125,6 @@
     </div>
 </header>
 
-  <!-- Registration Section -->
   <section class="auth-section">
     <div class="container">
       <h2>Register for sweet delights!</h2>
@@ -141,7 +139,9 @@
     </div>
   </section>
 
-  <!-- Footer Section -->
+  <div id="warning-container" style="position: fixed; top: 10px; left: 50%; transform: translateX(-50%); z-index: 1000;">
+  </div>
+
   <footer class="f-light" id="contact">
     <div class="container">
       <div class="columns">
@@ -210,35 +210,109 @@
       </div>
   </footer2>
 
-  <script src="App.js"></script>
-
   <script>
-document.querySelector('#register-form').addEventListener('submit', function(event) {
-  event.preventDefault();
+    function showMessage(message, type = 'warning', duration = 3000) {
+        const warning = document.createElement('div');
+        warning.classList.add('message');
+        warning.textContent = message;
 
-  const name = event.target.name.value;
-  const email = event.target.email.value;
-  const password = event.target.password.value;
-  const confirmPassword = event.target.confirmPassword.value;
+        if (type === 'warning') {
+            warning.style.backgroundColor = '#f44336';
+        } else if (type === 'success') {
+            warning.style.backgroundColor = '#4CAF50'; 
+        }
 
-  if (password !== confirmPassword) {
-    alert("Passwords do not match!");
-    return;
-  }
+        warning.style.color = '#fff';
+        warning.style.padding = '15px';
+        warning.style.margin = '100px';
+        warning.style.borderRadius = '5px';
+        warning.style.fontSize = '16px';
+        warning.style.textAlign = 'center';
+        warning.style.boxShadow = '0px 2px 10px rgba(0, 0, 0, 0.2)';
+        warning.style.transition = 'opacity 0.5s ease-out';
 
-  const users = JSON.parse(localStorage.getItem('users')) || [];
-  if (users.some(user => user.email === email)) {
-    alert('Email already registered!');
-    return;
-  }
+        const container = document.getElementById('warning-container');
+        container.appendChild(warning);
 
-  users.push({ name, email, password }); 
-  localStorage.setItem('users', JSON.stringify(users));
+        setTimeout(() => {
+            warning.style.opacity = '0';
+            setTimeout(() => {
+                warning.remove();
+            }, 500);
+        }, duration);
+    }
 
-  alert('Registration successful!');
-  window.location.href = 'login.html';
-});
+    function validateEmail(email) {
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        return emailPattern.test(email);
+    }
 
-  </script>
+    function validatePassword(password) {
+        const passwordPattern = /^[A-Za-z0-9]{6,}$/;  
+        return passwordPattern.test(password);
+    }
+
+    function validateName(name) {
+        const namePattern = /^[A-Za-z\s]+$/;
+        return namePattern.test(name);
+    }
+
+    document.querySelector('#register-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const name = event.target.name.value;
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+        const confirmPassword = event.target.confirmPassword.value;
+
+        document.getElementById('warning-container').innerHTML = '';
+
+        if (!validateName(name)) {
+            showMessage('Name must only contain letters and spaces.', 'warning');
+            return;
+        }
+
+        if (!validateEmail(email)) {
+            showMessage('Please enter a valid email address.', 'warning');
+            return;
+        }
+
+        if (!validatePassword(password)) {
+            showMessage('Password must be exactly 6 characters long, containing only letters and numbers.', 'warning');
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            showMessage('Passwords do not match!', 'warning');
+            return;
+        }
+
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        if (users.some(user => user.email === email)) {
+            showMessage('Email already registered!', 'warning');
+            return;
+        }
+
+        const registrationDate = new Date().toLocaleString();
+
+        users.push({ name, email, password, registrationDate });
+        localStorage.setItem('users', JSON.stringify(users));
+
+        showMessage('Registration successful!', 'success');
+        setTimeout(function() {
+            window.location.href = 'login.html';
+        }, 2000); 
+    });
+
+
+    /* me test() edhe exec()
+    
+    
+    */
+</script>
+
+  
+
 </body>
 </html>
+
