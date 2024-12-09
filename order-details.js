@@ -109,3 +109,111 @@ document.getElementById('orderForm').addEventListener('submit', function (e) {
         if (!dessert) {
             throw new Error('Dessert details not found in localStorage.');
         }
+             if (quantity > dessert.stock) {
+            throw new Error(`Only ${dessert.stock} ${dessert.item_name}(s) available. Please reduce the quantity.`);
+        }
+
+        // Get selected payment method and extras
+        const paymentMethod = getSelectedPaymentMethod();
+        const extras = getSelectedExtras();
+
+        if (!paymentMethod) {
+            throw new Error('Please select a payment method.');
+        }
+
+        dessert.stock -= quantity;
+
+        const order = {
+            name,
+            surname,
+            phone,
+            email,
+            address,
+            quantity,
+            dessertName: dessert.item_name,
+            price: dessert.price,
+            date: new Date().toLocaleDateString(),
+            extras: extras,
+            deliveryMethod: getSelectedDeliveryMethod(),
+            paymentMethod: paymentMethod,
+        };
+
+        // Debugging: Log the order object to check if phone and email are included
+        console.log('Order:', order);
+
+        // Save the order and update dessert stock in localStorage
+        let orders = JSON.parse(localStorage.getItem('orders')) || [];
+        orders.push(order);
+        localStorage.setItem('orders', JSON.stringify(orders));
+
+        console.log('Updated Orders:', orders); // Log updated orders to confirm data
+
+        localStorage.setItem('dessertDetails', JSON.stringify(dessert)); // Update dessert stock in localStorage
+        updateStockViaAPI(dessert.id, dessert.stock); // Update dessert stock via API
+
+        displayThankYouMessage(order.name, order.surname, dessert.stock);
+
+    } catch (error) {
+        console.error('Order submission error:', error.message);
+        alert(error.message);
+    }
+});
+
+function getSelectedExtras() {
+    // Find all checked checkboxes with the name 'extras' and get their values
+    const extras = Array.from(document.querySelectorAll('input[name="extras"]:checked'))
+        .map(extra => extra.value);
+    
+    // If there are extras selected, return them as a comma-separated string, otherwise an empty string
+    return extras.length > 0 ? extras.join(", ") : "";
+}
+
+function getSelectedDeliveryMethod() {
+    // Find the selected radio button for delivery method
+    const selectedRadio = document.querySelector('input[name="delivery-method"]:checked');
+    
+    // If a radio button is selected, return its value, otherwise return null
+    return selectedRadio ? selectedRadio.value : null;
+}
+
+
+// Function to retrieve selected payment method from <datalist>
+function getSelectedPaymentMethod() {
+    const paymentMethodInput = document.getElementById('paymentMethod');
+    const paymentMethod = paymentMethodInput.value.trim();
+    return paymentMethod ? paymentMethod : null;
+}
+
+// Example function to handle display after successful order submission
+function displayThankYouMessage(name, surname, remainingStock) {
+    const thankYouMessage = `
+        <div class="thank-you-message">
+            <img src="./assets/img/thank-you.png" alt="Thank You" class="thank-you-image">
+            <h3>Thank You for Your Order!</h3>
+            <p>Dear <strong>${name} ${surname}</strong>, your order has been successfully placed.</p>
+            <p>We appreciate your trust in Doughlicious Creations!</p>
+            ${remainingStock <= 0 ? '<p style="color: red; font-weight: bold;">The dessert is now out of stock.</p>' : ''}
+        </div>
+    `;
+    document.getElementById('order-form').innerHTML = thankYouMessage;
+
+    setTimeout(() => {
+        window.location.href = 'dashboard.html';
+    }, 3000);
+}
+
+// Example function to update stock via API
+function updateStockViaAPI(dessertId, newStock) {
+    const apiUrl = `https://671fc5b3e7a5792f052f7efc.mockapi.io/Pastry/${dessertId}`;
+    fetch(apiUrl, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ stock: newStock }),
+    })
+        .then(response => {
+            if (!response.ok) throw new Error(`Failed to update stock. Status: ${response.status}`);
+            return response.json();
+        })
+        .then(updatedDessert => console.log('Stock updated successfully:', updatedDessert))
+        .catch(error => console.error('Error updating stock via API:', error.message));
+}
