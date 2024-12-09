@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://www.flaticon.com/free-icons/chef">
   <link rel="stylesheet" href="./assets/css/variablat.css">
+  <script src="filterDesserts.js"></script>
+
   <style>
     #auth-links {
     display: flex; 
@@ -89,26 +91,41 @@
       text-decoration: underline;
     }
 
-    #success-popup {
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #4CAF50;
-      color: white;
-      padding: 20px;
-      margin-top: 100px;
-      border-radius: 5px;
-      font-size: 16px;
-      display: none;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      transition: opacity 0.5s ease-out;
-    }
 
-    #success-popup.show {
-      display: block;
-      opacity: 1;
-    }
+/* Success Popup Styles */
+.popup1 {
+  position: fixed;
+  top: 100px; /* Move it a little lower */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4CAF50; /* Green background */
+  color: white;
+  padding: 10px 20px; /* Increase padding for a larger height */
+  border-radius: 5px;
+  font-size: 16px; /* Slightly bigger text */
+  display: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.5s ease-out;
+  z-index: 1000;
+  
+}
+
+.popup1.show {
+  display: block;
+  opacity: 1;
+}
+
+.popup1-content {
+  text-align: center;
+  padding: 20px;
+}
+
+.popup1 p {
+  font-size: 16px; /* Slightly bigger text */
+  margin: 0;
+}
+
+
 
     /* qeto duhet mi shtu te secili html */
 .contact-form {
@@ -243,7 +260,7 @@
   </section>
 
   <!-- Success Popup -->
-  <div id="success-popup" class="popup">
+  <div id="success-popup" class="popup1">
     <p>Login successful! Welcome back!</p>
   </div>
 
@@ -255,12 +272,12 @@
           <div class="col-products">
               <h2><span>Products</span></h2>
               <ul>
-                  <li><a href="#">Cakes</a></li>
-                  <li><a href="#">Cupcakes</a></li>
-                  <li><a href="#">Donuts</a></li>
-                  <li><a href="#">Desserts</a></li>
-                  <li><a href="#">Pastries</a></li>
-              </ul>
+                <li><a href="#" onclick="filterDesserts('Cakes'); return false;">Cakes</a></li>
+                <li><a href="#" onclick="filterDesserts('Cupcakes'); return false;">Cupcakes</a></li>
+                <li><a href="#" onclick="filterDesserts('Donuts'); return false;">Donuts</a></li>
+                <li><a href="#" onclick="filterDesserts('Desserts'); return false;">Desserts</a></li>
+                <li><a href="#" onclick="filterDesserts('Pastries'); return false;">Pastries</a></li>
+            </ul>            
           </div>
 
           <div class="col-site">
@@ -378,7 +395,7 @@
           successPopup.classList.add('show');
           
           const waitTime = Math.floor(Math.random() * (MAX_WAIT_TIME - MIN_WAIT_TIME + 1)) + MIN_WAIT_TIME;
-          console.log(Popup will hide after ${waitTime} seconds.);
+          console.log(`Popup will hide after ${waitTime} seconds.`);
 
           setTimeout(() => {
               successPopup.classList.remove('show');
@@ -414,7 +431,7 @@
   document.addEventListener('DOMContentLoaded', function () {
       const footerDate = new Date();
       const formattedDate = footerDate.toLocaleDateString(); 
-      document.getElementById('footer-date').innerText = Last updated: ${formattedDate};
+      document.getElementById('footer-date').innerText = `Last updated: ${formattedDate}`;
   });
   </script>
 
