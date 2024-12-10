@@ -138,7 +138,7 @@ document.getElementById('orderForm').addEventListener('submit', function (e) {
             paymentMethod: paymentMethod,
         };
 
-        // Debugging: Log the order object to check if phone and email are included
+        // Debug: Log the order object to check if phone and email are included
         console.log('Order:', order);
 
         // Save the order and update dessert stock in localStorage
