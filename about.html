@@ -5,15 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us</title>
   <link rel="stylesheet" href="assets/css/style.css"> 
+  <link rel="stylesheet" href="assets/css/variablat.css"> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://www.flaticon.com/free-icons/chef">
+  <script src="filterDesserts.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+
   <script>
 
 document.addEventListener("DOMContentLoaded", () => {
       function drawMainBullet(canvas) {
         const ctx = canvas.getContext("2d");
 
-        // Draw a gradient-filled circle
         const gradient = ctx.createRadialGradient(10, 10, 2, 10, 10, 10);
         gradient.addColorStop(0, "#ff8a00");
         gradient.addColorStop(1, "#cd001a");
@@ -27,14 +31,12 @@ document.addEventListener("DOMContentLoaded", () => {
       function drawNestedBullet(canvas) {
         const ctx = canvas.getContext("2d");
 
-        // Draw a smaller circle with a solid color
         ctx.fillStyle = "#cd001a";
         ctx.beginPath();
         ctx.arc(6, 6, 6, 0, Math.PI * 2);
         ctx.fill();
       }
 
-      // Apply drawings to all canvases
       document.querySelectorAll(".bullet").forEach(drawMainBullet);
       document.querySelectorAll(".nested-bullet").forEach(drawNestedBullet);
     });
@@ -52,65 +54,74 @@ document.addEventListener("DOMContentLoaded", () => {
 }
 
 .fun-facts-and-table {
-
-  gap: 24px;
-  align-items: flex-start;
-  margin: 20px 20px;
-  padding: 16px 16px;
+gap: 24px;
+align-items: flex-start;
+margin: 20px 20px;
+padding: 16px 16px;
 }
 
 .fun-facts, .baking-tools {
-  flex: 1 1 calc(50% - 24px); 
-  background-color: #fff8f2; 
-  padding: 16px;
-  border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s, box-shadow 0.3s;
-  margin: 30px;
+flex: 1 1 calc(50% - 24px); 
+background-color: #fff8f2; 
+padding: 16px;
+border-radius: 12px;
+box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+transition: transform 0.3s, box-shadow 0.3s;
+margin: 30px;
 }
 
-.fun-facts h2, .baking-tools h2 {
+.fun-facts h2{
+font-size: 2rem;
+color: #d0002b; 
+margin-bottom: 16px;
+text-align: center;
+font-family: 'Nunito', sans-serif;
+}
+
+.fun-facts ul {
+list-style: none;
+padding-left: 140px;
+margin-top: 16px;
+
+}
+
+.fun-facts ul > li {
+font-size: 1.1em;
+font-weight: 600;
+color: #4a4a4a;
+margin-bottom: 12px;
+position: relative;
+display: flex;
+align-items: center;
+gap: 12px;
+}
+
+.fun-facts ul ul {
+margin-left: 20px;
+margin-top: 8px;
+list-style: none;
+}
+
+.fun-facts ul ul > li {
+font-size: 1em;
+font-weight: normal;
+color: #666;
+display: flex;
+align-items: center;
+gap: 8px;
+}
+
+canvas {
+display: inline-block;
+}
+
+
+.baking-tools caption {
   font-size: 2rem;
   color: #d0002b; 
   margin-bottom: 16px;
   text-align: center;
-  font-family: 'Arial', sans-serif;
-}
-
-.fun-facts ul {
-  list-style: none;
-  padding: 0;
-  margin-top: 16px;
-}
-
-.fun-facts ul > li {
-  font-size: 1.1em;
-  font-weight: 600;
-  color: #4a4a4a;
-  margin-bottom: 12px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.fun-facts ul ul {
-  margin-left: 20px;
-  margin-top: 8px;
-  list-style: none;
-}
-
-.fun-facts ul ul > li {
-  font-size: 1em;
-  font-weight: normal;
-  color: #666;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-canvas {
-  display: inline-block;
+  font-family: 'Nunito', sans-serif;
 }
 
 .baking-tools table {
@@ -148,6 +159,11 @@ canvas {
   font-weight: bold;
   color: #333;
 }
+.baking-tools tfoot td {
+  text-align: center;
+  font-size: 0.75em; 
+}
+
 
 section.about-us {
   padding: 20px;
@@ -169,7 +185,6 @@ section.about-us p {
   margin-bottom: 30px;
 }
 
-
 section.about-us .list-container {
   display: flex;
   justify-content: space-between;
@@ -186,7 +201,6 @@ section.about-us ol {
   width: 45%; 
   padding: 10px;
 }
-
 
 section.about-us dt {
   font-weight: bold;
@@ -212,7 +226,6 @@ section.about-us ol li {
   line-height: 1.6;
 }
 
-
 section.about-us dl::before {
   content: "Key Information"; 
   font-weight: bold;
@@ -228,6 +241,7 @@ section.about-us ol::before {
   color: #CD001A;
   margin-bottom: 10px;
 }
+
 
 /* qeto duhet mi shtu te secili html */
 .contact-form {
@@ -305,7 +319,6 @@ section.about-us ol::before {
     justify-content: space-between;
     align-items: center; 
     position: relative;
-   
 }
 
 #footer-date {
@@ -315,10 +328,122 @@ section.about-us ol::before {
     text-align: center; 
 }
 
+.amazon-link {
+  color: var(--brown);
+  text-decoration: none; 
+  font-weight: 600; 
+}
+
+.amazon-link:hover {
+  text-decoration: underline; 
+  color: var(--h-color); 
+}
+
+/* Multi-Column Section Styles */
+.multi-column-section {
+  padding: 4rem 2rem;
+  background-color: #fff8f2; /* Soft pastry-like color */
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.multi-column-section h2 {
+  font-size: 2.5rem;
+  color: #8b4513; /* Chocolate brown */
+  margin-bottom: 1.5rem;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* Multi-Column Container */
+.multi-column-container {
+  column-count: 3; 
+  column-gap: 1.5rem; 
+  column-rule: 2px dotted #f4a460; 
+  text-align: justify; 
+  max-width: 1200px; 
+  margin: 0 auto; 
+  color: #6a5d4d;
+  font-family: 'Nunito', sans-serif;
+  line-height: 1.6; 
+  padding: 20px;
+}
+
+.cake-game {
+    padding: 3rem 2rem;
+    text-align: center;
+    background-color: #EADDBA;
+}
+
+.cake-game h2 {
+    font-size: 2.5rem;
+    color: var(--h-color);
+    margin-bottom: 1.5rem;
+}
+
+.drag-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.drag-item {
+    width: 250px;
+    height: 50px;
+    background-color: var(--brown);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    border: 2px solid var(--brown);
+}
+
+.drag-item:hover {
+    background-color: var(--h-color);
+}
+
+.drop-area {
+    width: 300px;
+    height: 50px;
+    margin: 1rem auto;
+    border: 2px dashed var(--h-color);
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #fff8f2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--brown);
+}
+
+.drop-area.correct {
+    background-color: #d3ffd3; 
+}
+
+.drop-area.incorrect {
+    background-color: #ffcccc; 
+}
+
+.win-message {
+    display: none;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    color: #4caf50;
+}
 
   </style>
 </head>
+
 <body class="font-sans">
+
   <!-- Header Section -->
   <header class="h-light">
     <div class="container">
@@ -351,7 +476,6 @@ section.about-us ol::before {
         </nav>
     </div>
 </header>
-
 
 <div class="farms-container">
   <!-- Farms Section -->
@@ -387,9 +511,39 @@ section.about-us ol::before {
   </section>
 </div>
 
+<section class="our-story">
+  <h2>Our Story</h2>
+  <p>
+    Born from a passion for tradition and craftsmanship, our bakery brings the warmth of our heritage into every bite. With recipes passed down through generations, we blend the old with the new to create something truly special.
+</p>
+  <div class="image-container">
+      <div class="image-circle">
+          <img src="./assets/img/farm.jpg" alt="Farm Image 1">
+      </div>
+      <div class="image-circle">
+          <img src="./assets/img/farm2.jpg" alt="Farm Image 2">
+      </div>
+  </div>
+</section>
+
 <section class="about-us">
   <h2>More Info About Us</h2>
   <p>We are passionate about baking the most delightful pastries!</p>
+
+  <p style="font-size: 14px;">
+    We are a proud Albanian team, operating from <i>Pastry Lane, Sweetville</i>, but we never forget our roots. 
+    Although we are far from home, we strive to bring a piece of Albania to the world. Our love for our 
+    homeland has inspired us to include traditional Albanian sweets in our offerings.
+  </p>
+  
+  <p style="font-size: 14px;">
+    One of our favorites is the delicious <strong>Tespishte</strong> and <strong>Bakllava</strong>, both made with love and passion, offering a true taste of Albanian culture. 
+    These sweets are not just a treat but a reminder of the warmth and hospitality of our homeland.
+  </p>
+    <p style="font-size: 14px;">
+      Si&ccedil; themi ne shqiptar&euml;t: Tespishte p&euml;r nj&euml; kafshat&euml; delikate, dhe bakllava p&euml;r nj&euml; fest&euml; të ëmbël&mdash;dy emb&euml;lsira tradicionale shqiptare q&euml; sjellin g&euml;zim n&euml; &ccedil;do ngjarje.
+    </p>
+
 
   <div class="list-container">
     <dl>
@@ -411,12 +565,10 @@ section.about-us ol::before {
       <li>Free delivery for orders above $100</li>
     </ol>
   </div>
-
 </section>
 
 <section class="fun-facts-and-table">
   <div class="fun-facts">
-    <h2>Fun Facts About Baking</h2>
     <ul>
       <li>
         <canvas class="bullet" width="20" height="20"></canvas>
@@ -465,8 +617,8 @@ section.about-us ol::before {
   
   <!-- Baking Tools Section -->
   <div class="baking-tools">
-    <h2>Essential Baking Tools</h2>
     <table>
+      <caption>Essential Baking Tools</caption>
       <thead>
         <tr>
           <th>Tool</th>
@@ -496,291 +648,26 @@ section.about-us ol::before {
           <td>Stainless Steel</td>
         </tr>
       </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">All tools are essential for successful baking! You can find them all on <a href="https://www.amazon.com/" class="amazon-link" target="_blank">Amazon</a>!</td>
+        </tr>
+      </tfoot>
     </table>
   </div>
 </section>
 
-
-        <!-- Awards & Recognitions Section -->
-<section class="container awards-section">
-  <h2 class="section-title">Awards & Recognitions</h2>
-  <p class="intro-text">
-      Over the years, Doughlicious Creations has been honored with several awards and recognition for our commitment to quality, creativity, and service. We are proud to be acknowledged by our peers and customers alike.
-  </p>
-  <div class="awards-container">
-      <div class="award-card">
-          <img src="assets/img/bestbakery.webp" alt="Award 1">
-          <h3>Best Bakery in Sweet City - 2023</h3>
-          <p>Recognized for exceptional quality and customer service in the Sweet City Bakery Awards.</p>
-      </div>
-      <div class="award-card">
-          <img src="assets/img/top10.webp" alt="Award 2">
-          <h3>Top 10 Best Pastries - National Food Awards</h3>
-          <p>Our signature chocolate croissants were selected among the top 10 pastries in the country!</p>
-      </div>
-      <div class="award-card">
-          <img src="assets/img/eco-friendly.webp" alt="Award 3">
-          <h3>Eco-Friendly Business of the Year</h3>
-          <p>Honored for our commitment to sustainability and eco-conscious practices in baking.</p>
-      </div>
+<section class="our-commitment">
+  <h2 style="text-align: center;">Our Commitment to Quality</h2>
+  <div class="multi-column-container">
+    <p>
+      Hygiene is our top priority. We maintain strict cleanliness standards throughout our baking process, ensuring that all pastries are prepared in a sanitized environment.
+    </p>
+    <p>
+      Our team follows rigorous protocols from ingredient handling to packaging, guaranteeing both safety and satisfaction.
+    </p>
+    <p>
+      We’re constantly innovating, offering unique twists on traditional pastries. Our goal is to surprise and delight you with something new every time.
+    </p>
   </div>
 </section>
-
-<!-- Nominations Section -->
-<section class="container nominations-section">
-  <h2 class="section-title">Nominations Through the Years</h2>
-  <p class="intro-text">Here are some of the nominations we have received over the years for excellence in our craft and dedication to quality.</p>
-
-  <table class="nominations-table">
-    <thead>
-      <tr>
-        <th>Year</th>
-        <th>Nomination</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>2024</td>
-        <td><svg class="star" width="24" height="24" fill="currentColor" viewBox="0 0 16 16"><path d="M8 12.354l3.146 1.658-.6-3.532L12 6.432l-3.56-.27L8 2 6.56 6.162 3 6.432l2.454 4.048-.6 3.532L8 12.354z"/></svg><strong>Best Artisan Bakery - Sweet City Awards</strong></td>
-      </tr>
-      <tr>
-        <td>2023</td>
-        <td><svg class="star" width="24" height="24" fill="currentColor" viewBox="0 0 16 16"><path d="M8 12.354l3.146 1.658-.6-3.532L12 6.432l-3.56-.27L8 2 6.56 6.162 3 6.432l2.454 4.048-.6 3.532L8 12.354z"/></svg><strong>Best Pastry Chef - National Food Awards</strong></td>
-      </tr>
-      <tr>
-        <td>2022</td>
-        <td><svg class="star" width="24" height="24" fill="currentColor" viewBox="0 0 16 16"><path d="M8 12.354l3.146 1.658-.6-3.532L12 6.432l-3.56-.27L8 2 6.56 6.162 3 6.432l2.454 4.048-.6 3.532L8 12.354z"/></svg><strong>Excellence in Sustainability - Green Business Awards</strong></td>
-      </tr>
-      <tr>
-        <td>2021</td>
-        <td><svg class="star" width="24" height="24" fill="currentColor" viewBox="0 0 16 16"><path d="M8 12.354l3.146 1.658-.6-3.532L12 6.432l-3.56-.27L8 2 6.56 6.162 3 6.432l2.454 4.048-.6 3.532L8 12.354z"/></svg><strong>Best Donuts - Local Bakery Awards</strong></td>
-      </tr>
-      <tr>
-        <td>2020</td>
-        <td><svg class="star" width="24" height="24" fill="currentColor" viewBox="0 0 16 16"><path d="M8 12.354l3.146 1.658-.6-3.532L12 6.432l-3.56-.27L8 2 6.56 6.162 3 6.432l2.454 4.048-.6 3.532L8 12.354z"/></svg><strong>Most Creative Desserts - Creative Culinary Awards</strong></td>
-      </tr>
-    </tbody>
-  </table>
-</section>
-
-
-<!-- Behind-the-Scenes Look Section -->
-<section class="container behind-the-scenes-section">
-  <h2 class="section-title">Behind the Scenes</h2>
-  <p class="intro-text">
-      Ever wondered what goes into creating our delicious pastries? Take a sneak peek into our kitchen and see how we bake up magic every day!
-  </p>
-  <div class="video-container">
-      <div class="video-card">
-          <h3>How We Make Our Signature Croissants</h3>
-          <video class="video-player" controls>
-              <source src="assets/videofiles/Baking video.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-          </video>
-      </div>
-      <div class="video-card">
-          <h3>A Day in Our Bakery</h3>
-          <video class="video-player" controls>
-              <source src="assets/videofiles/Croissants video.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-          </video>
-      </div>
-  </div>
-</section>
-
-<!--Audio Feedbacks-->
-<section class="container customer-feedback-section">
-  <h2 class="section-title">Customer Audio Feedback</h2>
-  <div class="feedback-container">
-      <div class="feedback-item">
-          <h3 class="feedback-title">Customer 1: Positive Experience</h3>
-          <p class="customer-name">John Doe</p>
-          <audio controls>
-              <source src="./assets/audiofiles/Ash-2024_11_12-5.wav" type="audio/mp3">
-              Your browser does not support the audio element.
-          </audio>
-      </div>
-      <div class="feedback-item">
-          <h3 class="feedback-title">Customer 2: Great Service</h3>
-          <p class="customer-name">Jane Smith</p>
-          <audio controls>
-              <source src="./assets/audiofiles/Ember-2024_11_12-1.wav" type="audio/mp3">
-              Your browser does not support the audio element.
-          </audio>
-      </div>
-  </div>
-</section>
-
-<!-- //qeto deri nfund duhet mi shtu te secili html -->
-<footer class="f-light" id="contact">
-  <div class="container">
-      <div class="columns">
-          <div class="col-products">
-              <h2><span>Products</span></h2>
-              <ul>
-                  <li><a href="#">Cakes</a></li>
-                  <li><a href="#">Cupcakes</a></li>
-                  <li><a href="#">Donuts</a></li>
-                  <li><a href="#">Desserts</a></li>
-                  <li><a href="#">Pastries</a></li>
-              </ul>
-          </div>
-
-          <div class="col-site">
-              <h2><span>Site</span></h2>
-              <ul>
-                  <li><a href="#">Home</a></li>
-                  <li><a href="#">About</a></li>
-                  <li><a href="#">Menu</a></li>
-                  <li><a href="#">Why us?</a></li>
-                  <li><a href="#">Contact</a></li>
-              </ul>
-          </div>
-          
-          <div class="col-contact">
-              <h2><span>Contact Details</span></h2>
-              <address>
-                  <p>Pastry Lane, Sweetville, ST 12345</p>
-                  <p>(123) 456-7890</p>
-                  <p><a id="email-link" href="#" onclick="document.getElementById('contact-form').style.display = 'block'; return false;">doughliciouscreations1@gmail.com</a></p>
-
-              </address>
-          </div>
-          
-          <div class="col-socials">
-              <h2><span>Socials</span></h2>
-              <ul>
-                  <li><a href="https://www.whatsapp.com/" target="_blank"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a></li>
-                  <li><a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
-                  <li><a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
-              </ul>
-          </div>
-      </div>
-  </div>
-</footer>
-
-<div id="contact-form" class="contact-form" style="display: none;">
-  <button class="close-form" type="button">X</button> <!-- Add this close button -->
-  <h3>Contact Us</h3>
-  <form id="contactForm">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required>
-    
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
-    
-    <label for="message">Message:</label>
-    <textarea id="message" name="message" required></textarea>
-    
-    <button type="submit">Submit</button> <!-- Ensure the button is inside the form and is of type "submit" -->
-</form>
-
-</div>
-
-
-    <!-- Success Popup -->
-    <div id="success-popup" class="popup">
-      <div class="popup-content">
-          <span class="close-btn">&times;</span>
-          <p>Your message has been sent successfully!</p>
-      </div>
-  </div>
-
-<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-      const SERVICE_ID = "service_cma8dgh"; 
-      const TEMPLATE_ID = "template_kothtbc"; 
-      const MIN_WAIT_TIME = 3;  
-      const MAX_WAIT_TIME = 5;  
-
-      emailjs.init("-C-clPiF39yrBIRpw");
-
-      const emailLink = document.getElementById('email-link');
-      const contactForm = document.getElementById('contact-form');
-      const form = document.getElementById('contactForm');
-
-      if (!form) {
-          console.error("Form element not found. Please ensure the form has the correct ID.");
-          return;
-      }
-
-      emailLink.addEventListener('click', (e) => {
-          e.preventDefault();
-          contactForm.style.display = 'block'; 
-      });
-
-      contactForm.querySelector('.close-form').addEventListener('click', () => {
-          contactForm.style.display = 'none';
-      });
-
-      document.addEventListener('click', (e) => {
-          if (!contactForm.contains(e.target) && !emailLink.contains(e.target)) {
-              contactForm.style.display = 'none';
-          }
-      });
-
-      form.addEventListener('submit', function (e) {
-          e.preventDefault();
-
-          emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form)
-              .then(function(response) {
-                  console.log('Email sent successfully', response);
-                  showSuccessPopup();
-                  contactForm.style.display = 'none'; 
-                  form.reset(); 
-              }, function(error) {
-                  console.error('Error sending email', error);
-                  alert('Oops! Something went wrong. Please try again later.');
-              });
-      });
-
-      function showSuccessPopup() {
-          const successPopup = document.getElementById('success-popup');
-          successPopup.classList.add('show');
-          
-          const waitTime = Math.floor(Math.random() * (MAX_WAIT_TIME - MIN_WAIT_TIME + 1)) + MIN_WAIT_TIME;
-          console.log(Popup will hide after ${waitTime} seconds.);
-
-          setTimeout(() => {
-              successPopup.classList.remove('show');
-          }, waitTime * 1000); 
-      }
-  });
-  </script>
-
-<footer2 class="footer2">
-    <div class="container">
-            <div class="copyright">
-                <b>© DoughliciousCreations 2024</b>
-            </div>
-
-            <div class="terms-links">
-                <ul class="terms-list">
-                    <li><a href="#">Terms and Conditions</a></li>
-                    <li><a href="#">Privacy</a></li>
-                    <li><a href="#">Accessibility</a></li>
-                </ul>
-            </div>
-
-            <div class="social-icons">
-                <i class="fa-brands fa-square-facebook icon fb-icon"></i>
-                <i class="fa-brands fa-square-x-twitter icon"></i>
-                <i class="fa-brands fa-square-instagram icon ig-icon"></i>
-            </div>
-    </div>
-    <small id="footer-date"></small>
-</footer2>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-      const footerDate = new Date();
-      const formattedDate = footerDate.toLocaleDateString(); 
-      document.getElementById('footer-date').innerText = Last updated: ${formattedDate};
-  });
-  </script>
-
-<script src="App.js"></script>
-</body>
-</html>
