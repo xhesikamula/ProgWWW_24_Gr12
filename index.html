@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://www.flaticon.com/free-icons/chef">
-    <script type="module" src="./modules/App.js"></script>
+    <script type="module" src="./App.js"></script>
+   
+ 
     <style>
         #auth-links {
     display: flex; 
@@ -17,6 +19,109 @@
 #dashboard-links {
     display: none; 
     gap: 20px;
+}
+/* qeto duhet mi shtu te secili html */
+.contact-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    max-width: 90%;
+    z-index: 1000;
+}
+
+.contact-form h3 {
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
+.contact-form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-form button {
+    padding: 10px 15px;
+    background-color: #CD001A;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background-color: #b80014;
+}
+.popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            width: 300px;
+        }
+
+        .popup.show {
+            display: flex;
+        }
+
+        .footer2 {
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;
+    align-items: center; 
+    position: relative;
+   
+}
+
+#footer-date {
+    position: absolute;
+    top: 5px; 
+    font-size: 12px; 
+    text-align: center; 
+}
+
+.btn {
+    background-image: url('brown-bg.png'), linear-gradient(to right, rgba(35, 18, 7, 0.8), rgba(108, 4, 4, 0.8)); /* Image and gradient */
+    background-size: cover, cover;
+    background-position: center, center;
+    padding: 5px 15px;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-image 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+    background-image: url('button-bg.png'), linear-gradient(to right, rgba(62, 4, 4, 0.8), rgba(53, 30, 13, 0.8)); /* Image and gradient on hover */
+    transform: scale(1.1); 
 }
 
     </style>
@@ -39,6 +144,7 @@
                         <li><a href="https://www.whatsapp.com/" target="_blank">Whatsapp</a></li>
                         <li><a href="https://www.facebook.com/" target="_blank">Facebook</a></li>
                         <li><a href="https://www.instagram.com/" target="_blank">Instagram</a></li>
+                        <li><a href="mailto:doughliciouscreations1@gmail.com" target="_blank">Email</a></li>
                     </ul>
                     </li>
                     <li id="auth-links">
@@ -317,7 +423,6 @@
     };
 </script>
 
-
     <section class="fabulous-section">
         <div class="container">
             <h2 class="section-title">Why Our Bakery Stands Out</h2>
@@ -340,7 +445,8 @@
             </div>
         </div>
     </section>
- <!-- qetu e kom fshi Sundays special, duhet me qit diqka tjeter -->
+
+    <!-- qetu e kom fshi Sundays special, duhet me qit diqka tjeter -->
     <section id="team" class="bg-light py-5">
         <div class="container text-center">
             <h1 class="display-4 mb-3">Our Perfect Team</h1>
@@ -368,206 +474,3 @@
             </div>
         </div>
     </section>
-    
-    <section id="reasons">
-        <div class="container">
-            <hgroup>
-                <h1>Why Choose Us?</h1>
-                <h6><span>Some more details about us!</span></h6>
-            </hgroup>
-            <div class="reasons">
-                <table>
-
-                    <tbody>
-                        <tr>
-                            <td><img src="./assets/img/ingredients.jpeg" class="photo"/></td>
-                            <td><span>Quality Ingredients</span>: We use only the finest, locally-sourced ingredients to ensure every pastry is fresh and flavorful. By supporting local farmers, we guarantee quality and contribute to our community.</td>
-                            <td><img src="./assets/img/organic.png" class="icon"/></td>
-                        </tr>
-                        <tr>
-                            <td><img src="./assets/img/team.jpeg" /></td>
-                            <td><span>Passionate Experts</span>: Our team consists of highly skilled and passionate bakers who pour their heart and soul into every batch. With years of experience and a love for baking, we create pastries that are both delicious and beautifully crafted.</td>
-                            <td><img src="./assets/img/chef.png" class="icon"/></td>
-                        </tr>
-                        <tr>
-                            <td><img src="./assets/img/community.png" /></td>
-                            <td><span>Community focus</span>: As a local business, we are deeply invested in our community. We support local events, charities, and initiatives, making us a beloved part of the neighborhood.</td>
-                            <td><img src="./assets/img/partners.png" class="icon"/></td>
-                        </tr>
-                        <tr>
-                            <td><img src="./assets/img/customer-service.png" /></td>
-                            <td><span>Excellent Customer Service</span>: We pride ourselves on providing outstanding customer service. Our friendly and knowledgeable staff are always ready to assist you, whether you're picking out a treat or planning a large event.</td>
-                            <td><img src="./assets/img/service.png" class="icon"/></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-    
-
-    <section class="services">
-        <div class="title">
-            <p class="tagline">For the love of cake</p>
-            <h2>Our Services</h2>
-            <p class="description">Our pastry shop presents an exquisite culinary experience for any occasion you can imagine!</p>
-        </div>
-        <div class="service-content">
-            <div class="service-items left-column">
-                <div class="service-item">
-                    <h3>Fast Delivery</h3>
-                    <p>The Pastry Store Allotino is true to tradition using only the freshest and finest ingredients.</p>
-                </div>
-                <div class="service-item">
-                    <h3>Online Ordering</h3>
-                    <p>Our pastry shop presents an exquisite culinary experience for any occasion you can imagine!</p>
-                </div>
-                <div class="service-item">
-                    <h3>Event Order</h3>
-                    <p>Our pastry shop presents an exquisite culinary experience for any occasion you can imagine!</p>
-                </div>
-            </div>
-            <div class="service-image">
-                <img src="./assets/img/services.png" alt="Pastry items">
-            </div>
-            <div class="service-items right-column">
-                <div class="service-item">
-                    <h3>Decoration Services</h3>
-                    <p>Our pastry shop presents an exquisite culinary experience for any occasion you can imagine!</p>
-                </div>
-                <div class="service-item">
-                    <h3>Cooking Classes</h3>
-                    <p>Our pastry shop presents an exquisite culinary experience for any occasion you can imagine!</p>
-                </div>
-                <div class="service-item">
-                    <h3>Birthday Parties</h3>
-                    <p>Our pastry shop presents an exquisite culinary experience for any occasion you can imagine!</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    
-    <section id="stats">
-        <div class="container">
-            <hgroup>
-                <h6>See how we’ve made an <span>impact</span>:</h6>
-                <h1>By the Numbers</h1>
-            </hgroup> 
-
-            <div class="numbers">
-                
-                <div class="number">
-                    <strong>15,000+</strong>
-                    <span>Satisfied Customers</span>
-                </div>
-
-                <div class="number">
-                    <strong>2,000+</strong>
-                    <span>Custom Orders Completed</span>
-                </div>
-                
-            <div class="number">
-                <strong>20</strong>
-                <span>Local Farmers Supported</span>
-            </div>
-
-            <div class="number">
-                <strong>25</strong>
-                <span>Dedicated Team Members</span>
-            </div>
-            
-        </div>
-    </section>
-
-    <footer class="f-light" id="contact">
-        <div class="container">
-            <div class="columns">
-            <div class="col-products">
-            <h2><span>Products</span></h2>
-            <ul>
-                <li><a href="#">Cakes</a></li>
-                <li><a href="#">Cupcakes</a></li>
-                <li><a href="#">Donuts</a></li>
-                <li><a href="#">Desserts</a></li>
-                <li><a href="#">Pastries</a></li>
-            </ul>
-            </div>
-
-            <div class="col-site">
-            <h2><span>Site</span></h2>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Menu</a></li>
-                <li><a href="#">Why us?</a></li>
-                <li><a href="#">Contact</a>
-            </ul>
-            </div>
-            
-            <div class="col-contact">
-                <h2><span>Contact Details</span></h2>  
-                <address>
-                    <p>Pastry Lane, Sweetville, ST 12345</p>
-                    <p>(123) 456-7890</p>
-                    <p><a href="mailto:contact@doughliciouscreations.com">contact@doughliciouscreations.com</a></p>
-                </address>
-            </div>
-            
-            <div class="col-socials">
-            <h2><span>Socials</span></h2>
-            <ul>
-            <li><a href="https://www.whatsapp.com/" target="_blank"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a></li>
-            <li><a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
-            <li><a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
-            </ul>
-            </div>
-            </div>
-        </div>
-    </footer>
-
-    <footer2 class="footer2">
-        <div class="container">
-                <div class="copyright">
-                    <b>© DoughliciousCreations 2024</b>
-                </div>
-    
-                <div class="terms-links">
-                    <ul class="terms-list">
-                        <li><a href="#">Terms and Conditions</a></li>
-                        <li><a href="#">Privacy</a></li>
-                        <li><a href="#">Accessibility</a></li>
-                    </ul>
-                </div>
-
-                <div class="social-icons">
-                    <i class="fa-brands fa-square-facebook icon fb-icon"></i>
-                    <i class="fa-brands fa-square-x-twitter icon"></i>
-                    <i class="fa-brands fa-square-instagram icon ig-icon"></i>
-                </div>
-        </div>
-    </footer2>
-    
-    <script src="App.js"></script>
-
-    <script>
-          
-    const slider = document.querySelector('#slider');
-const sliderImage = document.querySelector('#slider-image');
-let activeSlide = 0;
-const slides = [
-    './assets/img/slider2.webp',
-    './assets/img/slider3.webp',
-    './assets/img/slider4.webp'
-];
-
-setInterval(function () {
-    sliderImage.src = slides[activeSlide];
-    activeSlide++;
-    if (activeSlide > slides.length - 1) {
-        activeSlide = 0;
-    }
-}, 2000);
-    </script>
-</body>
-</html>
