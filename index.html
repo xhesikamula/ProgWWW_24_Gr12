@@ -474,3 +474,440 @@
             </div>
         </div>
     </section>
+ <section id="reasons">
+        <div class="container">
+            <hgroup>
+                <h1>Why Choose Us?</h1>
+                <h6><span>Some more details about us!</span></h6>
+            </hgroup>
+            <div class="reasons">
+                <table>
+
+                    <tbody>
+                        <tr>
+                            <td><img src="./assets/img/ingredients.jpeg" class="photo"/></td>
+                            <td><span>Quality Ingredients</span>: We use only the finest, locally-sourced ingredients to ensure every pastry is fresh and flavorful. By supporting local farmers, we guarantee quality and contribute to our community.</td>
+                            <td><img src="./assets/img/organic.png" class="icon"/></td>
+                        </tr>
+                        <tr>
+                            <td><img src="./assets/img/team.jpeg" /></td>
+                            <td><span>Passionate Experts</span>: Our team consists of highly skilled and passionate bakers who pour their heart and soul into every batch. With years of experience and a love for baking, we create pastries that are both delicious and beautifully crafted.</td>
+                            <td><img src="./assets/img/chef.png" class="icon"/></td>
+                        </tr>
+                        <tr>
+                            <td><img src="./assets/img/community.png" /></td>
+                            <td><span>Community focus</span>: As a local business, we are deeply invested in our community. We support local events, charities, and initiatives, making us a beloved part of the neighborhood.</td>
+                            <td><img src="./assets/img/partners.png" class="icon"/></td>
+                        </tr>
+                        <tr>
+                            <td><img src="./assets/img/customer-service.png" /></td>
+                            <td><span>Excellent Customer Service</span>: We pride ourselves on providing outstanding customer service. Our friendly and knowledgeable staff are always ready to assist you, whether you're picking out a treat or planning a large event.</td>
+                            <td><img src="./assets/img/service.png" class="icon"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    
+    <section class="services">
+        <div class="title">
+            <p class="tagline">For the love of cake</p>
+            <h2>Our Services</h2>
+            <p class="description">Our pastry shop presents an exquisite culinary experience for any occasion you can imagine!</p>
+        </div>
+        <div class="service-content">
+            <div class="service-items left-column">
+                <div class="service-item">
+                    <h3>Fast Delivery</h3>
+                    <p>The Pastry Store Allotino is true to tradition using only the freshest and finest ingredients.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Online Ordering</h3>
+                    <p>Our pastry shop presents an exquisite culinary experience for any occasion you can imagine!</p>
+                </div>
+                <div class="service-item">
+                    <h3>Event Order</h3>
+                    <p>Our pastry shop presents an exquisite culinary experience for any occasion you can imagine!</p>
+                </div>
+            </div>
+            <div class="service-image">
+                <img src="./assets/img/services.png" alt="Pastry items">
+            </div>
+            <div class="service-items right-column">
+                <div class="service-item">
+                    <h3>Decoration Services</h3>
+                    <p>Our pastry shop presents an exquisite culinary experience for any occasion you can imagine!</p>
+                </div>
+                <div class="service-item">
+                    <h3>Cooking Classes</h3>
+                    <p>Our pastry shop presents an exquisite culinary experience for any occasion you can imagine!</p>
+                </div>
+                <div class="service-item">
+                    <h3>Birthday Parties</h3>
+                    <p>Our pastry shop presents an exquisite culinary experience for any occasion you can imagine!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <section id="stats">
+        <div class="container">
+            <hgroup>
+                <h6>See how we’ve made an <span>impact</span>:</h6>
+                <h1>By the Numbers</h1>
+            </hgroup> 
+
+            <div class="numbers">
+                
+                <div class="number">
+                    <strong>15,000+</strong>
+                    <span>Satisfied Customers</span>
+                </div>
+
+                <div class="number">
+                    <strong>2,000+</strong>
+                    <span>Custom Orders Completed</span>
+                </div>
+                
+            <div class="number">
+                <strong>20</strong>
+                <span>Local Farmers Supported</span>
+            </div>
+
+            <div class="number">
+                <strong>25</strong>
+                <span>Dedicated Team Members</span>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- qekjo spo bon  -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const footerLinks = document.querySelectorAll('.col-products a');
+    
+            footerLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault(); 
+                    const type = e.target.innerText.trim(); 
+    
+                    localStorage.setItem('selectedDessertType', type);
+    
+                   
+                    window.location.href = 'menu.html'; 
+                });
+            });
+        });
+    </script>
+    
+    
+<!-- //qeto deri nfund duhet mi shtu te secili html -->
+<footer class="f-light" id="contact">
+    <div class="container">
+        <div class="columns">
+            <div class="col-products">
+                <h2><span>Products</span></h2>
+                <ul>
+                    <li><a href="menu.html" onclick="localStorage.setItem('selectedDessertType', 'Cakes');">Cakes</a></li>
+                    <li><a href="menu.html" onclick="localStorage.setItem('selectedDessertType', 'Cupcakes');">Cupcakes</a></li>
+                    <li><a href="menu.html" onclick="localStorage.setItem('selectedDessertType', 'Donuts');">Donuts</a></li>
+                    <li><a href="menu.html" onclick="localStorage.setItem('selectedDessertType', 'Desserts');">Desserts</a></li>
+                    <li><a href="menu.html" onclick="localStorage.setItem('selectedDessertType', 'Pastries');">Pastries</a></li>
+                    </ul>                
+            </div>
+  
+            <div class="col-site">
+                <h2><span>Site</span></h2>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="#reasons">Why us?</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="col-contact">
+                <h2><span>Contact Details</span></h2>
+                <address>
+                    <p>Pastry Lane, Sweetville, ST 12345</p>
+                    <p>(123) 456-7890</p>
+                    <p><a id="email-link" href="#" onclick="document.getElementById('contact-form').style.display = 'block'; return false;">doughliciouscreations1@gmail.com</a></p>
+  
+                </address>
+            </div>
+            
+            <div class="col-socials">
+                <h2><span>Socials</span></h2>
+                <ul>
+                    <li><a href="https://www.whatsapp.com/" target="_blank"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a></li>
+                    <li><a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+                    <li><a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+  </footer>
+  
+  <div id="contact-form" class="contact-form" style="display: none;">
+    <button class="close-form" type="button">X</button> 
+    <h3>Contact Us</h3>
+    <form id="contactForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required></textarea>
+      
+      <button type="submit">Submit</button> 
+  </form>
+  
+  </div>
+  
+  
+      <!-- Success Popup -->
+      <div id="success-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn">&times;</span>
+            <p>Your message has been sent successfully!</p>
+        </div>
+    </div>
+  
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const SERVICE_ID = "service_cma8dgh"; 
+        const TEMPLATE_ID = "template_kothtbc"; 
+        const MIN_WAIT_TIME = 3;  
+        const MAX_WAIT_TIME = 5;  
+  
+        emailjs.init("-C-clPiF39yrBIRpw");
+  
+        const emailLink = document.getElementById('email-link');
+        const contactForm = document.getElementById('contact-form');
+        const form = document.getElementById('contactForm');
+  
+        if (!form) {
+            console.error("Form element not found. Please ensure the form has the correct ID.");
+            return;
+        }
+  
+        emailLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            contactForm.style.display = 'block'; 
+        });
+  
+        contactForm.querySelector('.close-form').addEventListener('click', () => {
+            contactForm.style.display = 'none';
+        });
+  
+        document.addEventListener('click', (e) => {
+            if (!contactForm.contains(e.target) && !emailLink.contains(e.target)) {
+                contactForm.style.display = 'none';
+            }
+        });
+  
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+  
+            emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form)
+                .then(function(response) {
+                    console.log('Email sent successfully', response);
+                    showSuccessPopup();
+                    contactForm.style.display = 'none'; 
+                    form.reset(); 
+                }, function(error) {
+                    console.error('Error sending email', error);
+                    alert('Oops! Something went wrong. Please try again later.');
+                });
+        });
+  
+        function showSuccessPopup() {
+            const successPopup = document.getElementById('success-popup');
+            successPopup.classList.add('show');
+            
+            const waitTime = Math.floor(Math.random() * (MAX_WAIT_TIME - MIN_WAIT_TIME + 1)) + MIN_WAIT_TIME;
+            console.log(`Popup will hide after ${waitTime} seconds.`);
+  
+            setTimeout(() => {
+                successPopup.classList.remove('show');
+            }, waitTime * 1000); 
+        }
+    });
+    </script>
+  
+  <footer2 class="footer2">
+      <div class="container">
+              <div class="copyright">
+                  <b>© DoughliciousCreations 2024</b>
+              </div>
+  
+              <div class="terms-links">
+                  <ul class="terms-list">
+                      <li><a href="#">Terms and Conditions</a></li>
+                      <li><a href="#">Privacy</a></li>
+                      <li><a href="#">Accessibility</a></li>
+                  </ul>
+              </div>
+  
+              <div class="social-icons">
+                  <i class="fa-brands fa-square-facebook icon fb-icon"></i>
+                  <i class="fa-brands fa-square-x-twitter icon"></i>
+                  <i class="fa-brands fa-square-instagram icon ig-icon"></i>
+              </div>
+      </div>
+      <small id="footer-date"></small>
+  </footer2>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const footerDate = new Date();
+        const formattedDate = footerDate.toLocaleDateString(); 
+        document.getElementById('footer-date').innerText = `Last updated: ${formattedDate}`;
+    });
+    </script>
+    
+    <script src="App.js"></script>
+
+    <script>
+    const slider = document.querySelector('#slider');
+const sliderImage = document.querySelector('#slider-image');
+let activeSlide = 0;
+const slides = [
+    './assets/img/slider2.webp',
+    './assets/img/slider3.webp',
+    './assets/img/slider4.webp'
+];
+
+setInterval(function () {
+    sliderImage.src = slides[activeSlide];
+    activeSlide++;
+    if (activeSlide > slides.length - 1) {
+        activeSlide = 0;
+    }
+}, 2000);
+    </script>
+
+<script src="filterDesserts.js"></script>
+  <!-- Add this script at the end of the body -->
+
+
+  <!-- //geolocation -->
+  <!-- <script>
+   // Check if Geolocation is supported
+if ("geolocation" in navigator) {
+    // Get the user's current position
+    navigator.geolocation.getCurrentPosition(function(position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+
+        console.log('Latitude: ' + latitude);
+        console.log('Longitude: ' + longitude);
+
+        // Now you can send this data to your API or use it for location-based features
+        // For example, sending this data to your API
+        sendLocationToAPI(latitude, longitude);
+
+    }, function(error) {
+        console.error('Error getting location:', error.message);
+        alert('We couldn\'t get your location. Please enable location services.');
+    });
+} else {
+    console.log('Geolocation is not supported by this browser.');
+    alert('Geolocation is not supported by this browser.');
+}
+
+// Example function to send location data to your API
+function sendLocationToAPI(latitude, longitude) {
+    const apiUrl = 'https://671fc5b3e7a5792f052f7efc.mockapi.io/Pastry'; // Replace with your actual API URL
+    const locationData = {
+        latitude: latitude,
+        longitude: longitude
+    };
+
+    // Send the data to the server using Fetch API
+    fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(locationData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Location data saved successfully:', data);
+    })
+    .catch(error => {
+        console.error('Error sending location to API:', error);
+    });
+}
+
+
+</script> -->
+
+
+<script>
+    // Check if the browser supports Web Workers and Geolocation
+    if (navigator.geolocation) {
+        // Create a new Worker using the inline JavaScript as a Blob (since we're not using a separate worker.js file)
+        const workerBlob = new Blob([`
+            self.onmessage = function(event) {
+                const data = event.data;
+                if (data.latitude && data.longitude) {
+                    // Simulate some processing with the location data
+                    self.postMessage({
+                        latitude: data.latitude,
+                        longitude: data.longitude,
+                        message: "Processed location data"
+                    });
+                } else if (data.error) {
+                    // If there's an error, send the error message back to the main thread
+                    self.postMessage({ error: data.error });
+                }
+            };
+        `], { type: 'application/javascript' });
+
+        const worker = new Worker(URL.createObjectURL(workerBlob));
+
+        // When the worker sends a message (success or error), handle it
+        worker.onmessage = function(e) {
+            const result = e.data;
+            if (result.latitude && result.longitude) {
+                // Log processed coordinates from the worker
+                console.log("Latitude: " + result.latitude + ", Longitude: " + result.longitude);
+                console.log(result.message);  // Message from the worker
+            } else if (result.error) {
+                // If there is an error, log it
+                console.error("Error: " + result.error);
+            }
+        };
+
+        // Request geolocation when the page loads
+        window.onload = function() {
+            navigator.geolocation.getCurrentPosition(
+                function(position) {
+                    // Send geolocation data to the worker for processing
+                    worker.postMessage({
+                        latitude: position.coords.latitude,
+                        longitude: position.coords.longitude
+                    });
+                },
+                function(error) {
+                    // If there is an error (e.g., permission denied), send error message to worker
+                    worker.postMessage({ error: error.message });
+                }
+            );
+        };
+    } else {
+        console.error("Geolocation or Web Workers are not supported by this browser.");
+    }
+</script>
+</body>
+</html>
