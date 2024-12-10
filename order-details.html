@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://www.flaticon.com/free-icons/chef">
     <link rel="stylesheet" href="./assets/css/variablat.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="filterDesserts.js"></script>
+
     <style>
     #auth-links {
     display: flex; 
@@ -56,23 +58,48 @@
     margin-bottom: 10px;
 }
 
-
-.delivery-options {
+.order-container {
     display: flex;
-    gap: 20px;  
+    justify-content: flex-end; /* Aligns the form to the right */
+    padding: 20px;
 }
 
+label {
+            display: block;
+            margin-bottom: 8px;
+        }
 
-.extras-options {
-    display: flex;
-    flex-wrap: wrap; 
-    gap: 20px; 
-}
+        /* Make checkboxes and radio buttons inline with text */
+        input[type="checkbox"], input[type="radio"] {
+            display: inline-block;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
 
+        /* Adjust form elements for better spacing */
+        form > label, form > input {
+            margin-bottom: 2px;
+        }
 
-.delivery-options div, .extras-options div {
-    margin-right: 10px;
-}
+        /* Horizontally align the radio buttons and checkboxes */
+        .delivery-options, .extras-options {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        /* Adjust the Order Summary section */
+        #orderSummary {
+            display: block;
+            margin-top: 10px;
+            font-size: 1.1em;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #333;
+        }
 
 /* qeto duhet mi shtu te secili html */
 .contact-form {
@@ -202,66 +229,100 @@
         <div id="order-form">
             <h2>Place your order</h2>
             <form id="orderForm">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
+             
+
+                <!-- Name and Address Fields -->
+                <label for="name">First Name:</label>
+                <input type="text" id="name" name="name" maxlength="20" autocomplete="name" required autofocus>
                 
-                <label for="surname">Surname:</label>
+                <label for="surname">Last Name:</label>
                 <input type="text" id="surname" name="surname" required>
-                
-                <label for="phone">Phone Number:</label>
-                <input type="tel" id="phone" name="phone" required>
-                
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
                 
                 <label for="address">Address:</label>
                 <input type="text" id="address" name="address" required>
-                
+
+                 <!-- Add phone field -->
+    <label for="phone">Phone:</label>
+    <input type="text" id="phone" name="phone" required>
+    
+    <!-- Add email field -->
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" autocomplete="email" required>
+
+                <!-- Checkboxes for Extras (Horizontal Layout) -->
+                <label>Extras:</label>
+                <div class="extras-options">
+                    <label><input type="checkbox" name="extras" value="Sprinkles"> Sprinkles</label>
+                    <label><input type="checkbox" name="extras" value="Whipped Cream"> Whipped Cream</label>
+                    <label><input type="checkbox" name="extras" value="Chocolate Syrup"> Chocolate Syrup</label>
+                </div>
+
+                <!-- Radio Buttons for Delivery Method (Horizontal Layout) -->
+                <label>Delivery Method:</label>
+                <div class="delivery-options">
+                    <label><input type="radio" id="deliveryStandard" name="delivery-method" value="Standard" checked> Standard</label>
+                    <label><input type="radio" id="deliveryExpress" name="delivery-method" value="Express"> Express</label>
+                </div>
+
+                <!-- Quantity Selection -->
                 <label for="quantity">Quantity:</label>
                 <input type="number" id="quantity" name="quantity" min="1" required>
-            
-<label for="delivery-method">Delivery Method:</label>
-<div class="delivery-options">
-    <div>
-        <label for="home-delivery">
-            <input type="radio" id="home-delivery" name="delivery-method" value="home-delivery" required> Home Delivery
-        </label>
-    </div>
-    <div>
-        <label for="pickup">
-            <input type="radio" id="pickup" name="delivery-method" value="pickup" required> In-store Pickup
-        </label>
-    </div>
-</div>
 
-<label for="extras">Extras:</label>
-<div class="extras-options">
-    <div>
-        <label for="extra-cream">
-            <input type="checkbox" id="extra-cream" name="extras" value="extra-cream"> Extra Cream
-        </label>
-    </div>
-    <div>
-        <label for="chocolate-frosting">
-            <input type="checkbox" id="chocolate-frosting" name="extras" value="chocolate-frosting"> Chocolate Frosting
-        </label>
-    </div>
-    <div>
-        <label for="sprinkles">
-            <input type="checkbox" id="sprinkles" name="extras" value="sprinkles"> Sprinkles
-        </label>
-    </div>
-</div>
-            
-                <button type="submit" id="order-button">Place Order</button>
+                   <!-- Datalist for Payment Method Selection -->
+                   <label for="paymentMethod">Select Payment Method:</label>
+                   <input list="paymentMethods" id="paymentMethod" name="paymentMethod" required>
+                   <datalist id="paymentMethods">
+                       <option value="Credit Card"></option>
+                       <option value="PayPal"></option>
+                       <option value="Cash on Delivery"></option>
+                   </datalist>
+
+                <!-- Output Field for Order Summary -->
+                <label>Order Summary:</label>
+                <output id="orderSummary"></output>
+
+                <!-- Submit Button -->
+                <button type="submit">Place Order</button>
             </form>
-            
         </div>
-        <div id="order-confirmation" class="order-confirmation">
-        </div>
+        <div id="order-confirmation" class="order-confirmation"></div>
     </div>
-    
-    
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.getElementById("orderForm");
+            const orderSummary = document.getElementById("orderSummary");
+
+            form.addEventListener("input", function() {
+                updateOrderSummary();
+            });
+
+            function updateOrderSummary() {
+                let summary = "";
+                
+                // Getting form data
+                const name = document.getElementById("name").value;
+                const surname = document.getElementById("surname").value;
+                const address = document.getElementById("address").value;
+                const quantity = document.getElementById("quantity").value;
+                const paymentMethod = document.getElementById("paymentMethod").value;
+                
+                // Getting checked extras
+                const extras = Array.from(document.querySelectorAll("input[name='extras']:checked"))
+                    .map(extra => extra.value)
+                    .join(", ");
+
+                // Getting selected delivery method
+                const deliveryMethod = document.querySelector("input[name='delivery-method']:checked")?.value;
+
+                // Building the summary text
+                summary = Name: ${name} ${surname}\nAddress: ${address}\nQuantity: ${quantity}\nDelivery Method: ${deliveryMethod}\nExtras: ${extras}\nPayment Method: ${paymentMethod};
+                
+                // Display summary
+                orderSummary.textContent = summary;
+            }
+        });
+    </script>
 
    
 <!-- //qeto deri nfund duhet mi shtu te secili html -->
@@ -271,12 +332,12 @@
             <div class="col-products">
                 <h2><span>Products</span></h2>
                 <ul>
-                    <li><a href="#">Cakes</a></li>
-                    <li><a href="#">Cupcakes</a></li>
-                    <li><a href="#">Donuts</a></li>
-                    <li><a href="#">Desserts</a></li>
-                    <li><a href="#">Pastries</a></li>
-                </ul>
+                    <li><a href="#" onclick="filterDesserts('Cakes'); return false;">Cakes</a></li>
+                    <li><a href="#" onclick="filterDesserts('Cupcakes'); return false;">Cupcakes</a></li>
+                    <li><a href="#" onclick="filterDesserts('Donuts'); return false;">Donuts</a></li>
+                    <li><a href="#" onclick="filterDesserts('Desserts'); return false;">Desserts</a></li>
+                    <li><a href="#" onclick="filterDesserts('Pastries'); return false;">Pastries</a></li>
+                </ul>                
             </div>
   
             <div class="col-site">
@@ -394,7 +455,7 @@
             successPopup.classList.add('show');
             
             const waitTime = Math.floor(Math.random() * (MAX_WAIT_TIME - MIN_WAIT_TIME + 1)) + MIN_WAIT_TIME;
-            console.log(`Popup will hide after ${waitTime} seconds.`);
+            console.log(Popup will hide after ${waitTime} seconds.);
   
             setTimeout(() => {
                 successPopup.classList.remove('show');
@@ -430,7 +491,7 @@
     document.addEventListener('DOMContentLoaded', function () {
         const footerDate = new Date();
         const formattedDate = footerDate.toLocaleDateString(); 
-        document.getElementById('footer-date').innerText = `Last updated: ${formattedDate}`;
+        document.getElementById('footer-date').innerText = Last updated: ${formattedDate};
     });
     </script>
 
@@ -438,4 +499,3 @@
     <script src="App.js"></script>
 </body>
 </html>
-
