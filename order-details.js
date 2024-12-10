@@ -99,7 +99,7 @@ document.getElementById('orderForm').addEventListener('submit', function (e) {
 
         // Debugging: Log phone and email values
         console.log('Phone:', phone); // Logs the phone value
-        console.log('Email:', email); // Logs the email value
+        console.log('Email:', email); 
 
         if (!name || !surname || !address || !quantity) {
             throw new Error('Please fill out all required fields.');
