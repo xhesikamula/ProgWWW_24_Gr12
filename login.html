@@ -162,7 +162,7 @@
 
 .contact-form button {
     padding: 10px 15px;
-    background-color: #CD001A;
+    background-color: var(--brown);
     color: white;
     border: none;
     border-radius: 5px;
@@ -170,7 +170,7 @@
 }
 
 .contact-form button:hover {
-    background-color: #b80014;
+    background-color: var(--h-color);
 }
 .popup {
             display: none;
@@ -259,7 +259,6 @@
     </div>
   </section>
 
-  <!-- Success Popup -->
   <div id="success-popup" class="popup1">
     <p>Login successful! Welcome back!</p>
   </div>
@@ -272,21 +271,21 @@
           <div class="col-products">
               <h2><span>Products</span></h2>
               <ul>
-                <li><a href="#" onclick="filterDesserts('Cakes'); return false;">Cakes</a></li>
-                <li><a href="#" onclick="filterDesserts('Cupcakes'); return false;">Cupcakes</a></li>
-                <li><a href="#" onclick="filterDesserts('Donuts'); return false;">Donuts</a></li>
-                <li><a href="#" onclick="filterDesserts('Desserts'); return false;">Desserts</a></li>
-                <li><a href="#" onclick="filterDesserts('Pastries'); return false;">Pastries</a></li>
+                <li><a href="menu.html" onclick="filterDesserts('Cakes'); return false;">Cakes</a></li>
+                <li><a href="menu.html" onclick="filterDesserts('Cupcakes'); return false;">Cupcakes</a></li>
+                <li><a href="menu.html" onclick="filterDesserts('Donuts'); return false;">Donuts</a></li>
+                <li><a href="menu.html" onclick="filterDesserts('Desserts'); return false;">Desserts</a></li>
+                <li><a href="menu.html" onclick="filterDesserts('Pastries'); return false;">Pastries</a></li>
             </ul>            
           </div>
 
           <div class="col-site">
               <h2><span>Site</span></h2>
               <ul>
-                  <li><a href="#">Home</a></li>
-                  <li><a href="#">About</a></li>
-                  <li><a href="#">Menu</a></li>
-                  <li><a href="#">Why us?</a></li>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="about.html">About</a></li>
+                  <li><a href="menu.html">Menu</a></li>
+                  <li><a href="index.html#reasons">Why us?</a></li>
                   <li><a href="#">Contact</a></li>
               </ul>
           </div>
@@ -314,7 +313,7 @@
 </footer>
 
 <div id="contact-form" class="contact-form" style="display: none;">
-  <button class="close-form" type="button">X</button> <!-- Add this close button -->
+  <button class="close-form" type="button">X</button> 
   <h3>Contact Us</h3>
   <form id="contactForm">
     <label for="name">Name:</label>
@@ -326,13 +325,10 @@
     <label for="message">Message:</label>
     <textarea id="message" name="message" required></textarea>
     
-    <button type="submit">Submit</button> <!-- Ensure the button is inside the form and is of type "submit" -->
+    <button type="submit">Submit</button> 
 </form>
-
 </div>
 
-
-    <!-- Success Popup -->
     <div id="success-popup" class="popup">
       <div class="popup-content">
           <span class="close-btn">&times;</span>
@@ -395,7 +391,7 @@
           successPopup.classList.add('show');
           
           const waitTime = Math.floor(Math.random() * (MAX_WAIT_TIME - MIN_WAIT_TIME + 1)) + MIN_WAIT_TIME;
-          console.log(`Popup will hide after ${waitTime} seconds.`);
+          console.log(Popup will hide after ${waitTime} seconds.);
 
           setTimeout(() => {
               successPopup.classList.remove('show');
@@ -419,10 +415,10 @@
             </div>
 
             <div class="social-icons">
-                <i class="fa-brands fa-square-facebook icon fb-icon"></i>
-                <i class="fa-brands fa-square-x-twitter icon"></i>
-                <i class="fa-brands fa-square-instagram icon ig-icon"></i>
-            </div>
+              <a href="https://www.facebook.com/"><i class="fa-brands fa-square-facebook icon fb-icon" style="color: black;"></i></a>
+              <a href="https://x.com/?lang=en"><i class="fa-brands fa-square-x-twitter icon" style="color: black;"></i></a>
+              <a href="https://www.instagram.com/"><i class="fa-brands fa-square-instagram icon ig-icon" style="color: black;"></i></a>
+          </div>
     </div>
     <small id="footer-date"></small>
 </footer2>
@@ -431,7 +427,7 @@
   document.addEventListener('DOMContentLoaded', function () {
       const footerDate = new Date();
       const formattedDate = footerDate.toLocaleDateString(); 
-      document.getElementById('footer-date').innerText = `Last updated: ${formattedDate}`;
+      document.getElementById('footer-date').innerText = Last updated: ${formattedDate};
   });
   </script>
 
