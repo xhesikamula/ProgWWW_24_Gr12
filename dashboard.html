@@ -6,6 +6,7 @@
     <title>Doughlicious Creations - Dashboard</title>
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="filterDesserts.js"></script>
 
     <style>
     #auth-links {
@@ -22,8 +23,10 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 2rem;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Nunito';
         }
+
+        
         .orders-table th,
         .orders-table td {
             padding: 12px 15px;
@@ -31,8 +34,8 @@
             border: 1px solid #f2f2f2;
         }
         .orders-table th {
-            background-color: #fce4b4;
-            color: #8a5a44;
+            background-color: #eaddba;
+            color: var(--h-color);
             font-size: 1.1rem;
         }
         .orders-table td {
@@ -47,28 +50,9 @@
             cursor: pointer;
         }
 
-        .status {
-            padding: 5px 10px;
-            border-radius: 12px;
-            font-weight: bold;
-            display: inline-block;
-        }
-        .status.pending {
-            background-color: #ffcc00;
-            color: white;
-        }
-        .status.delivered {
-            background-color: #4caf50;
-            color: white;
-        }
-        .status.cancelled {
-            background-color: #f44336;
-            color: white;
-        }
-
         .section-title {
             font-size: 2rem;
-            color: #8a5a44;
+            color: var(--h-color);
             text-align: center;
             font-weight: bold;
             margin-bottom: 1.5rem;
@@ -135,7 +119,7 @@
 
 #feedbackForm h3 {
     font-size: 1.5rem;
-    color: #8a5a44;
+    color: var(--h-color);
     margin-bottom: 15px;
 }
 
@@ -166,6 +150,19 @@
 #feedbackForm button:hover {
     background-color: #6d3f2d;
 }
+
+
+    #feedbackForm input:focus, #feedbackForm textarea:focus {
+        outline: 2px solid #8a5a44; 
+        outline-offset: 4px; 
+    }
+
+    #feedbackForm input:focus,
+    #feedbackForm textarea:focus {
+        box-shadow: 0 0 8px rgba(138, 90, 68, 0.5); 
+    }
+
+
 
 /* qeto duhet mi shtu te secili html */
 .contact-form {
@@ -202,7 +199,7 @@
 
 .contact-form button {
     padding: 10px 15px;
-    background-color: #CD001A;
+    background-color: var(--brown);
     color: white;
     border: none;
     border-radius: 5px;
@@ -210,7 +207,7 @@
 }
 
 .contact-form button:hover {
-    background-color: #b80014;
+    background-color: var(--h-color);
 }
 .popup {
             display: none;
@@ -252,9 +249,7 @@
     font-size: 12px; 
     text-align: center; 
 }
-
     </style>
-    
 </head>
 <body>
     <header class="h-light">
@@ -340,7 +335,6 @@
         </div>
     </section>
 
-    
 <!-- //qeto deri nfund duhet mi shtu te secili html -->
 <footer class="f-light" id="contact">
     <div class="container">
@@ -348,21 +342,22 @@
             <div class="col-products">
                 <h2><span>Products</span></h2>
                 <ul>
-                    <li><a href="#">Cakes</a></li>
-                    <li><a href="#">Cupcakes</a></li>
-                    <li><a href="#">Donuts</a></li>
-                    <li><a href="#">Desserts</a></li>
-                    <li><a href="#">Pastries</a></li>
+                    <li><a href="menu.html" onclick="filterDesserts('Cakes'); return false;">Cakes</a></li>
+                    <li><a href="menu.html" onclick="filterDesserts('Cupcakes'); return false;">Cupcakes</a></li>
+                    <li><a href="menu.html" onclick="filterDesserts('Donuts'); return false;">Donuts</a></li>
+                    <li><a href="menu.html" onclick="filterDesserts('Desserts'); return false;">Desserts</a></li>
+                    <li><a href="menu.html" onclick="filterDesserts('Pastries'); return false;">Pastries</a></li>
                 </ul>
+                
             </div>
   
             <div class="col-site">
                 <h2><span>Site</span></h2>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Menu</a></li>
-                    <li><a href="#">Why us?</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="index.html#reasons">Why us?</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
             </div>
@@ -390,7 +385,7 @@
   </footer>
   
   <div id="contact-form" class="contact-form" style="display: none;">
-    <button class="close-form" type="button">X</button> <!-- Add this close button -->
+    <button class="close-form" type="button">X</button> 
     <h3>Contact Us</h3>
     <form id="contactForm">
       <label for="name">Name:</label>
@@ -471,13 +466,15 @@
             successPopup.classList.add('show');
             
             const waitTime = Math.floor(Math.random() * (MAX_WAIT_TIME - MIN_WAIT_TIME + 1)) + MIN_WAIT_TIME;
-            console.log(`Popup will hide after ${waitTime} seconds.`);
+            console.log(Popup will hide after ${waitTime} seconds.);
   
             setTimeout(() => {
                 successPopup.classList.remove('show');
             }, waitTime * 1000); 
         }
     });
+
+    
     </script>
   
   <footer2 class="footer2">
@@ -495,26 +492,40 @@
               </div>
   
               <div class="social-icons">
-                  <i class="fa-brands fa-square-facebook icon fb-icon"></i>
-                  <i class="fa-brands fa-square-x-twitter icon"></i>
-                  <i class="fa-brands fa-square-instagram icon ig-icon"></i>
-              </div>
+                <a href="https://www.facebook.com/"><i class="fa-brands fa-square-facebook icon fb-icon" style="color: black;"></i></a>
+                <a href="https://x.com/?lang=en"><i class="fa-brands fa-square-x-twitter icon" style="color: black;"></i></a>
+                <a href="https://www.instagram.com/"><i class="fa-brands fa-square-instagram icon ig-icon" style="color: black;"></i></a>
+            </div>
       </div>
       <small id="footer-date"></small>
   </footer2>
   
+
+  <!-- qetu thjesht e kom shkru me objekt konstruktor, me e provu , e dmth e ka tnjejtin funksion si te html files tjera -->
+   <!-- eshte javascript per pjesen e footer2 -->
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
+function FooterDate(elementId) {
+    this.elementId = elementId;
+
+    this.updateDate = function() {
         const footerDate = new Date();
         const formattedDate = footerDate.toLocaleDateString(); 
-        document.getElementById('footer-date').innerText = `Last updated: ${formattedDate}`;
-    });
+        document.getElementById(this.elementId).innerText = Last updated: ${formattedDate};
+    };
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    const footer = new FooterDate('footer-date');
+    footer.updateDate();
+});
+
     </script>
 
 <script src="App.js"></script>
 
 <script>
     window.onload = () => {
+        
         const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
         if (!isLoggedIn) {
             window.location.href = 'login.html';
@@ -522,98 +533,121 @@
         }
 
         const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        const loggedInEmail = currentUser?.email; 
+        const loggedInEmail = currentUser?.email;
 
         if (!loggedInEmail) {
             alert('User not found or email missing.');
             return;
         }
 
-        const orders = JSON.parse(localStorage.getItem('orders')) || [];
-        const ordersContainer = document.querySelector('#orders-table tbody');
-
-        if (orders.length === 0) {
-            ordersContainer.innerHTML = '<tr><td colspan="8">No orders found. Start ordering!</td></tr>';
-        } else {
-            orders.forEach((order, index) => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${index + 1}</td>
-                    <td>${order.name}</td>
-                    <td>${order.surname}</td>
-                    <td>${order.dessertName}</td>
-                    <td>${order.quantity}</td>
-                    <td>${parseFloat(order.price).toFixed(2)}</td>
-                    <td>${order.date}</td>
-                    <td>${(parseFloat(order.price) * parseInt(order.quantity)).toFixed(2)}</td>
-                `;
-                ordersContainer.appendChild(row);
-            });
-        }
-
-        const feedbackModal = document.getElementById('feedbackModal');
-        const closeModal = document.getElementById('closeModal');
-        const btnYes = document.getElementById('btnYes');
-        const btnNo = document.getElementById('btnNo');
-        const feedbackForm = document.getElementById('feedbackForm');
-        const feedbackQuestion = document.getElementById('feedbackQuestion');
-        const modalTitle = document.getElementById('modalTitle');
-
-        setTimeout(() => {
-            feedbackModal.style.display = 'block';
-        }, 1000);
-
-        closeModal.onclick = () => {
-            feedbackModal.style.display = 'none';
-        };
-
-        btnYes.onclick = () => {
-            feedbackQuestion.style.display = 'none';  
-            modalTitle.innerHTML = 'Please provide your feedback'; 
-            feedbackForm.style.display = 'block'; 
-        };
-
-        btnNo.onclick = () => {
-            feedbackModal.style.display = 'none'; 
-        };
-
-        const feedbackFormContent = document.getElementById('feedbackFormContent');
-        feedbackFormContent.onsubmit = (event) => {
-            event.preventDefault();
-
-            const email = document.getElementById('email').value.trim().toLowerCase(); 
-            const feedbackText = document.getElementById('feedbackText').value;
-
-            const normalizedLoggedInEmail = loggedInEmail.trim().toLowerCase();
-
-            if (email !== normalizedLoggedInEmail) {
-                alert("The email entered doesn't match the logged-in user's email.");
-                return;
+        class OrdersManager {
+            constructor() {
+                this.orders = JSON.parse(localStorage.getItem('orders')) || [];
+                this.ordersContainer = document.querySelector('#orders-table tbody');
             }
 
-            const feedback = {
-                email,
-                feedbackText,
-                date: new Date().toLocaleString()
-            };
+            renderOrders() {
+                if (this.orders.length === 0) {
+                    this.ordersContainer.innerHTML = '<tr><td colspan="8">No orders found. Start ordering!</td></tr>';
+                } else {
+                    this.orders.forEach((order, index) => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${index + 1}</td>
+                            <td>${order.name}</td>
+                            <td>${order.surname}</td>
+                            <td>${order.dessertName}</td>
+                            <td>${order.quantity}</td>
+                            <td>${parseFloat(order.price).toFixed(2)}</td>
+                            <td>${order.date}</td>
+                            <td>${(parseFloat(order.price) * parseInt(order.quantity)).toFixed(2)}</td>
+                        `;
+                        this.ordersContainer.appendChild(row);
+                    });
+                }
+            }
+        }
 
-            const feedbacks = JSON.parse(localStorage.getItem('feedbacks')) || [];
-            feedbacks.push(feedback);
-            localStorage.setItem('feedbacks', JSON.stringify(feedbacks));
+        const ordersManager = new OrdersManager();
+        ordersManager.renderOrders();
 
-            localStorage.setItem('feedbackSubmitted', 'true');
+        class FeedbackModalManager {
+            constructor(loggedInEmail) {
+                this.loggedInEmail = loggedInEmail;
+                this.feedbackModal = document.getElementById('feedbackModal');
+                this.closeModal = document.getElementById('closeModal');
+                this.btnYes = document.getElementById('btnYes');
+                this.btnNo = document.getElementById('btnNo');
+                this.feedbackForm = document.getElementById('feedbackForm');
+                this.feedbackQuestion = document.getElementById('feedbackQuestion');
+                this.modalTitle = document.getElementById('modalTitle');
+                this.feedbackFormContent = document.getElementById('feedbackFormContent');
 
-            modalTitle.innerHTML = 'Thank you for your feedback!';
-            feedbackForm.style.display = 'none';  
+                this.setEventListeners();
+                this.showModalAfterDelay();
+            }
 
-            setTimeout(() => {
-                feedbackModal.style.display = 'none'; 
-            }, 1500);
+            showModalAfterDelay() {
+                setTimeout(() => {
+                    this.feedbackModal.style.display = 'block';
+                }, 1000);
+            }
 
-            document.getElementById('email').value = '';
-            document.getElementById('feedbackText').value = '';
-        };
+            setEventListeners() {
+                this.closeModal.onclick = () => this.closeModalHandler();
+                this.btnYes.onclick = () => this.showFeedbackForm();
+                this.btnNo.onclick = () => this.closeModalHandler();
+                this.feedbackFormContent.onsubmit = (event) => this.submitFeedback(event);
+            }
+
+            closeModalHandler() {
+                this.feedbackModal.style.display = 'none';
+            }
+
+            showFeedbackForm() {
+                this.feedbackQuestion.style.display = 'none';
+                this.modalTitle.innerHTML = 'Please provide your feedback';
+                this.feedbackForm.style.display = 'block';
+            }
+
+            submitFeedback(event) {
+                event.preventDefault();
+
+                const email = document.getElementById('email').value.trim().toLowerCase();
+                const feedbackText = document.getElementById('feedbackText').value;
+
+                if (email !== this.loggedInEmail.trim().toLowerCase()) {
+                    alert("The email entered doesn't match the logged-in user's email.");
+                    return;
+                }
+
+                const feedback = {
+                    email,
+                    feedbackText,
+                    date: new Date().toLocaleString()
+                };
+
+                const feedbacks = JSON.parse(localStorage.getItem('feedbacks')) || [];
+                feedbacks.push(feedback);
+                localStorage.setItem('feedbacks', JSON.stringify(feedbacks));
+
+                localStorage.setItem('feedbackSubmitted', 'true');
+
+                this.modalTitle.innerHTML = 'Thank you for your feedback!';
+                this.feedbackForm.style.display = 'none';
+
+                setTimeout(() => {
+                    this.feedbackModal.style.display = 'none';
+                }, 1500);
+
+                document.getElementById('email').value = '';
+                document.getElementById('feedbackText').value = '';
+            }
+        }
+
+        const feedbackModalManager = new FeedbackModalManager(loggedInEmail);
     };
 </script>
+
 </body>
 </html>
