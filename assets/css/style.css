@@ -1,21 +1,50 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap'); */
 @import url(./variablat.css);
 
+@font-face {
+    font-family: 'Nunito';
+    src: url('assets/fonts/Nunito-Regular.ttf') format('truetype'); 
+    font-weight: 400; 
+    font-style: normal; 
+}
+
+
+/* Bold font
+@font-face {
+    font-family: 'Nunito';
+    src: url('assets/fonts/Nunito-Bold.ttf') format('truetype'); 
+    font-weight: 700; 
+    font-style: normal;
+} */
+
+/* spe di bre spom doket qe po ju aplikohet krejtve qeky fonti , spo di ku po bohet override */
 *{
     padding: 0px;
     margin: 0px;
     /* ne menyre qe widthi me perfshi edhe border edhe padding */
     box-sizing: border-box;
-    font-family: var(--primary-font);
-    
+    font-family: 'Nunito';
+    /* font-family: var(--primary-font);
+     */
 }
 
+body {
+    font-family: 'Nunito';
+    font-weight: 400;
+    overflow-x: hidden; 
+}
 a{
     text-decoration: none;
 }
-h1,h2,h6{
-    font-family: var(--heading-font);
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Nunito';
+    font-weight: 700;
+}
+
+p{
+    font-family: 'Nunito';
+    font-weight: 400;
 }
 
 .container{
@@ -24,12 +53,17 @@ h1,h2,h6{
     display: flex;
     max-width: 1200px; 
     padding: 0 20px;
+    
 }
 
 
 
 ul{
     list-style-type: none;
+    li{
+        font-family: 'Nunito';
+        font-weight: 400;
+    }
 }
 
 .h-light{
@@ -45,7 +79,6 @@ ul{
 }
 
 .btn{
-    border: 1px solid var(--rose);
     border-radius: 5px;
     padding: 4px;
     font-family: var(--heading-font);
@@ -56,19 +89,18 @@ ul{
     text-decoration: none;
     margin-bottom: 2px;
     transition: -4. all ease-in-out;
-    color: black;
+    color: white;
     background-color: var(--light-brown);
-    border: 1px solid var(--dark-brown);
+    border: 1px solid #42271d;
     
 }
 
 .btn:hover{
     background-color: var(--dark-brown);
     color: white;
-    border: 2px solid var(--dark-brown);
+    border: var(--dark-brown);
 }
-
-main{
+main {
     padding: 50px 0px;  
     background-image: url('https://wallpapercave.com/wp/wp3717742.jpg');
     background-size: cover; 
@@ -79,6 +111,9 @@ main{
     justify-content: flex-start; 
     align-items: center; 
     min-height: 100vh;
+
+    /* qeta e shtova */
+    background-origin: padding-box;  
 }
 
 main .container {
@@ -109,6 +144,7 @@ main .intro span {
 
 section{
     padding: 30px 0px;
+    font-family: 'Nunito';
 }
 
 hgroup{
@@ -125,10 +161,10 @@ hgroup{
     h6{
         font-size: 1em;
         font-weight: 300;  
-        color: var(--dark-brown);
+        color: var(--h-color);
         span{
             background-color: var(--light-brown);
-            color: var(--dark-brown);
+            color: var(--h-color);
             border-radius: 5px;
         }
         
@@ -136,12 +172,12 @@ hgroup{
 }
 
 h3{
-    color: var(--dark-brown);
+    color: var(--h-color);
 }
 
 p{
     span{
-        color: var(--dark-brown);
+        color: var(--h-color);
         background-color: var(--light-brown);
         border-radius: 5px;
         }
@@ -162,7 +198,7 @@ p{
     background-attachment: sticky;
 
     h1{
-        color: var(--dark-brown);
+        color: var(--h-color);
     }
 }
 
@@ -190,6 +226,7 @@ ul{
     display: flex;
     gap: 20px;
     margin-right: -200px;
+    
 
     li{
         position: relative;
@@ -290,6 +327,7 @@ section#menu {
     overflow: hidden;
     padding: 20px 0;
     background-color: #f8f8f8;
+    font-family: 'Nunito';
 
 
 .container {
@@ -338,7 +376,7 @@ section#menu {
 }
 
 h2 {
-    color: #6F4A3D; 
+    color: var(--h-color) ;
     margin: 10px 0 5px;
 }
 
@@ -349,7 +387,7 @@ p {
 
 /* Button styling */
 .scroll-button {
-    background-color: var(--h-color);
+    background-color: var(--brown);
     color: #fff;
     border: none;
     padding: 10px 15px;
@@ -370,179 +408,121 @@ p {
 }
 
 .scroll-button:hover {
-    background-color: #6F4A3D;
+    background-color: var(--h-color);
 }}
 
 section#products{
-    .todays {
-        display: flex;
-        justify-content: space-around;
-        align-items: flex-start;
-        flex-wrap: wrap;
-        gap: 20px;
-        margin-bottom: 80px;
-    }
-    
-    .t_product {
-        text-align: center;
-        max-width: 250px;
-    }
-    
-    .circle {
-        width: 250px;
-        height: 250px;
-        overflow: hidden;
-        border-radius: 50%;
-        margin: 0 auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .circle img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-    
-    .t_product h3 {
-        margin-top: 10px;
-        font-size: 1.2em;
-    }
-    
-    .t_product p {
-        font-size: 0.9em;
-        margin: 10px 0;
-    }
-    
-    .btn {
-        display: inline-block;
-        padding: 8px 15px;
-        font-size: 0.9em;
-        text-decoration: none;
-        color: #fff;
-        background-color: #ff6347;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
-    }
-    
-    .btn:hover {
-        background-color: #ff4500;
-    }
+/* Container for Today's and Weekly Specials */
+.todays, .weekly {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 20px;
+}
 
-    .weekly, .holidays {
-        display: flex;
-        justify-content: space-around;
-        align-items: flex-start;
-        flex-wrap: wrap;
-        gap: 20px;
-        margin-bottom: 80px;
-    }
+.dessert-circle {
+    width: 220px;
+    height: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Ensuring images and buttons stay aligned */
+    box-sizing: border-box;
+}
 
-    .w_product, .h_product {
-        text-align: center;
-        max-width: 250px;
-    }
+.dessert-circle:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
 
-    .circle {
-        width: 250px;
-        height: 250px;
-        overflow: hidden;
-        border-radius: 50%;
-        margin: 0 auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+.cake-image {
+    width: 140px;
+    height: 140px;
+    object-fit: cover; 
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
 
-    .circle img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+.dessert-info {
+    width: 100%;
+    background: none;
+    color: #333;
+    padding: 10px 0;
+    border-radius: 0 0 15px 15px;
+    text-align: center;
+}
 
-    .w_product h3, .h_product h3 {
-        margin-top: 10px;
-        font-size: 1.2em;
-    }
+.dessert-info h2 {
+    font-size: 1.3rem;
+    margin: 5px 0;
+    font-weight: bold;
+}
 
-    .w_product p, .h_product p {
-        font-size: 0.9em;
-        margin: 10px 0;
-    }
+.dessert-info p {
+    font-size: 1.1rem;
+    margin: 5px 0;
+    color: #f41d1d;
+}
 
-    .btn {
-        display: inline-block;
-        padding: 8px 15px;
-        font-size: 0.9em;
-        text-decoration: none;
-        color: #fff;
-        background-color: #ff6347;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
-    }
+.order-button {
+    background-color: var(--brown);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+    margin-top: auto; 
+    width: 100%; 
+}
 
-    .btn:hover {
-        background-color: #ff4500;
-    }
-/* Holiday's Specials Styling */
-.holidays {
-    background-color: #FAF3E0; /* Soft cream background for warmth */
+.order-button:hover {
+    background-color: var(--h-color);
+}
+/* Holiday's Specials Section */
+.holidays-specials {
+    background-color: #fff; 
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  
     position: relative;
 }
 
-.holidays h1 {
-    color: #B22222; /* Dark red for the heading */
+.holidays-specials h1 {
+    color: var(--h-color); 
+    font-size: 2rem;
+    font-weight: bold;
 }
 
-.holidays .circle {
-    border: 5px solid #B22222; /* Dark red border for the circles */
-    box-shadow: 0 0 10px rgba(178, 34, 34, 0.6); /* Matching red shadow for a cohesive look */
+.holidays-specials h6 {
+    color: #333; 
+    font-size: 1rem;
+    margin-top: 10px;
 }
 
-.holidays .btn {
-    background-color: #ff6347; /* Goldenrod for buttons */
-    color: #fff; /* White text for contrast */
+#slider {
+    position: relative;
+    height: 650px;
+    overflow: hidden;
+    background-color: #fff; 
 }
 
-.holidays .btn:hover {
-    background-color: #B8860B; /* Darker golden shade for hover effect */
+#slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    transition: opacity 0.5s ease-in-out; 
 }
-
-    
-    .products{
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-
-        
-        h3{
-            margin-top: 20px;
-        }
-
-        .product{
-            padding: 20px;
-            border: 1px solid var(--border-color);
-            border-radius: 5px;
-            background-color: #fff2df;
-
-            img {
-                width: 200px; 
-                height: auto; 
-                display: block; 
-                margin: 0 auto; 
-                border-radius: 3px;
-                
-            }
-            
-            p{
-                margin: 20px 0px;
-            }
-        }   
-    }
 }
 
 section#specials{
@@ -590,55 +570,6 @@ section#specials{
 
 
 
-/*CAKE SLIDER
-/* Slider Styles */
-.cake-slider {
-    position: relative;
-    width: 100%;
-    max-width: 1000px;
-    margin: 40px auto;
-    overflow: hidden;
-}
-
-.slider img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.slider-info {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.slider-info h2 {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-.slider-info p {
-    font-size: 1rem;
-}
-#slider {
-    position: relative;
-    height: 650px;
-    overflow: hidden;
-}
-
-#slider img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: opacity 0.5s ease-in-out;
-}
-
-
 #team {
     background-color: #f8f9fa;
     padding: 3rem 0;
@@ -647,6 +578,7 @@ section#specials{
 h1 {
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
+    color: var(--h-color);
 }
 
 p.text-muted {
@@ -708,7 +640,7 @@ section#reasons {
             }
 
             td {
-                background-color: #fff2df;
+                background-color: var(--about-reasons-background);
             }
 
             td img {
@@ -945,6 +877,7 @@ footer2{
     font-size: 36px;
     font-weight: bold;
     margin: 10px 0;
+    color: var(--h-color);
 }
 
 .title .description {
@@ -991,10 +924,13 @@ footer2{
     margin-top: 20px;
 }
 
+
+
+
 /* About us */
 #about {
     background: linear-gradient(to right, #d98a51, #5f3d26); 
-    color: #fff; /* White text */
+    color: #fff; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
     padding: 2rem;
 }
@@ -1007,21 +943,9 @@ footer2{
     color: #FFD700; 
 }
 
-.farms-container{
-    border: 0px;
-    border-radius: 20px;
 
-}
-
-#farms-section {
-    background-color: #EADDBA;
-    color: #000; 
-    border: 0px;
-    border-radius: 20px;
-    margin-top: 60px;
-}
 body {
-    font-family: sans-serif;
+    font-family: 'Nunito';
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -1047,29 +971,29 @@ body {
 }
 
  /* Our Story Section */
-.our-story-section {
+.our-story {
     padding: 6rem 2rem;
     background-color: white;
     text-align: center;
     perspective: 1000px; 
 }
 
-.our-story-section h2,
-  .our-story-section p,
+.our-story h2,
+  .our-story p,
   .image-container {
     opacity: 0; 
     transform: rotateX(90deg); 
     animation: fadeInRotate 1.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards; 
   }
   
-  .our-story-section h2 {
+  .our-story h2 {
     font-size: 2rem;
-    color: #4a4a4a;
+    color: var(--h-color);
     margin-bottom: 1.5rem;
     animation-delay: 0s; 
   }
   
-  .our-story-section p {
+  .our-story p {
     max-width: 45rem;
     font-size: 1rem;
     color: #6a6a6a;
@@ -1142,6 +1066,19 @@ body {
     max-width: 45rem;
     margin: 0 auto 3rem;
   }
+  .farms-container{
+    border: 0px;
+    border-radius: 20px;
+
+}
+
+#farms-section {
+    background-color: #EADDBA;
+    color: var(--h-color); 
+    border: 0px;
+    border-radius: 20px;
+    margin-top: 60px;
+}
   
   .farms-container {
     display: flex;
@@ -1250,11 +1187,11 @@ body {
 .card-title {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #2d3748; 
+    color: var(--h-color); 
 }
 
 .card-description {
-    color: #718096; 
+    color: #6a6a6a;
     margin-top: 1rem;
 }
 
@@ -1314,7 +1251,7 @@ p.text-muted {
 
 /* Awards & Recognitions Section */
 .awards-section {
-    background-color: #eaddba;
+    background-color: var(--about-reasons-background);
     padding: 60px 20px;
     border-radius: 8px;
     margin-bottom: 40px;
@@ -1324,7 +1261,7 @@ p.text-muted {
 
 .awards-section .section-title {
     font-size: 2.5rem;
-    color: #f76c6c;
+    color: var(--h-color);
     margin-bottom: 20px;
 }
 
@@ -1369,7 +1306,7 @@ p.text-muted {
 
 .award-card h3 {
     font-size: 1.4rem;
-    color: #f76c6c;
+    color: var(--h-color);
     margin-bottom: 10px;
 }
 
@@ -1380,10 +1317,9 @@ p.text-muted {
 }
 
 
-/* Per behind the scenes videot */ 
 /* Behind-the-Scenes Section */
 .behind-the-scenes-section {
-    background-color: #eaddba;
+    background-color: var(--about-reasons-background);
     padding: 60px 20px;
     border-radius: 8px;
     margin-bottom: 40px;
@@ -1394,7 +1330,7 @@ p.text-muted {
 
 .behind-the-scenes-section .section-title {
     font-size: 2.5rem;
-    color: #f76c6c;
+    color: var(--h-color);
     margin-bottom: 20px;
 }
 
@@ -1439,7 +1375,7 @@ p.text-muted {
 
 .video-card h3 {
     font-size: 1.5rem;
-    color: #f76c6c;
+    color: var(--h-color);
     margin-bottom: 10px;
 }
 
@@ -1459,10 +1395,6 @@ p.text-muted {
 }
 
 
-
-
-/audio feedbacks/
-
 /* Customer Feedback Section */
 .customer-feedback-section {
     text-align: center;
@@ -1475,7 +1407,7 @@ p.text-muted {
 .customer-feedback-section h2 {
     font-size: 2rem;
     margin-bottom: 20px;
-    color: #f76c6c;
+    color: var(--h-color);
 }
 
 .feedback-container {
@@ -1495,7 +1427,7 @@ p.text-muted {
 
 .feedback-title {
     font-size: 1.3rem;
-    color: #f76c6c;
+    color: var(--h-color);
     margin-bottom: 10px;
 }
 
@@ -1525,7 +1457,7 @@ audio {
   .nominations-section .section-title {
     font-size: 2.5rem;
 
-    color: #333;
+    color: var(--h-color);
     margin-bottom: 20px;
     text-align: center;
     font-weight: bold;
@@ -1540,7 +1472,6 @@ audio {
     line-height: 1.6;
   }
   
-  /* Nominations Table */
   .nominations-table {
     width: 100%;
     border-collapse: collapse;
@@ -1559,8 +1490,8 @@ audio {
   }
   
   .nominations-table th {
-    background-color: #c08544;
-    color: white;
+    background-color: #EADDBA;
+    color: var(--h-color);
     font-size: 1.4rem;
     letter-spacing: 0.5px;
     text-transform: uppercase;
@@ -1591,19 +1522,6 @@ audio {
   }
   
 
-  /ourstory/
-.our-story-section h2{
-    color: #000;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  }
-
-.our-story-section p{
-    color: #333;
-}
-
-
-
-
 
 /* Dessert Section */
 .dessert-section {
@@ -1614,23 +1532,20 @@ audio {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
 }
 
-/* Dessert Section Header */
 .dessert-section h1 {
     font-size: 2.5rem;
     color: var(--h-color); 
     margin-bottom: 20px;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Nunito';
 }
 
-/* Dessert Section Paragraph */
 .dessert-section p {
     font-size: 1.2rem;
     color: #777;
     margin-bottom: 30px;
-    font-family: 'Verdana', sans-serif;
+    font-family: 'Nunito';
 }
 
-/* Filter Buttons Styling */
 .filter-buttons {
     margin-bottom: 30px;
     text-align: center;
@@ -1653,10 +1568,9 @@ audio {
 }
 
 .filter-buttons button:active {
-    background-color: #e13b2a;
+    background-color: var(--h-color);
 }
 
-/* Dessert Cards */
 .dessert-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -1693,9 +1607,9 @@ audio {
 
 .dessert-card h2 {
     font-size: 1.8rem;
-    color: #333;
+    color: var(--h-color);
     margin-bottom: 10px;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Nunito';
 }
 
 .dessert-card p {
@@ -1759,7 +1673,7 @@ padding: 10px;
 
 
 #order-form {
-    background-color: #f8f8f8;
+    background-color: #fffcfc;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -1769,7 +1683,7 @@ padding: 10px;
 
 #order-form h2 {
     font-size: 1.5rem;
-    color: #333;
+    color: var(--h-color);
     margin-bottom: 16px;
 }
 
