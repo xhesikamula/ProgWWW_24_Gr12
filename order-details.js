@@ -1,8 +1,9 @@
-// Listen for DOM content loaded
 document.addEventListener('DOMContentLoaded', function () {
     try {
         const urlParams = new URLSearchParams(window.location.search);
-        const dessertId = urlParams.get('id');
+const dessertId = urlParams.get('id');
+console.log('Dessert ID:', dessertId);  
+
 
         if (!dessertId) {
             throw new Error('No dessert ID found in the URL!');
@@ -13,15 +14,50 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error('Error during DOMContentLoaded:', error.message);
         alert(error.message);
     }
+
+    const phoneElement = document.getElementById('phone');
+    const phoneRegex = /(\d{3})(\d{3})(\d{4})/;
+
+    if (phoneElement) {
+        console.log('Phone input found:', phoneElement);
+
+        phoneElement.addEventListener('input', function () {
+            let inputValue = phoneElement.value.replace(/\D/g, ''); 
+
+            if (phoneRegex.test(inputValue)) {
+                const match = phoneRegex.exec(inputValue);
+
+                if (match) {
+                    const areaCode = match[1];
+                    const prefix = match[2];
+                    const lineNumber = match[3];
+
+                    const formattedPhone = `(${areaCode}) ${prefix}-${lineNumber}`;
+                    phoneElement.value = formattedPhone; 
+
+                    console.log(`Formatted phone: ${formattedPhone}`);
+                    console.log(`Area Code: ${areaCode}`);
+                    console.log(`Prefix: ${prefix}`);
+                    console.log(`Line Number: ${lineNumber}`);
+
+                    localStorage.setItem('formattedPhone', formattedPhone);
+                }
+            } else {
+                console.log('Pattern does not match.');
+            }
+        });
+    } else {
+        console.error('Phone input not found in the DOM.');
+    }
 });
 
-// Function to fetch dessert details based on ID
+
 function fetchDessertDetails(id) {
-    const apiUrl = https://671fc5b3e7a5792f052f7efc.mockapi.io/Pastry/${id};
+    const apiUrl = `https://671fc5b3e7a5792f052f7efc.mockapi.io/Pastry/${id}`;
     fetch(apiUrl)
         .then(response => {
             if (!response.ok) {
-                throw new Error(Failed to fetch dessert details. Status: ${response.status});
+                throw new Error(`Failed to fetch dessert details. Status: ${response.status}`);
             }
             return response.json();
         })
@@ -34,6 +70,7 @@ function fetchDessertDetails(id) {
             const orderForm = document.getElementById('orderForm');
 
             if (dessert.stock <= 0) {
+                $(orderForm).slideUp(1000);
                 dessertDetailsElement.innerHTML = `
                     <div class="dessert-card2">
                         <img src="${dessert.item_image}" alt="${dessert.item_name}" style="border-radius: 15px; width: 100%; max-width: 300px;">
@@ -43,8 +80,12 @@ function fetchDessertDetails(id) {
                         <p style="color: red; font-weight: bold;">Out of stock</p>
                     </div>
                 `;
-                orderForm.style.display = 'none'; // Hide order form if out of stock
+                $(dessertDetailsElement).fadeIn(1000).animate({
+                    marginTop: '20px'  
+                }, 1000); 
+                orderForm.style.display = 'none';
             } else {
+                $(orderForm).slideDown(1000); 
                 dessertDetailsElement.innerHTML = `
                     <div class="dessert-card2">
                         <img src="${dessert.item_image}" alt="${dessert.item_name}" style="border-radius: 15px; width: 100%; max-width: 300px;">
@@ -55,6 +96,10 @@ function fetchDessertDetails(id) {
                         <p><strong>Allergens:</strong> ${dessert.allergens}</p>
                     </div>
                 `;
+                
+                $(dessertDetailsElement).fadeIn(1000).animate({
+                    marginTop: '20px'  
+                }, 1000); 
             }
 
             try {
@@ -65,7 +110,7 @@ function fetchDessertDetails(id) {
         })
         .catch(error => {
             console.error('Error fetching dessert details:', error.message);
-            document.getElementById('dessert-details2').innerHTML = <p>${error.message}</p>;
+            document.getElementById('dessert-details2').innerHTML = `<p>${error.message}</p>`;
         });
 }
 
@@ -74,15 +119,14 @@ document.getElementById('orderForm').addEventListener('submit', function (e) {
 
     
         try {
-            // Check if the user is logged in
             const currentUser = localStorage.getItem('currentUser');
             if (!currentUser) {
                 alert('You should be logged in first to order!')
-                // If no user is logged in, redirect to the login page
-                window.location.href = 'login.html'; // Update with your actual login page URL
-                return; // Stop further execution if the user is not logged in
+                
+                window.location.href = 'login.html'; 
+                return; 
             }
-        // Get form values
+        
         const nameElement = document.getElementById('name');
         const surnameElement = document.getElementById('surname');
         const phoneElement = document.getElementById('phone');
@@ -92,14 +136,11 @@ document.getElementById('orderForm').addEventListener('submit', function (e) {
 
         const name = nameElement ? nameElement.value.trim() : '';
         const surname = surnameElement ? surnameElement.value.trim() : '';
-        const phone = phoneElement ? phoneElement.value.trim() : '';
+        const phone = localStorage.getItem('formattedPhone') || phoneElement.value.trim(); 
         const email = emailElement ? emailElement.value.trim() : '';
         const address = addressElement ? addressElement.value.trim() : '';
         const quantity = quantityElement ? parseInt(quantityElement.value.trim(), 10) : 0;
 
-        // Debugging: Log phone and email values
-        console.log('Phone:', phone); // Logs the phone value
-        console.log('Email:', email); 
 
         if (!name || !surname || !address || !quantity) {
             throw new Error('Please fill out all required fields.');
@@ -109,11 +150,37 @@ document.getElementById('orderForm').addEventListener('submit', function (e) {
         if (!dessert) {
             throw new Error('Dessert details not found in localStorage.');
         }
-             if (quantity > dessert.stock) {
-            throw new Error(`Only ${dessert.stock} ${dessert.item_name}(s) available. Please reduce the quantity.`);
+
+            if (isNaN(quantity) || quantity <= 0) {
+            throw new Error('Please enter a valid quantity greater than 0.');
         }
 
-        // Get selected payment method and extras
+        // i kom perdor te dyjat edhe MAX_SAFE_INTEGER edhe toExponential()
+        // qetu bon edhe me MAX_VALUE veq se nuk mujsha me testu se numri shume i madh
+        if (quantity > Number.MAX_SAFE_INTEGER) {
+            throw new Error('Quantity is too large. Please enter a smaller number.');
+        }
+
+        if (quantity > 1000000) {
+            console.warn(`Quantity entered is unusually large: ${quantity.toExponential(2)}`);
+            alert(`You have entered an extremely large quantity: ${quantity.toExponential(2)}. Please confirm.`);
+            
+        }
+
+        if (quantity > dessert.stock) {
+            throw new Error(`Only ${dessert.stock} ${dessert.item_name}(s) available. Please reduce the quantity.`);
+    // $(".warning-message").text(`Only ${dessert.stock} ${dessert.item_name}(s) available. Please reduce the quantity.`).slideDown(500).delay(3000).slideUp(500);
+        }
+
+  const remainingStock = dessert.stock - quantity;
+  if (remainingStock < 0) {
+      throw new Error('Insufficient stock. Please reduce the quantity.');
+  }
+  dessert.stock = remainingStock; 
+
+  localStorage.setItem('dessertDetails', JSON.stringify(dessert));
+
+  
         const paymentMethod = getSelectedPaymentMethod();
         const extras = getSelectedExtras();
 
@@ -121,7 +188,7 @@ document.getElementById('orderForm').addEventListener('submit', function (e) {
             throw new Error('Please select a payment method.');
         }
 
-        dessert.stock -= quantity;
+
 
         const order = {
             name,
@@ -132,25 +199,28 @@ document.getElementById('orderForm').addEventListener('submit', function (e) {
             quantity,
             dessertName: dessert.item_name,
             price: dessert.price,
+            
             date: new Date().toLocaleDateString(),
             extras: extras,
             deliveryMethod: getSelectedDeliveryMethod(),
             paymentMethod: paymentMethod,
         };
 
-        // Debug: Log the order object to check if phone and email are included
-        console.log('Order:', order);
 
-        // Save the order and update dessert stock in localStorage
+        console.log('Order:', order);
+        
+
+        
+      
+
         let orders = JSON.parse(localStorage.getItem('orders')) || [];
         orders.push(order);
         localStorage.setItem('orders', JSON.stringify(orders));
 
-        console.log('Updated Orders:', orders); // Log updated orders to confirm data
+        console.log('Updated Orders:', orders); 
 
-        localStorage.setItem('dessertDetails', JSON.stringify(dessert)); // Update dessert stock in localStorage
-        updateStockViaAPI(dessert.id, dessert.stock); // Update dessert stock via API
-
+        localStorage.setItem('dessertDetails', JSON.stringify(dessert)); 
+        updateStockViaAPI(dessert.id, dessert.stock);
         displayThankYouMessage(order.name, order.surname, dessert.stock);
 
     } catch (error) {
@@ -160,32 +230,27 @@ document.getElementById('orderForm').addEventListener('submit', function (e) {
 });
 
 function getSelectedExtras() {
-    // Find all checked checkboxes with the name 'extras' and get their values
+
     const extras = Array.from(document.querySelectorAll('input[name="extras"]:checked'))
         .map(extra => extra.value);
-    
-    // If there are extras selected, return them as a comma-separated string, otherwise an empty string
+ 
     return extras.length > 0 ? extras.join(", ") : "";
 }
 
 function getSelectedDeliveryMethod() {
-    // Find the selected radio button for delivery method
     const selectedRadio = document.querySelector('input[name="delivery-method"]:checked');
-    
-    // If a radio button is selected, return its value, otherwise return null
+
     return selectedRadio ? selectedRadio.value : null;
 }
 
 
-// Function to retrieve selected payment method from <datalist>
 function getSelectedPaymentMethod() {
     const paymentMethodInput = document.getElementById('paymentMethod');
     const paymentMethod = paymentMethodInput.value.trim();
     return paymentMethod ? paymentMethod : null;
 }
 
-// Example function to handle display after successful order submission
-function displayThankYouMessage(name, surname, remainingStock) {
+function displayThankYouMessage(name, surname, remainingStock, totalPrice) {
     const thankYouMessage = `
         <div class="thank-you-message">
             <img src="./assets/img/thank-you.png" alt="Thank You" class="thank-you-image">
@@ -202,7 +267,6 @@ function displayThankYouMessage(name, surname, remainingStock) {
     }, 3000);
 }
 
-// Example function to update stock via API
 function updateStockViaAPI(dessertId, newStock) {
     const apiUrl = `https://671fc5b3e7a5792f052f7efc.mockapi.io/Pastry/${dessertId}`;
     fetch(apiUrl, {
