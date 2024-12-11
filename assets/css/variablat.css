@@ -1,7 +1,9 @@
 :root{
     /* fontet */
---primary-font: "Lora", serif;
---heading-font: "Playfair Display", serif;
+/* --primary-font: "Lora", serif; */
+--primary-font:"Nunito";
+/* --heading-font: "Playfair Display", serif; */
+--heading-font:  "Nunito";
 
     /* ngjyrat */
 --dark-brown: #6F4A3D;
@@ -16,11 +18,12 @@
 --h-color: #40000b;
 --border-color: #6F5348;
 /* #EADDBA -ngjyre e bukur per header*/
---bg-color-katror: #fff2df
-
+--bg-color-katror: #fff2df;
+--about-reasons-background: #eaddba;
    /* backgrounds */
---light-pink: #fef1f7;
 --rose: #ffeaed;
 --light-brown: #F7ECCC;
 --brown:#710013;
+
+
 }
