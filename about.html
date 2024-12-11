@@ -62,7 +62,7 @@ padding: 16px 16px;
 
 .fun-facts, .baking-tools {
 flex: 1 1 calc(50% - 24px); 
-background-color: #fff8f2; 
+background-color: #EADDBA;
 padding: 16px;
 border-radius: 12px;
 box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
@@ -72,10 +72,10 @@ margin: 30px;
 
 .fun-facts h2{
 font-size: 2rem;
-color: #d0002b; 
+color: var(--h-color);
 margin-bottom: 16px;
 text-align: center;
-font-family: 'Nunito', sans-serif;
+font-family: 'Nunito';
 }
 
 .fun-facts ul {
@@ -118,10 +118,10 @@ display: inline-block;
 
 .baking-tools caption {
   font-size: 2rem;
-  color: #d0002b; 
+  color: var(--h-color);
   margin-bottom: 16px;
   text-align: center;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Nunito';
 }
 
 .baking-tools table {
@@ -141,7 +141,7 @@ display: inline-block;
 }
 
 .baking-tools th {
-  background-color: #d0002b;
+  background-color: var(--h-color);
   color: #fff;
   text-transform: uppercase;
   font-size: 0.9em;
@@ -172,7 +172,7 @@ section.about-us {
 }
 
 section.about-us h2 {
-  color: #CD001A; 
+  color: var(--h-color);
   text-align: center;
   font-size: 28px;
   margin-bottom: 10px;
@@ -193,7 +193,7 @@ section.about-us .list-container {
   padding: 10px;
   background-color: #fff; 
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px #EADDBA;
 }
 
 section.about-us dl, 
@@ -230,7 +230,7 @@ section.about-us dl::before {
   content: "Key Information"; 
   font-weight: bold;
   font-size: 20px;
-  color: #CD001A;
+  color: var(--h-color);
   margin-bottom: 10px;
 }
 
@@ -238,7 +238,7 @@ section.about-us ol::before {
   content: "Our Services"; 
   font-weight: bold;
   font-size: 20px;
-  color: #CD001A;
+  color: var(--h-color);
   margin-bottom: 10px;
 }
 
@@ -278,7 +278,7 @@ section.about-us ol::before {
 
 .contact-form button {
     padding: 10px 15px;
-    background-color: #CD001A;
+    background-color: var(--brown);
     color: white;
     border: none;
     border-radius: 5px;
@@ -286,7 +286,7 @@ section.about-us ol::before {
 }
 
 .contact-form button:hover {
-    background-color: #b80014;
+    background-color: var(--h-color);
 }
 .popup {
             display: none;
@@ -342,28 +342,28 @@ section.about-us ol::before {
 /* Multi-Column Section Styles */
 .multi-column-section {
   padding: 4rem 2rem;
-  background-color: #fff8f2; /* Soft pastry-like color */
+  background-color: #fff8f2; 
   text-align: center;
   margin-bottom: 50px;
 }
 
 .multi-column-section h2 {
   font-size: 2.5rem;
-  color: #8b4513; /* Chocolate brown */
+  color: var(--h-color);
   margin-bottom: 1.5rem;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Nunito';
 }
 
 /* Multi-Column Container */
 .multi-column-container {
   column-count: 3; 
   column-gap: 1.5rem; 
-  column-rule: 2px dotted #f4a460; 
+  column-rule: 2px dotted var(--brown); 
   text-align: justify; 
   max-width: 1200px; 
   margin: 0 auto; 
   color: #6a5d4d;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Nunito';
   line-height: 1.6; 
   padding: 20px;
 }
@@ -375,9 +375,10 @@ section.about-us ol::before {
 }
 
 .cake-game h2 {
-    font-size: 2.5rem;
+    font-size: 1.875;
     color: var(--h-color);
     margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
 }
 
 .drag-items {
@@ -429,7 +430,7 @@ section.about-us ol::before {
 }
 
 .drop-area.incorrect {
-    background-color: #ffcccc; 
+    background-color: #f76868; 
 }
 
 .win-message {
@@ -444,7 +445,6 @@ section.about-us ol::before {
 
 <body class="font-sans">
 
-  <!-- Header Section -->
   <header class="h-light">
     <div class="container">
         <input type="checkbox"/>
@@ -658,7 +658,7 @@ section.about-us ol::before {
 </section>
 
 <section class="our-commitment">
-  <h2 style="text-align: center;">Our Commitment to Quality</h2>
+  <h2 style="text-align: center; color: var(--h-color);">Our Commitment to Quality</h2>
   <div class="multi-column-container">
     <p>
       Hygiene is our top priority. We maintain strict cleanliness standards throughout our baking process, ensuring that all pastries are prepared in a sanitized environment.
@@ -672,7 +672,6 @@ section.about-us ol::before {
   </div>
 </section>
 
-  
 <!-- Awards & Recognitions Section -->
 <section class="container awards-section">
   <h2 class="section-title">Awards & Recognitions</h2>
@@ -907,20 +906,17 @@ function resetGame() {
 </script>
 
 <section class="quote-section" style="width: 100%; margin: 0 auto; padding: 35px; text-align: center; overflow: hidden;">
-  <!-- Canvas -->
-   <div style="margin-left: 100px;">
-  <div class="quote-canvas" style="float: left; margin-right: -70px; margin-left: 20px; width: 80px; height: 70px; margin-top: -30px;">
+  <div class="quote-container" style="position: relative; max-width: 800px; margin: 0 auto; text-align: left;">
+    <div class="quote-canvas" style="position: absolute; top: -20px; left: -20px;">
       <canvas id="quote-canvas" width="55" height="35"></canvas>
-  </div>
-  <!-- Quote Text -->
-  <div class="quote-text" style="font-size: 16px; color: #333; margin-bottom: -20px; margin-left: -240px; margin-top: -5px; width: 900px; text-align: left; display: inline-block;">
+    </div>
+    <div class="quote-text" style="font-size: 16px; color: #333;">
       <p>"Cooking is an art, but baking is a science. It's about precision, patience, and passion coming together to create something beautiful and delicious."</p>
       <p>- Anonymous</p>
+    </div>
   </div>
-</div>
-  <!-- Clear float to prevent layout issues -->
-  <div style="clear: both;"></div>
 </section>
+
 
 <script>
   window.onload = function() {
@@ -942,11 +938,11 @@ function resetGame() {
           <div class="col-products">
               <h2><span>Products</span></h2>
               <ul>
-                <li><a href="#" onclick="filterDesserts('Cakes'); return false;">Cakes</a></li>
-                <li><a href="#" onclick="filterDesserts('Cupcakes'); return false;">Cupcakes</a></li>
-                <li><a href="#" onclick="filterDesserts('Donuts'); return false;">Donuts</a></li>
-                <li><a href="#" onclick="filterDesserts('Desserts'); return false;">Desserts</a></li>
-                <li><a href="#" onclick="filterDesserts('Pastries'); return false;">Pastries</a></li>
+                <li><a href="menu.html" onclick="filterDesserts('Cakes'); return false;">Cakes</a></li>
+                <li><a href="menu.html" onclick="filterDesserts('Cupcakes'); return false;">Cupcakes</a></li>
+                <li><a href="menu.html" onclick="filterDesserts('Donuts'); return false;">Donuts</a></li>
+                <li><a href="menu.html" onclick="filterDesserts('Desserts'); return false;">Desserts</a></li>
+                <li><a href="menu.html" onclick="filterDesserts('Pastries'); return false;">Pastries</a></li>
             </ul>
             
           </div>
@@ -954,10 +950,10 @@ function resetGame() {
           <div class="col-site">
               <h2><span>Site</span></h2>
               <ul>
-                  <li><a href="#">Home</a></li>
+                  <li><a href="index.html">Home</a></li>
                   <li><a href="#">About</a></li>
-                  <li><a href="#">Menu</a></li>
-                  <li><a href="#">Why us?</a></li>
+                  <li><a href="menu.html">Menu</a></li>
+                  <li><a href="index.html#reasons">Why us?</a></li>
                   <li><a href="#">Contact</a></li>
               </ul>
           </div>
@@ -1002,7 +998,6 @@ function resetGame() {
 
 </div>
 
-    <!-- Success Popup -->
     <div id="success-popup" class="popup">
       <div class="popup-content">
           <span class="close-btn">&times;</span>
@@ -1089,9 +1084,9 @@ function resetGame() {
             </div>
 
             <div class="social-icons">
-                <i class="fa-brands fa-square-facebook icon fb-icon"></i>
-                <i class="fa-brands fa-square-x-twitter icon"></i>
-                <i class="fa-brands fa-square-instagram icon ig-icon"></i>
+                <a href="https://www.facebook.com/"><i class="fa-brands fa-square-facebook icon fb-icon" style="color: black;"></i></a>
+                <a href="https://x.com/?lang=en"><i class="fa-brands fa-square-x-twitter icon" style="color: black;"></i></a>
+                <a href="https://www.instagram.com/"><i class="fa-brands fa-square-instagram icon ig-icon" style="color: black;"></i></a>
             </div>
     </div>
     <small id="footer-date"></small>
@@ -1108,3 +1103,4 @@ function resetGame() {
 <script src="App.js"></script>
 </body>
 </html>
+
