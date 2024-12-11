@@ -29,7 +29,6 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-
 document.querySelector('#login-form')?.addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -40,11 +39,21 @@ document.querySelector('#login-form')?.addEventListener('submit', function(event
     const user = users.find(user => user.email === email);
 
     if (user && user.password === password) {
-        localStorage.setItem('currentUser', JSON.stringify(user)); 
+        localStorage.setItem('currentUser', JSON.stringify(user));
         localStorage.setItem('isLoggedIn', 'true'); 
-        window.location.href = 'index.html'; 
+
+        const currentDate = new Date();
+        localStorage.setItem('lastLogin', currentDate.toLocaleString()); 
+
+        const successPopup = document.getElementById('success-popup');
+        if (successPopup) {
+            successPopup.classList.add('show');
+            setTimeout(() => {
+                successPopup.classList.remove('show');
+                window.location.href = 'index.html'; 
+            }, 2000); 
+        }
     } else {
-        
         alert('Invalid email or password. Please try again.');
         localStorage.setItem('isLoggedIn', 'false'); 
     }
