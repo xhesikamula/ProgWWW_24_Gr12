@@ -33,19 +33,19 @@
     width: 300px;
     max-width: 90%;
     z-index: 1000;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Nunito';
 }
 
 .contact-form h3 {
     margin-bottom: 10px;
     font-size: 1.5em;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Nunito';
 }
 
 .contact-form label {
     display: block;
     margin: 10px 0 5px;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Nunito';
 }
 
 .contact-form input, .contact-form textarea {
@@ -54,21 +54,21 @@
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Nunito';
 }
 
 .contact-form button {
     padding: 10px 15px;
-    background-color: #CD001A;
+    background-color: var(--brown);
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Nunito';
 }
 
 .contact-form button:hover {
-    background-color: #b80014;
+    background-color: var(--h-color);
 }
 .popup {
             display: none;
@@ -81,7 +81,7 @@
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            font-family: 'Nunito', sans-serif;
+            font-family: 'Nunito';
         }
 
         .popup-content {
@@ -90,7 +90,7 @@
             border-radius: 8px;
             text-align: center;
             width: 300px;
-            font-family: 'Nunito', sans-serif;
+            font-family: 'Nunito';
         }
 
         .popup.show {
@@ -152,7 +152,7 @@
         <section class="dessert-section">
             <h1>Our Desserts</h1>
             <p style="text-align: center;">Select a dessert type to view items:</p>
-            <div class="filter-buttons" style="font-family: 'Nunito', sans-serif;">
+            <div class="filter-buttons" style="font-family: 'Nunito'">
                 <button onclick="filterDesserts('All')">All</button>
                 <button onclick="filterDesserts('Cakes')">Cakes</button>
                 <button onclick="filterDesserts('Cupcakes')">Cupcakes</button>
@@ -182,10 +182,10 @@
             <div class="col-site">
                 <h2><span>Site</span></h2>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
                     <li><a href="#">Menu</a></li>
-                    <li><a href="#">Why us?</a></li>
+                    <li><a href="index.html#reasons">Why us?</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
             </div>
@@ -227,11 +227,8 @@
       
       <button type="submit">Submit</button> 
   </form>
-  
   </div>
   
-  
-      <!-- Success Popup -->
       <div id="success-popup" class="popup">
         <div class="popup-content">
             <span class="close-btn">&times;</span>
@@ -318,10 +315,10 @@
               </div>
   
               <div class="social-icons">
-                  <i class="fa-brands fa-square-facebook icon fb-icon"></i>
-                  <i class="fa-brands fa-square-x-twitter icon"></i>
-                  <i class="fa-brands fa-square-instagram icon ig-icon"></i>
-              </div>
+                <a href="https://www.facebook.com/"><i class="fa-brands fa-square-facebook icon fb-icon" style="color: black;"></i></a>
+                <a href="https://x.com/?lang=en"><i class="fa-brands fa-square-x-twitter icon" style="color: black;"></i></a>
+                <a href="https://www.instagram.com/"><i class="fa-brands fa-square-instagram icon ig-icon" style="color: black;"></i></a>
+            </div>
       </div>
       <small id="footer-date"></small>
   </footer2>
@@ -382,3 +379,4 @@ function viewDetails(dessertId) {
     </script>
 </body>
 </html>
+
