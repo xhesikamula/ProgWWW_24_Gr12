@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./assets/css/variablat.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="filterDesserts.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     <style>
     #auth-links {
@@ -31,7 +32,7 @@
     max-width: 500px;
     text-align: center;
     padding: 20px;
-    background: #fff;
+    background: #fffcfc;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     margin: 0 auto; 
@@ -48,7 +49,7 @@
 
 .thank-you-message h3 {
     font-size: 1.8rem;
-    color: #CD001A; 
+    color: var(--h-color);
     margin-bottom: 10px;
 }
 
@@ -60,7 +61,7 @@
 
 .order-container {
     display: flex;
-    justify-content: flex-end; /* Aligns the form to the right */
+    justify-content: flex-end; 
     padding: 20px;
 }
 
@@ -69,26 +70,22 @@ label {
             margin-bottom: 8px;
         }
 
-        /* Make checkboxes and radio buttons inline with text */
         input[type="checkbox"], input[type="radio"] {
             display: inline-block;
             margin-right: 10px;
             vertical-align: middle;
         }
 
-        /* Adjust form elements for better spacing */
         form > label, form > input {
             margin-bottom: 2px;
         }
 
-        /* Horizontally align the radio buttons and checkboxes */
         .delivery-options, .extras-options {
             display: flex;
             justify-content: space-between;
             gap: 20px;
         }
 
-        /* Adjust the Order Summary section */
         #orderSummary {
             display: block;
             margin-top: 10px;
@@ -136,7 +133,7 @@ label {
 
 .contact-form button {
     padding: 10px 15px;
-    background-color: #CD001A;
+    background-color: var(--brown);
     color: white;
     border: none;
     border-radius: 5px;
@@ -144,7 +141,7 @@ label {
 }
 
 .contact-form button:hover {
-    background-color: #b80014;
+    background-color: var(--h-color);
 }
 .popup {
             display: none;
@@ -187,6 +184,81 @@ label {
     text-align: center; 
 }
 
+/* Modal styles */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4); 
+    padding-top: 100px;
+    text-align: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 400px;
+    margin: auto;
+}
+
+.close-btn {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* qekjo per header osht se spo di ku e kom bo ni lshim e spo aplikohet si ne files tjera prej style.css */
+li ul {
+    display: none;
+    position: absolute;
+    list-style: none; 
+    margin: 0;
+    padding: 0;
+}
+
+.w-25 {
+    width: 150px;
+}
+
+li:hover > ul {
+    display: block;
+    background-color: var(--light-brown);
+    border: 1px solid white;
+    border-radius: 5px;
+    z-index: 10; 
+}
+
+li ul li a {
+    display: block;
+    padding: 0 10px;
+    text-decoration: none;
+    color: white; 
+    transition: all 0.2s ease-in-out;
+    height: 40px;
+    line-height: 40px;
+}
+
+li ul li a:hover {
+    background-color: var(--brown);
+}
 
     </style>
 </head>
@@ -229,9 +301,6 @@ label {
         <div id="order-form">
             <h2>Place your order</h2>
             <form id="orderForm">
-             
-
-                <!-- Name and Address Fields -->
                 <label for="name">First Name:</label>
                 <input type="text" id="name" name="name" maxlength="20" autocomplete="name" required autofocus>
                 
@@ -241,15 +310,12 @@ label {
                 <label for="address">Address:</label>
                 <input type="text" id="address" name="address" required>
 
-                 <!-- Add phone field -->
     <label for="phone">Phone:</label>
     <input type="text" id="phone" name="phone" required>
-    
-    <!-- Add email field -->
+
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" autocomplete="email" required>
 
-                <!-- Checkboxes for Extras (Horizontal Layout) -->
                 <label>Extras:</label>
                 <div class="extras-options">
                     <label><input type="checkbox" name="extras" value="Sprinkles"> Sprinkles</label>
@@ -257,18 +323,15 @@ label {
                     <label><input type="checkbox" name="extras" value="Chocolate Syrup"> Chocolate Syrup</label>
                 </div>
 
-                <!-- Radio Buttons for Delivery Method (Horizontal Layout) -->
                 <label>Delivery Method:</label>
                 <div class="delivery-options">
                     <label><input type="radio" id="deliveryStandard" name="delivery-method" value="Standard" checked> Standard</label>
                     <label><input type="radio" id="deliveryExpress" name="delivery-method" value="Express"> Express</label>
                 </div>
 
-                <!-- Quantity Selection -->
                 <label for="quantity">Quantity:</label>
                 <input type="number" id="quantity" name="quantity" min="1" required>
 
-                   <!-- Datalist for Payment Method Selection -->
                    <label for="paymentMethod">Select Payment Method:</label>
                    <input list="paymentMethods" id="paymentMethod" name="paymentMethod" required>
                    <datalist id="paymentMethods">
@@ -277,16 +340,21 @@ label {
                        <option value="Cash on Delivery"></option>
                    </datalist>
 
-                <!-- Output Field for Order Summary -->
                 <label>Order Summary:</label>
                 <output id="orderSummary"></output>
 
-                <!-- Submit Button -->
                 <button type="submit">Place Order</button>
             </form>
         </div>
         <div id="order-confirmation" class="order-confirmation"></div>
     </div>
+
+<div id="warningModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <p id="warningMessage"></p>
+    </div>
+</div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -316,7 +384,7 @@ label {
                 const deliveryMethod = document.querySelector("input[name='delivery-method']:checked")?.value;
 
                 // Building the summary text
-                summary = Name: ${name} ${surname}\nAddress: ${address}\nQuantity: ${quantity}\nDelivery Method: ${deliveryMethod}\nExtras: ${extras}\nPayment Method: ${paymentMethod};
+                summary = `Name: ${name} ${surname}\nAddress: ${address}\nQuantity: ${quantity}\nDelivery Method: ${deliveryMethod}\nExtras: ${extras}\nPayment Method: ${paymentMethod}`;
                 
                 // Display summary
                 orderSummary.textContent = summary;
@@ -332,21 +400,21 @@ label {
             <div class="col-products">
                 <h2><span>Products</span></h2>
                 <ul>
-                    <li><a href="#" onclick="filterDesserts('Cakes'); return false;">Cakes</a></li>
-                    <li><a href="#" onclick="filterDesserts('Cupcakes'); return false;">Cupcakes</a></li>
-                    <li><a href="#" onclick="filterDesserts('Donuts'); return false;">Donuts</a></li>
-                    <li><a href="#" onclick="filterDesserts('Desserts'); return false;">Desserts</a></li>
-                    <li><a href="#" onclick="filterDesserts('Pastries'); return false;">Pastries</a></li>
+                    <li><a href="menu.html" onclick="filterDesserts('Cakes'); return false;">Cakes</a></li>
+                    <li><a href="menu.html" onclick="filterDesserts('Cupcakes'); return false;">Cupcakes</a></li>
+                    <li><a href="menu.html" onclick="filterDesserts('Donuts'); return false;">Donuts</a></li>
+                    <li><a href="menu.html" onclick="filterDesserts('Desserts'); return false;">Desserts</a></li>
+                    <li><a href="menu.html" onclick="filterDesserts('Pastries'); return false;">Pastries</a></li>
                 </ul>                
             </div>
   
             <div class="col-site">
                 <h2><span>Site</span></h2>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Menu</a></li>
-                    <li><a href="#">Why us?</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="index.html#reasons">Why us?</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
             </div>
@@ -391,9 +459,7 @@ label {
   
   </div>
   
-  
-      <!-- Success Popup -->
-      <div id="success-popup" class="popup">
+    <div id="success-popup" class="popup">
         <div class="popup-content">
             <span class="close-btn">&times;</span>
             <p>Your message has been sent successfully!</p>
@@ -455,7 +521,7 @@ label {
             successPopup.classList.add('show');
             
             const waitTime = Math.floor(Math.random() * (MAX_WAIT_TIME - MIN_WAIT_TIME + 1)) + MIN_WAIT_TIME;
-            console.log(Popup will hide after ${waitTime} seconds.);
+            console.log(`Popup will hide after ${waitTime} seconds.`);
   
             setTimeout(() => {
                 successPopup.classList.remove('show');
@@ -479,10 +545,10 @@ label {
               </div>
   
               <div class="social-icons">
-                  <i class="fa-brands fa-square-facebook icon fb-icon"></i>
-                  <i class="fa-brands fa-square-x-twitter icon"></i>
-                  <i class="fa-brands fa-square-instagram icon ig-icon"></i>
-              </div>
+                <a href="https://www.facebook.com/"><i class="fa-brands fa-square-facebook icon fb-icon" style="color: black;"></i></a>
+                <a href="https://x.com/?lang=en"><i class="fa-brands fa-square-x-twitter icon" style="color: black;"></i></a>
+                <a href="https://www.instagram.com/"><i class="fa-brands fa-square-instagram icon ig-icon" style="color: black;"></i></a>
+            </div>
       </div>
       <small id="footer-date"></small>
   </footer2>
@@ -491,7 +557,7 @@ label {
     document.addEventListener('DOMContentLoaded', function () {
         const footerDate = new Date();
         const formattedDate = footerDate.toLocaleDateString(); 
-        document.getElementById('footer-date').innerText = Last updated: ${formattedDate};
+        document.getElementById('footer-date').innerText = `Last updated: ${formattedDate}`;
     });
     </script>
 
@@ -499,3 +565,4 @@ label {
     <script src="App.js"></script>
 </body>
 </html>
+
