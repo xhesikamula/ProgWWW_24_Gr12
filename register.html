@@ -127,7 +127,7 @@
 
 .contact-form button {
     padding: 10px 15px;
-    background-color: #CD001A;
+    background-color: var(--brown);
     color: white;
     border: none;
     border-radius: 5px;
@@ -135,7 +135,7 @@
 }
 
 .contact-form button:hover {
-    background-color: #b80014;
+    background-color: var(--h-color);
 }
 .popup {
             display: none;
@@ -180,7 +180,10 @@
 
 
   </style>
+
 </head>
+
+
 <body class="font-sans">
 
   <header class="h-light">
@@ -240,21 +243,21 @@
           <div class="col-products">
               <h2><span>Products</span></h2>
               <ul>
-                <li><a href="#" onclick="filterDesserts('Cakes'); return false;">Cakes</a></li>
-                <li><a href="#" onclick="filterDesserts('Cupcakes'); return false;">Cupcakes</a></li>
-                <li><a href="#" onclick="filterDesserts('Donuts'); return false;">Donuts</a></li>
-                <li><a href="#" onclick="filterDesserts('Desserts'); return false;">Desserts</a></li>
-                <li><a href="#" onclick="filterDesserts('Pastries'); return false;">Pastries</a></li>
+                <li><a href="menu.html" onclick="filterDesserts('Cakes'); return false;">Cakes</a></li>
+                <li><a href="menu.html" onclick="filterDesserts('Cupcakes'); return false;">Cupcakes</a></li>
+                <li><a href="menu.html" onclick="filterDesserts('Donuts'); return false;">Donuts</a></li>
+                <li><a href="menu.html" onclick="filterDesserts('Desserts'); return false;">Desserts</a></li>
+                <li><a href="menu.html" onclick="filterDesserts('Pastries'); return false;">Pastries</a></li>
             </ul>            
           </div>
 
           <div class="col-site">
               <h2><span>Site</span></h2>
               <ul>
-                  <li><a href="#">Home</a></li>
-                  <li><a href="#">About</a></li>
-                  <li><a href="#">Menu</a></li>
-                  <li><a href="#">Why us?</a></li>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="about.html">About</a></li>
+                  <li><a href="menu.html">Menu</a></li>
+                  <li><a href="index.html#reasons">Why us?</a></li>
                   <li><a href="#">Contact</a></li>
               </ul>
           </div>
@@ -282,7 +285,7 @@
 </footer>
 
 <div id="contact-form" class="contact-form" style="display: none;">
-  <button class="close-form" type="button">X</button> <!-- Add this close button -->
+  <button class="close-form" type="button">X</button>
   <h3>Contact Us</h3>
   <form id="contactForm">
     <label for="name">Name:</label>
@@ -299,8 +302,6 @@
 
 </div>
 
-
-    <!-- Success Popup -->
     <div id="success-popup" class="popup">
       <div class="popup-content">
           <span class="close-btn">&times;</span>
@@ -387,9 +388,9 @@
             </div>
 
             <div class="social-icons">
-                <i class="fa-brands fa-square-facebook icon fb-icon"></i>
-                <i class="fa-brands fa-square-x-twitter icon"></i>
-                <i class="fa-brands fa-square-instagram icon ig-icon"></i>
+                <a href="https://www.facebook.com/"><i class="fa-brands fa-square-facebook icon fb-icon" style="color: black;"></i></a>
+                <a href="https://x.com/?lang=en"><i class="fa-brands fa-square-x-twitter icon" style="color: black;"></i></a>
+                <a href="https://www.instagram.com/"><i class="fa-brands fa-square-instagram icon ig-icon" style="color: black;"></i></a>
             </div>
     </div>
     <small id="footer-date"></small>
@@ -503,8 +504,6 @@
     
     */
 </script>
-
-  
 
 </body>
 </html>
