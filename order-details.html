@@ -368,25 +368,22 @@ li ul li a:hover {
             function updateOrderSummary() {
                 let summary = "";
                 
-                // Getting form data
+               
                 const name = document.getElementById("name").value;
                 const surname = document.getElementById("surname").value;
                 const address = document.getElementById("address").value;
                 const quantity = document.getElementById("quantity").value;
                 const paymentMethod = document.getElementById("paymentMethod").value;
                 
-                // Getting checked extras
+              
                 const extras = Array.from(document.querySelectorAll("input[name='extras']:checked"))
                     .map(extra => extra.value)
                     .join(", ");
-
-                // Getting selected delivery method
+            
                 const deliveryMethod = document.querySelector("input[name='delivery-method']:checked")?.value;
 
-                // Building the summary text
                 summary = `Name: ${name} ${surname}\nAddress: ${address}\nQuantity: ${quantity}\nDelivery Method: ${deliveryMethod}\nExtras: ${extras}\nPayment Method: ${paymentMethod}`;
                 
-                // Display summary
                 orderSummary.textContent = summary;
             }
         });
