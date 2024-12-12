@@ -275,10 +275,10 @@
                             const endValue = parseInt(number.textContent.replace(/,/g, ''));
                             animateValue(number, 0, endValue, 2000);
                         });
-                        observer.unobserve(entry.target); // Stop observing once animated
+                        observer.unobserve(entry.target); 
                     }
                 });
-            }, { threshold: 0.5 }); // Trigger when 50% of the section is visible
+            }, { threshold: 0.5 }); 
         
             observer.observe(document.getElementById('stats'));
         });
@@ -339,12 +339,12 @@
             }
         }
     
-        // Function to randomly select and display cakes in a container
+       
         function displayRandomCakes(cakes, container, count) {
-            // Randomly shuffle the cakes array and slice it to get the top 'count' elements
+           
             const randomCakes = shuffleArray(cakes).slice(0, count);
     
-            // Map over the selected cakes and create HTML content for each one
+           
             container.innerHTML = randomCakes.map(cake => `
                 <div class="dessert-circle">
                     <img src="${cake.item_image}" alt="${cake.item_name}" class="cake-image">
@@ -359,7 +359,7 @@
             `).join('');
         }
     
-        // Function to shuffle an array (for random selection)
+       
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
@@ -368,12 +368,12 @@
             return array;
         }
     
-        // Redirect to the order details page when clicking "Order & Details"
+       
         function viewDetails(dessertId) {
             window.location.href = `order-details.html?id=${dessertId}`;
         }
     
-        // Fetch the desserts when the page loads
+       
         fetchDesserts();
     </script>
     
